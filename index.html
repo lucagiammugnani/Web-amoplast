@@ -5,13 +5,10 @@
 :root{--red:#B91C1C;--red-light:#fdf2f2;--cream:#f9f5f0;--cream2:#f3ede5;--white:#fff}
 body{font-family:var(--font-sans);color:#3a3230;background:#fff}
 
-.nav-links { display: flex; align-items: center; margin-left: auto; font-family: 'Montserrat', sans-serif; }
-.nav-links a { 
-  color: #000; text-decoration: none; font-size: 18px; font-weight: 400; 
-  padding: 0 25px; border-right: 1px solid #ddd; cursor: pointer; 
-}
-.nav-links a:nth-child(4) { border-right: none; }
-.nav-links a:hover { color: var(--red); }
+.nav{background:#fff;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:100px;position:sticky;top:0;z-index:100;border-bottom:1px solid #eee}
+.nav-links{display:flex;align-items:center;font-family:'Montserrat',sans-serif}
+.nav-links a{color:#000;text-decoration:none;font-size:18px;font-weight:400;padding:0 20px;border-right:1px solid #ddd;cursor:pointer}
+.nav-links a:nth-child(4){border-right:none} .nav-links a:hover{color:var(--red)}
 
 .cart-btn { 
   background: var(--red); color: #fff; border: none; border-radius: 6px; 

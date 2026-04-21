@@ -1,0 +1,415 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#B91C1C;--red-light:#fdf2f2;--cream:#f9f5f0;--cream2:#f3ede5;--white:#fff}
+body{font-family:var(--font-sans);color:#3a3230;background:#fff}
+
+.nav{background:var(--red);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:66px;position:sticky;top:0;z-index:100}
+.nav-brand{color:#fff;font-size:17px;font-weight:500;letter-spacing:0.5px}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.88);text-decoration:none;font-size:13px;cursor:pointer}
+.nav-links a:hover{color:#fff}
+.cart-btn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.4);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.cart-btn:hover{background:rgba(255,255,255,0.25)}
+.cart-badge{background:#fff;color:var(--red);border-radius:50%;width:17px;height:17px;font-size:11px;font-weight:500;display:inline-flex;align-items:center;justify-content:center}
+
+.hero{position:relative;height:480px;overflow:hidden;background:#1a1a1a}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 0.9s ease}
+.slide.active{opacity:1}
+.slide-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.slide-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.48)}
+.slide-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:2rem;max-width:680px;margin:0 auto}
+.slide-content h2{font-size:27px;font-weight:500;margin-bottom:0.75rem;line-height:1.3}
+.slide-content p{font-size:15px;opacity:0.88;line-height:1.65}
+.hero-seal{position:absolute;right:2.5rem;top:50%;transform:translateY(-50%);z-index:3;width:148px;height:148px;border-radius:50%;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.3);background:#fff}
+.hero-seal img{width:100%;height:100%;object-fit:cover}
+.carousel-dots{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:4}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.38);border:none;cursor:pointer;padding:0;transition:background 0.2s}
+.dot.active{background:#fff}
+.c-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;background:rgba(255,255,255,0.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
+.c-arrow:hover{background:rgba(255,255,255,0.28)}
+.arr-l{left:1rem}.arr-r{right:1rem}
+
+.strip{background:var(--red);padding:0.6rem 2rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.strip span{color:rgba(255,255,255,0.9);font-size:13px}
+
+.section{padding:3rem 2rem;background:#fff}
+.section-cream{padding:3rem 2rem;background:var(--cream)}
+.section-cream2{padding:3rem 2rem;background:var(--cream2)}
+.sec-title{font-size:21px;font-weight:500;color:var(--red);text-align:center;margin-bottom:0.35rem}
+.sec-div{width:40px;height:3px;background:var(--red);opacity:0.3;margin:0.4rem auto 1.5rem;border-radius:2px}
+.sec-sub{font-size:13px;color:#999;text-align:center;margin-top:-1rem;margin-bottom:1.75rem}
+
+.about-wrap{max-width:780px;margin:0 auto}
+.about-box{background:var(--cream);border-radius:12px;border:1px solid #e8ddd5;border-left:4px solid var(--red);padding:1.75rem;line-height:1.8;font-size:15px;color:#4a403c;margin-bottom:1.5rem}
+.about-box strong{color:var(--red)}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.stat{text-align:center;background:var(--cream);border:1px solid #e8ddd5;border-radius:10px;padding:1.25rem}
+.stat-num{font-size:26px;font-weight:500;color:var(--red)}
+.stat-label{font-size:12px;color:#999;margin-top:2px}
+
+.families-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.875rem;max-width:960px;margin:0 auto}
+.family-card{background:#fff;border:1px solid #e5dbd4;border-radius:12px;padding:1.25rem;text-align:center;cursor:pointer;transition:border-color 0.18s,transform 0.15s,box-shadow 0.15s}
+.family-card:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 4px 14px rgba(185,28,28,0.1)}
+.fam-icon{width:50px;height:50px;background:var(--red-light);border-radius:50%;margin:0 auto 0.6rem;display:flex;align-items:center;justify-content:center}
+.fam-letter{font-size:19px;font-weight:500;color:var(--red);margin-bottom:2px}
+.fam-name{font-size:12px;color:#999}
+.fam-count{font-size:11px;color:#c0736a;margin-top:3px}
+.detail-view{display:none;max-width:960px;margin:0 auto}
+.detail-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+.back-btn{background:transparent;border:1px solid #ddd;border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;color:#888}
+.detail-title{font-size:18px;font-weight:500;color:var(--red)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0.75rem}
+.product-card{background:#fff;border:1px solid #e5dbd4;border-radius:10px;padding:1rem;text-align:center}
+.prod-img{width:56px;height:68px;background:var(--red-light);border-radius:6px;margin:0 auto 0.6rem;display:flex;align-items:center;justify-content:center;font-size:10px;color:#ccc}
+.prod-code{font-size:11px;color:#bbb}
+.prod-cap{font-size:15px;font-weight:500;color:var(--red)}
+.prod-desc{font-size:11px;color:#aaa;margin-top:3px;line-height:1.4}
+.prod-add{margin-top:10px;background:var(--red);color:#fff;border:none;border-radius:5px;padding:6px 0;font-size:12px;cursor:pointer;width:100%;opacity:0.9}
+.prod-add:hover{opacity:1}
+.prod-add.added{background:#5a9e5a;opacity:1}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:880px;margin:0 auto}
+.why-card{text-align:center;padding:1.5rem;background:#fff;border-radius:12px;border:1px solid #e5dbd4}
+.why-icon{width:44px;height:44px;background:var(--red-light);border-radius:50%;margin:0 auto 0.75rem;display:flex;align-items:center;justify-content:center}
+.why-card h3{font-size:14px;font-weight:500;color:var(--red);margin-bottom:4px}
+.why-card p{font-size:12px;color:#999;line-height:1.55}
+
+.loc-wrap{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.loc-info h3{font-size:16px;font-weight:500;color:var(--red);margin-bottom:1rem}
+.loc-row{display:flex;gap:10px;margin-bottom:1rem;align-items:flex-start}
+.loc-ico{width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #e5dbd4}
+.loc-txt{font-size:13px;color:#666;line-height:1.5;padding-top:6px}
+.loc-txt strong{display:block;color:#444;font-size:13px}
+.map-box{background:#ede5dd;border-radius:12px;height:210px;display:flex;align-items:center;justify-content:center;border:1px solid #ddd5cc;flex-direction:column;gap:0.5rem;cursor:pointer;transition:background 0.15s}
+.map-box:hover{background:#e4dbd2}
+.map-box p{font-size:13px;color:#666}
+
+.contact-section{background:var(--red);padding:2.75rem 2rem;text-align:center;color:#fff}
+.contact-section h2{font-size:21px;font-weight:500;margin-bottom:0.4rem}
+.contact-section p{font-size:13px;opacity:0.82;margin-bottom:1.5rem}
+.c-actions{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.cbtn{background:#fff;color:var(--red);border:none;padding:11px 22px;border-radius:6px;font-size:13px;cursor:pointer;font-weight:500}
+.cbtn:hover{background:#fdf2f2}
+.cbtn-out{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.5);padding:11px 22px;border-radius:6px;font-size:13px;cursor:pointer}
+.c-info{display:flex;gap:2rem;justify-content:center;margin-top:1.25rem;flex-wrap:wrap}
+.c-info span{font-size:12px;opacity:0.75}
+
+.footer{background:#1e1410;padding:1rem 2rem;text-align:center}
+.footer p{font-size:12px;color:#6b5e58}
+
+/* CART */
+.cart-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.38);z-index:200}
+.cart-panel{position:absolute;top:0;right:0;width:340px;height:100%;background:#fff;display:flex;flex-direction:column}
+.cart-hd{background:var(--red);color:#fff;padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center}
+.cart-hd h3{font-size:15px;font-weight:500}
+.cart-x{background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1}
+.cart-body{flex:1;overflow-y:auto;padding:1rem}
+.cart-empty{text-align:center;padding:2rem;color:#bbb;font-size:13px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid #f0e8e0}
+.ci-info{flex:1}
+.ci-name{font-size:13px;font-weight:500;color:#3a3230}
+.ci-sub{font-size:11px;color:#bbb;margin-top:2px}
+.ci-qty{display:flex;align-items:center;gap:6px}
+.q-btn{width:24px;height:24px;border:1px solid #ddd;border-radius:4px;background:transparent;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:#666}
+.q-val{font-size:13px;font-weight:500;min-width:20px;text-align:center}
+.ci-rm{background:transparent;border:none;color:#ddd;cursor:pointer;font-size:18px;margin-left:6px}
+.ci-rm:hover{color:var(--red)}
+.cart-ft{padding:1rem 1.25rem;border-top:1px solid #f0e8e0}
+.cart-note{width:100%;border:1px solid #e0d8d0;border-radius:6px;padding:8px 10px;font-size:13px;resize:vertical;min-height:70px;font-family:var(--font-sans);color:#3a3230;margin-bottom:0.75rem;background:var(--cream)}
+.cart-sub{width:100%;background:var(--red);color:#fff;border:none;border-radius:6px;padding:12px;font-size:14px;font-weight:500;cursor:pointer}
+.cart-ok{display:none;text-align:center;padding:1.5rem;color:#2e7d32;font-size:14px}
+</style>
+
+<h2 class="sr-only">Amoplast SA — Fábrica de envases plásticos industriales, Rosario, desde 1963</h2>
+
+<nav class="nav">
+  <div class="nav-brand">AMOPLAST SA</div>
+  <div class="nav-links">
+    <a onclick="document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
+    <a onclick="document.getElementById('s-catalogo').scrollIntoView({behavior:'smooth'})">Catálogo</a>
+    <a onclick="document.getElementById('s-sede').scrollIntoView({behavior:'smooth'})">Sede</a>
+    <a onclick="document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
+    <button class="cart-btn" onclick="openCart()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.61L23 6H6"/></svg>
+      Cotizador <span class="cart-badge" id="cart-count">0</span>
+    </button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="slide active" id="slide-0">
+    <div class="slide-bg" id="bg-0"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <h2>Tecnología de precisión en cada envase</h2>
+      <p>Nuestra planta cuenta con maquinaria de última generación que garantiza la máxima calidad en cada pieza que fabricamos.</p>
+    </div>
+  </div>
+  <div class="slide" id="slide-1">
+    <div class="slide-bg" id="bg-1"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <h2>Llegamos a donde vos necesitás</h2>
+      <p>Contamos con flota propia de transporte para entregar tus pedidos en tiempo y forma a cualquier punto del país.</p>
+    </div>
+  </div>
+  <div class="slide" id="slide-2">
+    <div class="slide-bg" id="bg-2"></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <h2>Más de 60 años siendo referentes del packaging industrial</h2>
+      <p>Desde 1963, la primera fábrica de envases plásticos del interior del país. Una trayectoria construida con trabajo, calidad y confianza.</p>
+    </div>
+  </div>
+  <div class="hero-seal">
+    <img src="" alt="Sello Amoplast" onerror="this.parentElement.style.display='none'">
+  </div>
+  <button class="c-arrow arr-l" onclick="moveSlide(-1)">&#8249;</button>
+  <button class="c-arrow arr-r" onclick="moveSlide(1)">&#8250;</button>
+  <div class="carousel-dots" id="dots"></div>
+</div>
+
+<div class="strip">
+  <span>+ de 60 años de experiencia</span>
+  <span>Fabricación nacional</span>
+  <span>Entrega a todo el país</span>
+  <span>Calidad asegurada</span>
+</div>
+
+<div class="section" id="s-nosotros">
+  <div class="sec-title">Quiénes somos</div>
+  <div class="sec-div"></div>
+  <div class="about-wrap">
+    <div class="about-box"><strong>Amoplast SA</strong> nace en la ciudad de Rosario en <strong>1963</strong>, siendo la <strong>primera fábrica de envases plásticos del interior del país</strong>. A lo largo de más de seis décadas, crecimos para convertirnos en un referente del packaging industrial en Argentina, atendiendo a los sectores alimenticio, químico, cosmético y agropecuario con la misma calidad y compromiso de siempre.</div>
+    <div class="about-stats">
+      <div class="stat"><div class="stat-num">1963</div><div class="stat-label">Año de fundación</div></div>
+      <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Años de experiencia</div></div>
+      <div class="stat"><div class="stat-num">1°</div><div class="stat-label">Del interior del país</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-cream" id="s-catalogo">
+  <div class="sec-title">Catálogo de productos</div>
+  <div class="sec-div"></div>
+  <div class="sec-sub">Seleccioná una familia para ver los modelos disponibles</div>
+  <div class="families-grid" id="families-view">
+    <div class="family-card" onclick="showFamily('A','Bidones industriales',['5L','10L','20L','30L'])">
+      <div class="fam-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><rect x="6" y="3" width="12" height="18" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/></svg></div>
+      <div class="fam-letter">Familia A</div><div class="fam-name">Bidones industriales</div><div class="fam-count">4 capacidades</div>
+    </div>
+    <div class="family-card" onclick="showFamily('B','Frascos cosméticos',['50ml','100ml','200ml','500ml'])">
+      <div class="fam-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><rect x="7" y="5" width="10" height="16" rx="3"/><rect x="9" y="2" width="6" height="4" rx="1"/></svg></div>
+      <div class="fam-letter">Familia B</div><div class="fam-name">Frascos cosméticos</div><div class="fam-count">4 capacidades</div>
+    </div>
+    <div class="family-card" onclick="showFamily('C','Envases alimenticios',['250ml','500ml','1L','2L'])">
+      <div class="fam-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M5 7h14l-1.5 11H6.5L5 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg></div>
+      <div class="fam-letter">Familia C</div><div class="fam-name">Envases alimenticios</div><div class="fam-count">4 capacidades</div>
+    </div>
+    <div class="family-card" onclick="showFamily('D','Recipientes químicos',['1L','5L','10L','20L'])">
+      <div class="fam-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg></div>
+      <div class="fam-letter">Familia D</div><div class="fam-name">Recipientes químicos</div><div class="fam-count">4 capacidades</div>
+    </div>
+    <div class="family-card" onclick="showFamily('E','Tapas y accesorios',['28mm','38mm','45mm','63mm'])">
+      <div class="fam-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <div class="fam-letter">Familia E</div><div class="fam-name">Tapas y accesorios</div><div class="fam-count">4 tamaños</div>
+    </div>
+    <div class="family-card" onclick="showFamily('F','Envases agrícolas',['1L','5L','10L','20L'])">
+      <div class="fam-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M8 6V4h8v2"/></svg></div>
+      <div class="fam-letter">Familia F</div><div class="fam-name">Envases agrícolas</div><div class="fam-count">4 capacidades</div>
+    </div>
+  </div>
+  <div class="detail-view" id="detail-view">
+    <div class="detail-header">
+      <button class="back-btn" onclick="showFamilies()">← Volver a familias</button>
+      <div class="detail-title" id="detail-title"></div>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-title">¿Por qué elegirnos?</div>
+  <div class="sec-div"></div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
+      <h3>Calidad garantizada</h3><p>Materiales certificados y procesos controlados. El sello "Calidad Asegurada" nos define desde 1963.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg></div>
+      <h3>Entrega a todo el país</h3><p>Flota propia de transporte desde Rosario hacia cualquier punto de Argentina.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <h3>Amplia variedad</h3><p>Múltiples familias de productos con todas las capacidades para cada industria.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-8 0v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h3>Asesoramiento</h3><p>Más de 60 años de experiencia para ayudarte a encontrar el envase ideal.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-cream2" id="s-sede">
+  <div class="sec-title">Sede</div>
+  <div class="sec-div"></div>
+  <div class="loc-wrap">
+    <div class="loc-info">
+      <h3>Planta y oficinas comerciales</h3>
+      <div class="loc-row">
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="loc-txt"><strong>Dirección</strong>Blvd. 27 de Febrero 80 bis<br>S2000EZN, Rosario, Santa Fe</div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.06 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.92z"/></svg></div>
+        <div class="loc-txt"><strong>Teléfono</strong>+54 341 000-0000</div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="loc-txt"><strong>Email</strong>info@amoplast.com.ar</div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="loc-txt"><strong>Horario de atención</strong>Lunes a viernes: 8:00 a 17:00 hs</div>
+      </div>
+    </div>
+    <div class="map-box" onclick="openMap()">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <p style="font-weight:500;color:#555">Ver en Google Maps</p>
+      <p style="font-size:12px;color:#999">Blvd. 27 de Febrero 80 bis, Rosario</p>
+    </div>
+  </div>
+</div>
+
+<div class="contact-section" id="s-contacto">
+  <h2>Contactanos</h2>
+  <p>Consultá por disponibilidad de stock o solicitá tu cotización</p>
+  <div class="c-actions">
+    <button class="cbtn">Enviar consulta por mail</button>
+    <button class="cbtn-out">WhatsApp</button>
+    <button class="cbtn" onclick="openCart()">Abrir cotizador</button>
+  </div>
+  <div class="c-info">
+    <span>info@amoplast.com.ar</span>
+    <span>+54 341 000-0000</span>
+    <span>Blvd. 27 de Febrero 80 bis, Rosario</span>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2026 Amoplast SA — Todos los derechos reservados · Fábrica de envases plásticos industriales desde 1963 · Rosario, Santa Fe</p>
+</div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeOut(event)">
+  <div class="cart-panel">
+    <div class="cart-hd"><h3>Cotizador de productos</h3><button class="cart-x" onclick="closeCart()">×</button></div>
+    <div class="cart-body">
+      <div class="cart-empty" id="cart-empty">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="1.5" style="display:block;margin:0 auto 0.75rem"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.61L23 6H6"/></svg>
+        <p>Tu cotizador está vacío.<br>Agregá productos desde el catálogo.</p>
+      </div>
+      <div id="cart-items"></div>
+    </div>
+    <div class="cart-ft" id="cart-ft" style="display:none">
+      <div id="cart-ok" class="cart-ok">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" style="display:block;margin:0 auto 0.5rem"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+        <p style="font-weight:500;margin-bottom:4px">¡Cotización enviada!</p>
+        <p style="font-size:12px;color:#999">Nos pondremos en contacto a la brevedad.</p>
+      </div>
+      <div id="cart-form">
+        <textarea class="cart-note" id="cart-note" placeholder="Empresa, cantidad deseada, teléfono de contacto, aclaraciones..."></textarea>
+        <button class="cart-sub" onclick="submitQuote()">Enviar cotización por mail</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var cart=[],cur=0,total=3,timer;
+
+function buildDots(){
+  var d=document.getElementById('dots');d.innerHTML='';
+  for(var i=0;i<total;i++){
+    var b=document.createElement('button');
+    b.className='dot'+(i===0?' active':'');
+    b.onclick=(function(x){return function(){goSlide(x);};})(i);
+    d.appendChild(b);
+  }
+}
+function goSlide(n){
+  document.getElementById('slide-'+cur).classList.remove('active');
+  document.querySelectorAll('.dot')[cur].classList.remove('active');
+  cur=(n+total)%total;
+  document.getElementById('slide-'+cur).classList.add('active');
+  document.querySelectorAll('.dot')[cur].classList.add('active');
+  clearInterval(timer);timer=setInterval(function(){moveSlide(1);},5000);
+}
+function moveSlide(d){goSlide(cur+d);}
+buildDots();
+timer=setInterval(function(){moveSlide(1);},5000);
+
+(function setBgs(){
+  var colors=['#1e2a1a','#0f1a28','#1a1410'];
+  for(var i=0;i<3;i++){
+    var bg=document.getElementById('bg-'+i);
+    bg.style.backgroundColor=colors[i];
+    bg.style.backgroundImage='repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0,rgba(255,255,255,0.02) 1px,transparent 0,transparent 50%)';
+    bg.style.backgroundSize='22px 22px';
+  }
+})();
+
+function showFamily(letter,name,caps){
+  document.getElementById('families-view').style.display='none';
+  document.getElementById('detail-view').style.display='block';
+  document.getElementById('detail-title').textContent='Familia '+letter+' — '+name;
+  var pg=document.getElementById('products-grid');pg.innerHTML='';
+  caps.forEach(function(cap){
+    var id=letter+'-'+cap,inC=cart.find(function(i){return i.id===id;});
+    var card=document.createElement('div');card.className='product-card';
+    card.innerHTML='<div class="prod-img">'+id+'</div><div class="prod-code">'+id+'</div><div class="prod-cap">'+cap+'</div><div class="prod-desc">Envase plástico HDPE<br>apto contacto industrial</div>'+
+      '<button class="prod-add'+(inC?' added':'')+'" id="btn-'+id+'" onclick="addCart(\''+id+'\',\'Familia '+letter+' — '+cap+'\',\''+cap+'\')">'+
+      (inC?'✓ Agregado':'+ Agregar al cotizador')+'</button>';
+    pg.appendChild(card);
+  });
+}
+function showFamilies(){document.getElementById('detail-view').style.display='none';document.getElementById('families-view').style.display='grid';}
+function addCart(id,name,cap){
+  var ex=cart.find(function(i){return i.id===id;});
+  if(!ex)cart.push({id:id,name:name,cap:cap,qty:1});else ex.qty++;
+  var b=document.getElementById('btn-'+id);
+  if(b){b.textContent='✓ Agregado';b.className='prod-add added';}
+  updCount();rendItems();
+}
+function updCount(){document.getElementById('cart-count').textContent=cart.reduce(function(s,i){return s+i.qty;},0);}
+function rendItems(){
+  var c=document.getElementById('cart-items'),e=document.getElementById('cart-empty'),f=document.getElementById('cart-ft');
+  if(!cart.length){e.style.display='block';c.innerHTML='';f.style.display='none';return;}
+  e.style.display='none';f.style.display='block';c.innerHTML='';
+  cart.forEach(function(it){
+    var d=document.createElement('div');d.className='cart-item';
+    d.innerHTML='<div class="ci-info"><div class="ci-name">'+it.name+'</div><div class="ci-sub">'+it.cap+'</div></div>'+
+      '<div class="ci-qty"><button class="q-btn" onclick="chQ(\''+it.id+'\',-1)">−</button><span class="q-val">'+it.qty+'</span><button class="q-btn" onclick="chQ(\''+it.id+'\',1)">+</button></div>'+
+      '<button class="ci-rm" onclick="rmIt(\''+it.id+'\')">×</button>';
+    c.appendChild(d);
+  });
+}
+function chQ(id,d){var it=cart.find(function(i){return i.id===id;});if(it)it.qty=Math.max(1,it.qty+d);updCount();rendItems();}
+function rmIt(id){
+  cart=cart.filter(function(i){return i.id!==id;});
+  var b=document.getElementById('btn-'+id);if(b){b.textContent='+ Agregar al cotizador';b.className='prod-add';}
+  updCount();rendItems();
+}
+function openCart(){document.getElementById('cart-overlay').style.display='block';rendItems();}
+function closeCart(){document.getElementById('cart-overlay').style.display='none';}
+function closeOut(e){if(e.target===document.getElementById('cart-overlay'))closeCart();}
+function submitQuote(){
+  document.getElementById('cart-form').style.display='none';document.getElementById('cart-ok').style.display='block';
+  setTimeout(function(){
+    document.getElementById('cart-form').style.display='block';document.getElementById('cart-ok').style.display='none';
+    cart=[];document.getElementById('cart-note').value='';updCount();rendItems();
+  },3000);
+}
+function openMap(){if(typeof openLink==='function')openLink('https://maps.google.com/?q=Blvd.+27+de+Febrero+80+bis,+Rosario,+Santa+Fe,+Argentina');}
+</script>

@@ -99,19 +99,64 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:880px;margin:0 auto}
 .why-card{text-align:center;padding:1.5rem;background:#fff;border-radius:12px;border:1px solid #e5dbd4}
 .why-icon{width:44px;height:44px;background:var(--red-light);border-radius:50%;margin:0 auto 0.75rem;display:flex;align-items:center;justify-content:center}
-.why-card h3{font-size:14px;font-weight:500;color:var(--red);margin-bottom:4px}
-.why-card p{font-size:12px;color:#999;line-height:1.55}
+.cat-modes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
 
-.loc-wrap{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
-.loc-info h3{font-size:16px;font-weight:500;color:var(--red);margin-bottom:1rem}
-.loc-row{display:flex;gap:10px;margin-bottom:1rem;align-items:flex-start}
-.loc-ico{width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #e5dbd4}
-.loc-txt{font-size:13px;color:#666;line-height:1.5;padding-top:6px}
-.loc-txt strong{display:block;color:#444;font-size:13px}
-.map-box{background:#ede5dd;border-radius:12px;height:210px;display:flex;align-items:center;justify-content:center;border:1px solid #ddd5cc;flex-direction:column;gap:0.5rem;cursor:pointer;transition:background 0.15s}
-.map-box:hover{background:#e4dbd2}
-.map-box p{font-size:13px;color:#666}
+.mode-btn {
+    background: #fff;
+    border: 1.5px solid #e5dbd4;
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px; /* Aquí le damos el tamaño rectangular grande */
+}
 
+.mode-btn:hover {
+    border-color: var(--red);
+    transform: scale(1.08); /* Este es el efecto de agrandado */
+    box-shadow: 0 10px 25px rgba(185,28,28,0.15);
+    z-index: 10;
+}
+
+.mode-icon {
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.mode-btn:hover .mode-icon {
+    transform: scale(1.2);
+}
+
+.mode-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.mode-sub {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.4;
+}
+
+/* Para que en el celular no se amontonen */
+@media (max-width: 768px) {
+    .cat-modes { grid-template-columns: repeat(2, 1fr); }
+}
 .contact-section{background:var(--red);padding:2.75rem 2rem;text-align:center;color:#fff}
 .contact-section h2{font-size:21px;font-weight:500;margin-bottom:0.4rem}
 .contact-section p{font-size:13px;opacity:0.82;margin-bottom:1.5rem}
@@ -296,28 +341,26 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 <!-- CATÁLOGO (teaser en home) -->
 <div class="section-cream" id="s-catalogo" style="text-align:center;">
   <div class="sec-title">Catálogo de productos</div>
-  <p style="margin-bottom:2rem; color:#666; text-align:center;">Explorá nuestro catálogo filtrando por lo que estés buscando: si buscás un envase de 1 litro, usá el filtro de capacidad.</p>
-
-<div class="cat-modes">
-    <div class="mode-btn" onclick="openCatalog('categoria')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 6h16M4 12h8M4 18h12"/></svg></div>
+  <div class="cat-modes">
+    <div class="mode-btn" onclick="setMode('categoria')">
+        <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 6h16M4 12h8M4 18h12"/></svg></div>
         <div class="mode-label">CATEGORÍA</div>
-        <div class="mode-sub">Bidones, Botellas, Frascos</div>
+        <div class="mode-sub">Bidones · Botellas · Frascos</div>
     </div>
-    <div class="mode-btn" onclick="openCatalog('capacidad')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg></div>
+    <div class="mode-btn" onclick="setMode('capacidad')">
+        <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg></div>
         <div class="mode-label">CAPACIDAD</div>
-        <div class="mode-sub">Desde 0cc hasta +5000cc</div>
+        <div class="mode-sub">Desde 0 cc hasta +5000 cc</div>
     </div>
-    <div class="mode-btn" onclick="openCatalog('material')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+    <div class="mode-btn" onclick="setMode('material')">
+        <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
         <div class="mode-label">MATERIAL</div>
-        <div class="mode-sub">PET, PEAD, PVC, PEBD</div>
+        <div class="mode-sub">PET · PEAD · PVC · PEBD</div>
     </div>
-    <div class="mode-btn" onclick="openCatalog('linea')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M3 5h18M3 9h12M3 13h15M3 17h9"/></svg></div>
+    <div class="mode-btn" onclick="setMode('linea')">
+        <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M3 5h18M3 9h12M3 13h15M3 17h9"/></svg></div>
         <div class="mode-label">LÍNEA</div>
-        <div class="mode-sub">A, B, C, D, E, F</div>
+        <div class="mode-sub">A · B · C · D · E · F</div>
     </div>
 </div>
 

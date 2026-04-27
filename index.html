@@ -339,33 +339,37 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 </div>
 
 <!-- CATÁLOGO (teaser en home) -->
-<div class="section-cream" id="s-catalogo" style="text-align:center;">
+<section class="section-cream" id="s-catalogo" style="text-align:center; padding: 4rem 0;">
   <div class="sec-title">Catálogo de productos</div>
+  <div class="sec-div"></div>
+  <p style="font-size:14px;color:#999;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto;padding:0 1rem;">Explorá nuestro catálogo filtrando por lo que estés buscando: si buscás un envase de 1 litro, usá el filtro de capacidad.</p>
+  
   <div class="cat-modes">
-    <div class="mode-btn" onclick="setMode('categoria')">
+    <div class="mode-btn" onclick="openCatalog('categoria')">
         <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 6h16M4 12h8M4 18h12"/></svg></div>
         <div class="mode-label">CATEGORÍA</div>
         <div class="mode-sub">Bidones · Botellas · Frascos</div>
     </div>
-    <div class="mode-btn" onclick="setMode('capacidad')">
+    <div class="mode-btn" onclick="openCatalog('capacidad')">
         <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg></div>
         <div class="mode-label">CAPACIDAD</div>
         <div class="mode-sub">Desde 0 cc hasta +5000 cc</div>
     </div>
-    <div class="mode-btn" onclick="setMode('material')">
+    <div class="mode-btn" onclick="openCatalog('material')">
         <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
         <div class="mode-label">MATERIAL</div>
         <div class="mode-sub">PET · PEAD · PVC · PEBD</div>
     </div>
-    <div class="mode-btn" onclick="setMode('linea')">
+    <div class="mode-btn" onclick="openCatalog('linea')">
         <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M3 5h18M3 9h12M3 13h15M3 17h9"/></svg></div>
         <div class="mode-label">LÍNEA</div>
         <div class="mode-sub">A · B · C · D · E · F</div>
     </div>
-</div>
+  </div>
+  </section>
 
 <!-- POR QUÉ ELEGIRNOS -->
-<div class="section">
+<section class="section" style="padding: 4rem 0;">
   <div class="sec-title">¿Por qué elegirnos?</div>
   <div class="sec-div"></div>
   <div class="why-grid">
@@ -379,62 +383,52 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
     </div>
     <div class="why-card">
       <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
-      <h3>Amplia variedad</h3><p>Múltiples opciones de productos con todas las capacidades para cada industria.</p>
+      <h3>Amplia variedad</h3><p>Múltiples opciones de productos para cada industria.</p>
     </div>
     <div class="why-card">
       <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-8 0v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
-      <h3>Asesoramiento</h3><p>Más de 60 años de experiencia para ayudarte a encontrar el envase ideal.</p>
+      <h3>Asesoramiento</h3><p>Más de 60 años de experiencia ayudándote.</p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- SEDE -->
-<div class="section-cream2" id="s-sede">
+<section class="section-cream2" id="s-sede" style="padding: 4rem 0;">
   <div class="sec-title">Sede</div>
   <div class="sec-div"></div>
-  <div class="loc-wrap">
+  <div class="loc-wrap" style="max-width: 1000px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
     <div class="loc-info">
-      <h3>Planta y oficinas comerciales</h3>
+      <h3 style="color:var(--red); margin-bottom:1.5rem;">Planta y oficinas comerciales</h3>
       <div class="loc-row">
         <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="loc-txt"><strong>Dirección</strong>Blvd. 27 de Febrero 80 bis<br>S2000EZN, Rosario, Santa Fe</div>
+        <div class="loc-txt"><strong>Dirección</strong>Blvd. 27 de Febrero 80 bis, Rosario</div>
       </div>
-      <div class="loc-row">
-        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.06 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.92z"/></svg></div>
-        <div class="loc-txt"><strong>Teléfono</strong>+54 341 000-0000</div>
-      </div>
-      <div class="loc-row">
-        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <div class="loc-txt"><strong>Email</strong>info@amoplast.com.ar</div>
-      </div>
-      <div class="loc-row">
-        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="loc-txt"><strong>Horario de atención</strong>Lunes a viernes: 8:00 a 17:00 hs</div>
-      </div>
+      <div class="loc-row"><div class="loc-ico">📞</div><div class="loc-txt"><strong>Teléfono</strong>+54 341 334-3863</div></div>
+      <div class="loc-row"><div class="loc-ico">✉️</div><div class="loc-txt"><strong>Email</strong>amoplast@amoplast.com.ar</div></div>
+      <div class="loc-row"><div class="loc-ico">🕒</div><div class="loc-txt"><strong>Horario</strong>Lunes a viernes: 8:00 a 17:00 hs</div></div>
     </div>
-    <div class="map-box" onclick="openMap()">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <p style="font-weight:500;color:#555">Ver en Google Maps</p>
-      <p style="font-size:12px;color:#999">Blvd. 27 de Febrero 80 bis, Rosario</p>
+    <div class="map-box" style="height:310px; position:relative; overflow:hidden; border-radius:12px; border:1px solid #ddd;">
+      <iframe src="https://maps.app.goo.gl/qY7vE7n2n5n5n5n50" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <a href="https://www.google.com.ar/maps/place/Amoplast/@-32.972986,-60.629340,19z" target="_blank" style="position:absolute; inset:0; z-index:10;"></a>
     </div>
   </div>
-</div>
+</section>
 
 <!-- CONTACTO -->
-<div class="contact-section" id="s-contacto">
-  <h2>Contactanos</h2>
-  <p>Consultá por disponibilidad de stock o solicitá tu cotización</p>
-  <div class="c-actions">
-    <button class="cbtn">Enviar consulta por mail</button>
-    <button class="cbtn-out">WhatsApp</button>
-    <button class="cbtn" onclick="openCart()">Abrir cotizador</button>
+<section class="contact-section" id="s-contacto" style="background:var(--red); width:100%; padding: 4rem 2rem;">
+  <div style="max-width:800px; margin:0 auto;">
+    <h2>Contactanos</h2>
+    <p>Consultá por disponibilidad de stock o solicitá tu cotización</p>
+    <div class="c-actions">
+      <button class="cbtn">Enviar consulta por mail</button>
+      <button class="cbtn-out">WhatsApp</button>
+      <button class="cbtn" onclick="openCart()">Abrir cotizador</button>
+    </div>
+    <div class="c-info" style="margin-top:2rem;">
+      <span>amoplast@amoplast.com.ar</span> | <span>+54 9 341 334-3863</span>
+    </div>
   </div>
-  <div class="c-info">
-    <span>amoplast@amoplast.com.ar</span>
-    <span>+54 9 341 334-3863</span>
-    <span>Blvd. 27 de Febrero 80 bis, Rosario</span>
-  </div>
-</div>
+</section>
 
 <div class="footer">
   <p>© 2026 Amoplast SA — Todos los derechos reservados · Fábrica de envases plásticos industriales desde 1963 · Rosario, Santa Fe</p>

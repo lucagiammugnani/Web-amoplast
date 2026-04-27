@@ -296,13 +296,29 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 <!-- CATÁLOGO (teaser en home) -->
 <div class="section-cream" id="s-catalogo" style="text-align:center;">
   <div class="sec-title">Catálogo de productos</div>
-  <div class="sec-div"></div>
-  <p style="font-size:14px;color:#999;margin-bottom:1.75rem;max-width:480px;margin-left:auto;margin-right:auto;">Más de 350 modelos de envases plásticos. Explorá nuestro catálogo completo con filtros por categoría, capacidad, material y línea.</p>
-  <button onclick="openCatalog()" style="background:var(--red);color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif;display:inline-flex;align-items:center;gap:10px;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-    Ver catálogo completo
-  </button>
-  <p style="font-size:12px;color:#ccc;margin-top:1.25rem;">Categoría &nbsp;·&nbsp; Capacidad &nbsp;·&nbsp; Material &nbsp;·&nbsp; Línea</p>
+  <p style="margin-bottom:2rem; color:#666; text-align:center;">Explorá nuestro catálogo filtrando por lo que estés buscando: si buscás un envase de 1 litro, usá el filtro de capacidad.</p>
+
+<div class="cat-modes">
+    <div class="mode-btn" onclick="openCatalog('categoria')">
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 6h16M4 12h8M4 18h12"/></svg></div>
+        <div class="mode-label">CATEGORÍA</div>
+        <div class="mode-sub">Bidones, Botellas, Frascos</div>
+    </div>
+    <div class="mode-btn" onclick="openCatalog('capacidad')">
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg></div>
+        <div class="mode-label">CAPACIDAD</div>
+        <div class="mode-sub">Desde 0cc hasta +5000cc</div>
+    </div>
+    <div class="mode-btn" onclick="openCatalog('material')">
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <div class="mode-label">MATERIAL</div>
+        <div class="mode-sub">PET, PEAD, PVC, PEBD</div>
+    </div>
+    <div class="mode-btn" onclick="openCatalog('linea')">
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M3 5h18M3 9h12M3 13h15M3 17h9"/></svg></div>
+        <div class="mode-label">LÍNEA</div>
+        <div class="mode-sub">A, B, C, D, E, F</div>
+    </div>
 </div>
 
 <!-- POR QUÉ ELEGIRNOS -->

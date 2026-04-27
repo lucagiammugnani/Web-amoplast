@@ -1,4 +1,3 @@
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -64,6 +63,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cat-back:hover{border-color:var(--red);color:var(--red);}
 .cat-page-title{font-size:20px;font-weight:500;color:var(--red);}
 
+/* cat-modes inside overlay (small buttons) */
 .cat-modes{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;max-width:700px;margin:0 auto 2rem}
 @media(min-width:600px){.cat-modes{grid-template-columns:repeat(4,1fr)}}
 .mode-btn{background:#fff;border:1.5px solid #e5dbd4;border-radius:12px;padding:1rem 0.75rem;text-align:center;cursor:pointer;transition:border-color 0.18s,transform 0.15s,box-shadow 0.15s;font-family:'Montserrat',sans-serif}
@@ -73,6 +73,95 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .mode-btn.active .mode-icon{background:rgba(185,28,28,0.12)}
 .mode-label{font-size:12px;font-weight:600;color:var(--red);letter-spacing:0.02em}
 .mode-sub{font-size:10px;color:#aaa;margin-top:2px}
+
+/* ---- HOME CATALOG — TALL CARDS (like "Explorá nuestro trabajo") ---- */
+.cat-cards-home{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.1rem;
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 2rem;
+}
+.cat-card-home{
+  position:relative;
+  border-radius:18px;
+  overflow:hidden;
+  cursor:pointer;
+  height:420px;
+  background:#1a1a2e;
+  box-shadow:0 6px 24px rgba(0,0,0,0.18);
+  transition:transform 0.32s cubic-bezier(.22,.68,0,1.15), box-shadow 0.3s ease;
+  will-change:transform;
+}
+.cat-card-home:hover{
+  transform:scale(1.06);
+  box-shadow:0 18px 48px rgba(0,0,0,0.28);
+  z-index:3;
+}
+.cat-card-home-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transition:transform 0.4s ease;
+}
+.cat-card-home:hover .cat-card-home-bg{transform:scale(1.06)}
+.cat-card-home-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.35) 55%,rgba(0,0,0,0.12) 100%);
+  transition:background 0.3s;
+}
+.cat-card-home:hover .cat-card-home-overlay{
+  background:linear-gradient(to top,rgba(160,20,20,0.82) 0%,rgba(0,0,0,0.38) 60%,rgba(0,0,0,0.1) 100%);
+}
+.cat-card-home-body{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:2rem 1.5rem;
+  color:#fff;text-align:center;
+}
+.cat-card-home-icon{
+  width:56px;height:56px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.15);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+  transition:background 0.25s,transform 0.25s;
+  border:1.5px solid rgba(255,255,255,0.25);
+}
+.cat-card-home:hover .cat-card-home-icon{
+  background:rgba(255,255,255,0.25);
+  transform:scale(1.1);
+}
+.cat-card-home-label{
+  font-size:17px;font-weight:800;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  margin-bottom:0.5rem;
+  text-shadow:0 2px 8px rgba(0,0,0,0.5);
+}
+.cat-card-home-sub{
+  font-size:12px;
+  opacity:0.72;
+  letter-spacing:0.04em;
+  line-height:1.5;
+}
+
+/* background gradients per card */
+.cat-card-home:nth-child(1){background:linear-gradient(145deg,#1a2235,#2d3a5c)}
+.cat-card-home:nth-child(2){background:linear-gradient(145deg,#1e2a1a,#2e4420)}
+.cat-card-home:nth-child(3){background:linear-gradient(145deg,#2a1515,#4a1f1f)}
+.cat-card-home:nth-child(4){background:linear-gradient(145deg,#1a2228,#1f3040)}
+
+@media(max-width:768px){
+  .cat-cards-home{grid-template-columns:repeat(2,1fr);padding:0 1rem;gap:0.8rem}
+  .cat-card-home{height:240px}
+  .cat-card-home-label{font-size:14px}
+  .cat-card-home-icon{width:44px;height:44px}
+}
+@media(max-width:420px){
+  .cat-card-home{height:190px}
+}
 
 .filter-panel{display:none;max-width:960px;margin:0 auto 1.5rem}
 .filter-panel.active{display:block}
@@ -94,9 +183,93 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .prod-add.added{background:#5a9e5a;opacity:1}
 .no-results{text-align:center;padding:2.5rem;color:#bbb;font-size:13px;max-width:960px;margin:0 auto;display:none}
 
-/* ============================================ */
+/* ===== CLIENTES CAROUSEL ===== */
+.clients-section{padding:3.5rem 0;background:#fff;overflow:hidden}
+.clients-section .sec-title{margin-bottom:0.35rem}
+.clients-section .sec-div{margin-bottom:2rem}
 
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:880px;margin:0 auto}
+.carousel-track-wrap{
+  position:relative;
+  overflow:hidden;
+  /* fade edges */
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+}
+.carousel-track{
+  display:flex;
+  gap:2.5rem;
+  width:max-content;
+  animation:scrollLogos 32s linear infinite;
+}
+.carousel-track:hover{animation-play-state:paused}
+@keyframes scrollLogos{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.logo-item{
+  flex-shrink:0;
+  width:160px;
+  height:90px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ede8e3;
+  border-radius:12px;
+  padding:1rem 1.5rem;
+  background:#fff;
+  transition:border-color 0.2s,box-shadow 0.2s;
+}
+.logo-item:hover{border-color:#d4a8a8;box-shadow:0 4px 14px rgba(185,28,28,0.08)}
+.logo-item img{
+  max-width:100%;max-height:52px;
+  object-fit:contain;
+  filter:grayscale(100%);
+  opacity:0.65;
+  transition:filter 0.25s,opacity 0.25s;
+}
+.logo-item:hover img{filter:grayscale(0%);opacity:1}
+/* placeholder when no image */
+.logo-placeholder{
+  width:100%;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;color:#bbb;letter-spacing:0.05em;
+  font-family:'Montserrat',sans-serif;
+}
+
+.clients-cta{text-align:center;margin-top:2.25rem}
+.clients-more-btn{
+  background:var(--red);color:#fff;border:none;
+  border-radius:50px;padding:13px 34px;
+  font-size:14px;font-weight:600;
+  cursor:pointer;font-family:'Montserrat',sans-serif;
+  transition:background 0.18s,transform 0.15s,box-shadow 0.15s;
+  box-shadow:0 4px 16px rgba(185,28,28,0.25);
+}
+.clients-more-btn:hover{background:#991b1b;transform:translateY(-1px);box-shadow:0 6px 20px rgba(185,28,28,0.32)}
+
+/* ===== CLIENTES SUBPÁGINA ===== */
+.clients-overlay{
+  display:none;
+  position:fixed;
+  top:100px;left:0;right:0;bottom:0;
+  background:#fff;
+  z-index:90;
+  overflow-y:auto;
+}
+.clients-overlay.open{display:block;animation:catIn 0.25s ease}
+.clients-overlay-inner{padding:2rem 2rem 4rem;max-width:1060px;margin:0 auto}
+.clients-topbar{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.clients-grid-full{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:1rem;
+}
+.clients-grid-full .logo-item{width:100%;height:100px}
+
+@media(max-width:768px){
+  .logo-item{width:130px;height:76px;padding:0.75rem 1rem}
+  .clients-grid-full{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+}{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:880px;margin:0 auto}
 .why-card{text-align:center;padding:1.5rem;background:#fff;border-radius:12px;border:1px solid #e5dbd4}
 .why-icon{width:44px;height:44px;background:var(--red-light);border-radius:50%;margin:0 auto 0.75rem;display:flex;align-items:center;justify-content:center}
 .why-card h3{font-size:14px;font-weight:500;color:var(--red);margin-bottom:4px}
@@ -294,37 +467,156 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 </div>
 
 <!-- CATÁLOGO (teaser en home) -->
-<section class="section-cream" id="s-catalogo" style="text-align:center; padding: 4rem 0;">
+<section class="section-cream" id="s-catalogo" style="padding:4rem 0;">
   <div class="sec-title">Catálogo de productos</div>
   <div class="sec-div"></div>
-  <p style="font-size:14px;color:#999;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto;padding:0 1rem;">Explorá nuestro catálogo filtrando por lo que estés buscando</p>
-  
-  <div class="cat-modes">
-    <div class="mode-btn" onclick="openCatalog('categoria')">
-        <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 6h16M4 12h8M4 18h12"/></svg></div>
-        <div class="mode-label">CATEGORÍA</div>
-        <div class="mode-sub">Bidones · Botellas · Frascos</div>
+  <p style="font-size:14px;color:#999;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto;padding:0 1rem;text-align:center;">Explorá nuestro catálogo filtrando por lo que estés buscando</p>
+
+  <div class="cat-cards-home">
+
+    <!-- CATEGORÍA -->
+    <div class="cat-card-home" onclick="openCatalog('categoria')">
+      <div class="cat-card-home-bg">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="240" cy="80" r="140" fill="#fff"/><circle cx="40" cy="360" r="90" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="cat-card-home-overlay"></div>
+      <div class="cat-card-home-body">
+        <div class="cat-card-home-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 6h16M4 12h8M4 18h12"/></svg>
+        </div>
+        <div class="cat-card-home-label">Categoría</div>
+        <div class="cat-card-home-sub">Bidones · Botellas · Frascos</div>
+      </div>
     </div>
-    <div class="mode-btn" onclick="openCatalog('capacidad')">
-        <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg></div>
-        <div class="mode-label">CAPACIDAD</div>
-        <div class="mode-sub">Desde 0 cc hasta +5000 cc</div>
+
+    <!-- CAPACIDAD -->
+    <div class="cat-card-home" onclick="openCatalog('capacidad')">
+      <div class="cat-card-home-bg">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect x="160" y="20" width="180" height="180" rx="30" fill="#fff"/><rect x="-30" y="240" width="140" height="140" rx="20" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="cat-card-home-overlay"></div>
+      <div class="cat-card-home-body">
+        <div class="cat-card-home-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg>
+        </div>
+        <div class="cat-card-home-label">Capacidad</div>
+        <div class="cat-card-home-sub">Desde 0 cc<br>hasta +5000 cc</div>
+      </div>
     </div>
-    <div class="mode-btn" onclick="openCatalog('material')">
-        <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
-        <div class="mode-label">MATERIAL</div>
-        <div class="mode-sub">PET · PEAD · PVC · PEBD</div>
+
+    <!-- MATERIAL -->
+    <div class="cat-card-home" onclick="openCatalog('material')">
+      <div class="cat-card-home-bg">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="150,20 290,230 10,230" fill="#fff"/><polygon points="150,210 280,400 20,400" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="cat-card-home-overlay"></div>
+      <div class="cat-card-home-body">
+        <div class="cat-card-home-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        </div>
+        <div class="cat-card-home-label">Material</div>
+        <div class="cat-card-home-sub">PET · PEAD<br>PVC · PEBD</div>
+      </div>
     </div>
-    <div class="mode-btn" onclick="openCatalog('linea')">
-        <div class="mode-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M3 5h18M3 9h12M3 13h15M3 17h9"/></svg></div>
-        <div class="mode-label">LÍNEA</div>
-        <div class="mode-sub">A · B · C · D · E · F</div>
+
+    <!-- LÍNEA -->
+    <div class="cat-card-home" onclick="openCatalog('linea')">
+      <div class="cat-card-home-bg">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="80"  x2="300" y2="80"  stroke="#fff" stroke-width="40"/>
+          <line x1="0" y1="180" x2="300" y2="180" stroke="#fff" stroke-width="28"/>
+          <line x1="0" y1="270" x2="300" y2="270" stroke="#fff" stroke-width="34"/>
+          <line x1="0" y1="355" x2="300" y2="355" stroke="#fff" stroke-width="20"/>
+        </svg>
+      </div>
+      <div class="cat-card-home-overlay"></div>
+      <div class="cat-card-home-body">
+        <div class="cat-card-home-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M3 5h18M3 9h12M3 13h15M3 17h9"/></svg>
+        </div>
+        <div class="cat-card-home-label">Línea</div>
+        <div class="cat-card-home-sub">A · B · C · D · E · F</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CONFÍAN EN NOSOTROS ===== -->
+<div class="clients-section" id="s-clientes">
+  <div class="sec-title" style="text-align:center">Confían en nosotros</div>
+  <div class="sec-div"></div>
+
+  <div class="carousel-track-wrap">
+    <div class="carousel-track" id="carousel-track">
+      <!-- =====================================================
+           LOGOS DE CLIENTES — INSTRUCCIONES PARA AGREGAR:
+           Reemplazá cada <div class="logo-placeholder"> con:
+           <img src="ruta/logo-cliente.png" alt="Nombre Cliente">
+           dentro del <div class="logo-item"> correspondiente.
+           Podés agregar o quitar .logo-item según cuántos clientes tengas.
+           Los logos se duplican automáticamente para el loop infinito.
+           ===================================================== -->
+
+      <!-- GRUPO ORIGINAL (editá estos) -->
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 1</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 2</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 3</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 4</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 5</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 6</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 7</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 8</div></div>
+
+      <!-- DUPLICADO para loop infinito (el JS lo clona automáticamente) -->
     </div>
   </div>
 
+  <div class="clients-cta">
+    <button class="clients-more-btn" onclick="openClients()">Ver más clientes</button>
+  </div>
+</div>
+
+<!-- ===== SUBPÁGINA: TODOS LOS CLIENTES ===== -->
+<div class="clients-overlay" id="clients-overlay">
+  <div class="clients-overlay-inner">
+    <div class="clients-topbar">
+      <button class="cat-back" onclick="closeClients()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Volver al inicio
+      </button>
+      <div class="cat-page-title">Clientes que confían en nosotros</div>
+    </div>
+    <p style="font-size:13px;color:#aaa;margin-bottom:2rem;">Empresas de distintos rubros que eligen Amoplast para sus envases.</p>
+
+    <div class="clients-grid-full" id="clients-grid-full">
+      <!-- =====================================================
+           TODOS LOS LOGOS — Misma lógica que el carrusel.
+           Agregá tantos .logo-item como clientes tengas.
+           ===================================================== -->
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 1</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 2</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 3</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 4</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 5</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 6</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 7</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 8</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 9</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 10</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 11</div></div>
+      <div class="logo-item"><div class="logo-placeholder">CLIENTE 12</div></div>
+    </div>
+  </div>
+</div>
+
 <!-- POR QUÉ ELEGIRNOS -->
-<div class="section">
-  <div class="sec-title">¿Por qué elegirnos?</div>
   <div class="sec-div"></div>
   <div class="why-grid">
     <div class="why-card">
@@ -434,6 +726,25 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 </div>
 
 <script>
+/* ===== CAROUSEL LOOP ===== */
+(function initCarousel(){
+  var track = document.getElementById('carousel-track');
+  if(!track) return;
+  // Clone all items for seamless infinite loop
+  var items = track.innerHTML;
+  track.innerHTML = items + items;
+})();
+
+/* ===== CLIENTS OVERLAY ===== */
+function openClients(){
+  var ov = document.getElementById('clients-overlay');
+  ov.classList.add('open');
+  ov.scrollTop = 0;
+}
+function closeClients(){
+  document.getElementById('clients-overlay').classList.remove('open');
+}
+
 /* ===== SLIDER ===== */
 var cart=[],cur=0,total=3,timer;
 function buildDots(){

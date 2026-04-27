@@ -269,7 +269,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 @media(max-width:768px){
   .logo-item{width:130px;height:76px;padding:0.75rem 1rem}
   .clients-grid-full{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
-}{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:880px;margin:0 auto}
+}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:880px;margin:0 auto}
 .why-card{text-align:center;padding:1.5rem;background:#fff;border-radius:12px;border:1px solid #e5dbd4}
 .why-icon{width:44px;height:44px;background:var(--red-light);border-radius:50%;margin:0 auto 0.75rem;display:flex;align-items:center;justify-content:center}
 .why-card h3{font-size:14px;font-weight:500;color:var(--red);margin-bottom:4px}
@@ -617,6 +618,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 </div>
 
 <!-- POR QUÉ ELEGIRNOS -->
+<div class="section">
+  <div class="sec-title">¿Por qué elegirnos?</div>
   <div class="sec-div"></div>
   <div class="why-grid">
     <div class="why-card">
@@ -685,7 +688,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <h2>Contactanos</h2>
   <p>Consultá por disponibilidad de stock o solicitá tu cotización</p>
   <div class="c-actions">
-    <button class="cbtn">Enviar consulta por mail</button>
+    <button class="cbtn" onclick="window.location.href='mailto:ventas@amoplast.com.ar?subject=Consulta%20de%20productos&body=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20sus%20envases.'">Enviar consulta por mail</button>
     <button class="cbtn-out">WhatsApp</button>
     <button class="cbtn" onclick="openCart()">Abrir cotizador</button>
   </div>

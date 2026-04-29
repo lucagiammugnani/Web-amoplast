@@ -1,15 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Amoplast SA — Envases Plásticos Industriales</title>
+</head>
+<body>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--red:#B91C1C;--red-light:#fdf2f2;--cream:#f9f5f0;--cream2:#f3ede5;--white:#fff}
+:root{--red:#B91C1C;--red-light:#fdf2f2;--cream:#f9f5f0;--cream2:#f3ede5;--white:#fff;--nav-h:80px}
 body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
-.nav{background:#fff;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:100px;position:sticky;top:0;z-index:100;border-bottom:1px solid #eee}
+/* ===== NAV — desktop ===== */
+.nav{background:#fff;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);position:sticky;top:0;z-index:100;border-bottom:1px solid #eee}
 .nav-links{display:flex;align-items:center;font-family:'Montserrat',sans-serif}
 .nav-links a{color:#000;text-decoration:none;font-size:18px;font-weight:400;padding:0 20px;border-right:1px solid #ddd;cursor:pointer}
-.nav-links a:nth-child(4){border-right:none} .nav-links a:hover{color:var(--red)}
-.cart-btn{background:var(--red);color:#fff;border:none;border-radius:6px;padding:10px 18px;font-weight:500;display:flex;align-items:center;gap:8px;margin-left:15px;cursor:pointer;font-family:'Montserrat',sans-serif}
+.nav-links a:nth-child(4){border-right:none}.nav-links a:hover{color:var(--red)}
+.cart-btn{background:var(--red);color:#fff;border:none;border-radius:6px;padding:10px 18px;font-weight:500;display:flex;align-items:center;gap:8px;margin-left:15px;cursor:pointer;font-family:'Montserrat',sans-serif;white-space:nowrap}
 .cart-badge{background:rgba(255,255,255,0.25);border-radius:10px;padding:1px 7px;font-size:12px;font-weight:700}
+
+/* Hamburger button — hidden on desktop */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:2px;background:#333;border-radius:2px;transition:all 0.25s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile dropdown */
+.nav-mobile-menu{
+  display:none;flex-direction:column;
+  background:#fff;border-bottom:1px solid #eee;
+  position:sticky;top:var(--nav-h);z-index:99;
+}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{
+  display:block;padding:15px 1.5rem;
+  font-size:15px;font-weight:500;color:#333;
+  cursor:pointer;border-bottom:1px solid #f5f5f5;
+}
+.nav-mobile-menu a:hover{color:var(--red)}
+/* "Nosotros" with dropdown arrow */
+.nav-mobile-nosotros{position:relative}
+.nav-mobile-nosotros>a{display:flex;align-items:center;justify-content:space-between}
+.nav-mobile-arrow{transition:transform 0.2s;flex-shrink:0}
+.nav-mobile-arrow.open{transform:rotate(180deg)}
+.nav-mobile-sub{display:none;background:#faf7f4}
+.nav-mobile-sub.open{display:block}
+.nav-mobile-sub a{padding:12px 1.5rem 12px 2.5rem;font-size:14px;color:#666;border-bottom:1px solid #f0ebe5}
+.nav-mobile-cart{
+  background:var(--red);color:#fff;margin:0.75rem 1.5rem;
+  border:none;border-radius:6px;padding:13px;
+  font-size:14px;font-weight:600;cursor:pointer;
+  font-family:'Montserrat',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
 
 .hero{position:relative;height:480px;overflow:hidden;background:#1a1a1a}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 0.9s ease}
@@ -28,8 +73,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .c-arrow:hover{background:rgba(255,255,255,0.28)}
 .arr-l{left:1rem}.arr-r{right:1rem}
 
-.strip{background:var(--red);padding:0.6rem 2rem;display:flex;justify-content:center;align-items:center;flex-wrap:wrap}
-.strip span{color:rgba(255,255,255,0.9);font-size:13px;padding:0 25px;border-right:1px solid rgba(255,255,255,0.3)} .strip span:last-child{border-right:none}
+.strip{background:var(--red);padding:0.6rem 2rem;display:flex;justify-content:center;align-items:center;flex-wrap:nowrap;white-space:nowrap}
+.strip span{color:rgba(255,255,255,0.9);font-size:13px;padding:0 25px;border-right:1px solid rgba(255,255,255,0.4)}.strip span:last-child{border-right:none}
 
 .section{padding:3rem 2rem;background:#fff}
 .section-cream{padding:3rem 2rem;background:var(--cream)}
@@ -43,14 +88,13 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .stat{text-align:center;background:var(--cream);border:1px solid #e8ddd5;border-radius:10px;padding:1.5rem 1rem;display:flex;flex-direction:column;justify-content:space-between;min-height:130px}
 .stat-num{font-size:36px;font-weight:600;color:var(--red);line-height:1;flex-grow:1;display:flex;align-items:center;justify-content:center}
 .stat-label{font-size:14px;color:#444;font-weight:600;margin-top:auto}
-.stat:first-child .stat-num{font-size:55px;font-weight:900}
+.stat:first-child .stat-num{font-size:72px;font-weight:900}
 
 /* ========= CATALOG SUBPAGE OVERLAY ========= */
 .catalog-overlay{
   display:none;
   position:fixed;
-  top:100px;left:0;right:0;bottom:0;
-  background:var(--cream);
+  top:var(--nav-h);left:0;right:0;bottom:0;
   z-index:90;
   overflow-y:auto;
 }
@@ -251,7 +295,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .clients-overlay{
   display:none;
   position:fixed;
-  top:100px;left:0;right:0;bottom:0;
+  top:var(--nav-h);left:0;right:0;bottom:0;
   background:#fff;
   z-index:90;
   overflow-y:auto;
@@ -276,7 +320,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .why-card h3{font-size:14px;font-weight:500;color:var(--red);margin-bottom:4px}
 .why-card p{font-size:12px;color:#999;line-height:1.55}
 
-.loc-wrap{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.loc-wrap{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch}
 .loc-info h3{font-size:16px;font-weight:500;color:var(--red);margin-bottom:1rem}
 .loc-row{display:flex;gap:10px;margin-bottom:1rem;align-items:flex-start}
 .loc-ico{width:32px;height:32px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid #e5dbd4}
@@ -319,23 +363,138 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cart-ft{padding:1rem 1.25rem;border-top:1px solid #f0e8e0}
 .cart-note{width:100%;border:1px solid #e0d8d0;border-radius:6px;padding:8px 10px;font-size:13px;resize:vertical;min-height:70px;font-family:'Montserrat',sans-serif;color:#3a3230;margin-bottom:0.75rem;background:var(--cream)}
 .cart-sub{width:100%;background:var(--red);color:#fff;border:none;border-radius:6px;padding:12px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Montserrat',sans-serif}
-.cart-ok{display:none;text-align:center;padding:1.5rem;color:#2e7d32;font-size:14px}
+/* =============================================
+   MOBILE RESPONSIVE — max-width: 768px
+   ============================================= */
+@media(max-width:768px){
+
+  /* Fix overlays to account for smaller nav */
+  :root{--nav-h:64px}
+
+  /* NAV */
+  .nav{height:var(--nav-h);padding:0 1rem}
+  .nav img[alt]{height:52px!important}
+  .nav-links{display:none}           /* hide desktop links */
+  .nav-hamburger{display:flex}       /* show hamburger */
+
+  /* HERO */
+  .hero{height:280px}
+  .slide-content h2{font-size:18px}
+  .slide-content p{font-size:13px}
+  .hero-seal{width:72px;height:72px;right:0.75rem}
+  .arr-l{left:0.4rem}.arr-r{right:0.4rem}
+
+  /* STRIP — keep single row on mobile too */
+  .strip{padding:0.5rem 1rem}
+  .strip span{padding:0 12px;font-size:12px}
+
+  /* SECTIONS padding */
+  .section,.section-cream,.section-cream2{padding:2rem 1rem}
+
+  /* QUIÉNES SOMOS */
+  .about-box{font-size:14px;padding:1.25rem;line-height:1.6}
+  /* Stats: keep 3 in a row but compact */
+  .about-stats{grid-template-columns:repeat(3,1fr);gap:0.5rem}
+  .stat{padding:0.85rem 0.4rem;min-height:90px}
+  .stat-num{font-size:22px}
+  .stat:first-child .stat-num{font-size:30px}
+  .stat-label{font-size:10px}
+
+  /* CATÁLOGO — 2×2 grid */
+  .cat-cards-home{
+    grid-template-columns:repeat(2,1fr);
+    gap:0.65rem;
+    padding:0 1rem;
+  }
+  .cat-card-home{height:190px}
+  .cat-card-home-label{font-size:13px;letter-spacing:0.08em}
+  .cat-card-home-sub{font-size:10px}
+  .cat-card-home-icon{width:40px;height:40px;margin-bottom:0.6rem}
+  /* disable scale hover on touch */
+  .cat-card-home:hover{transform:none;box-shadow:0 6px 24px rgba(0,0,0,0.18)}
+
+  /* CLIENTES CAROUSEL — narrower logos */
+  .logo-item{width:120px;height:72px;padding:0.6rem 0.8rem}
+  .clients-section{padding:2rem 0}
+
+  /* POR QUÉ ELEGIRNOS — 2×2 grid */
+  .why-grid{grid-template-columns:repeat(2,1fr);gap:0.75rem;max-width:100%}
+  .why-card{padding:1.1rem}
+  .why-card h3{font-size:13px}
+  .why-card p{font-size:11px}
+
+  /* SEDE — stack vertically */
+  .loc-wrap{grid-template-columns:1fr;gap:1.25rem}
+  .map-box,.map-box iframe{height:220px!important}
+
+  /* CONTACTO — always one row */
+  .c-actions{flex-wrap:nowrap;gap:0.4rem;justify-content:center}
+  .cbtn,.cbtn-out{padding:9px 10px!important;font-size:11px!important;flex:1;max-width:none}
+  .c-info{flex-direction:column;align-items:center;gap:0.4rem}
+  .c-info span{font-size:11px}
+  .contact-section{padding:2rem 1rem}
+
+  /* CATALOG OVERLAY */
+  .catalog-overlay{top:var(--nav-h)}
+  .catalog-inner{padding:1.25rem 1rem 4rem}
+  .cat-page-title{font-size:16px}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* CLIENTS OVERLAY */
+  .clients-overlay{top:var(--nav-h)}
+  .clients-grid-full{grid-template-columns:repeat(2,1fr)}
+
+  /* CART */
+  .cart-panel{width:100%}
+
+  /* FOOTER */
+  .footer p{font-size:10px;line-height:1.6}
+}
+
+@media(max-width:360px){
+  .about-stats{gap:0.35rem}
+  .stat-num{font-size:18px}
+  .stat:first-child .stat-num{font-size:24px}
+  .stat-label{font-size:9px}
+  .cat-card-home{height:160px}
+}
 </style>
 
 <!-- NAV -->
 <nav class="nav">
   <img src="logo-amoplastenvases.png" alt="AMOPLAST SA" style="height:80px;width:auto;padding:5px 0;">
+
+  <!-- Desktop links -->
   <div class="nav-links">
     <a onclick="document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
     <a onclick="openCatalog()">Catálogo</a>
-    <a onclick="document.getElementById('s-sede').scrollIntoView({behavior:'smooth'})">Sede</a>
+    <a onclick="document.getElementById('s-sede').scrollIntoView({behavior:'smooth'})">Locaciones</a>
     <a onclick="document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
     <button class="cart-btn" onclick="openCart()">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.61L23 6H6"/></svg>
       Cotizador <span class="cart-badge" id="cart-count">0</span>
     </button>
   </div>
+
+  <!-- Mobile: Cotizador + Hamburger (hidden on desktop) -->
+  <div id="nav-mobile-wrap" style="display:none;align-items:center;gap:10px">
+    <button class="cart-btn" id="cart-btn-mobile" onclick="openCart()" style="display:none;padding:8px 12px;font-size:12px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.61L23 6H6"/></svg>
+      <span class="cart-badge" id="cart-count-m" style="background:rgba(255,255,255,0.3)">0</span>
+    </button>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile dropdown menu -->
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a onclick="closeMobileMenu();document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
+  <a onclick="closeMobileMenu();openCatalog()">Catálogo</a>
+  <a onclick="closeMobileMenu();document.getElementById('s-sede').scrollIntoView({behavior:'smooth'})">Locaciones</a>
+  <a onclick="closeMobileMenu();document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
+</div>
 
 <!-- ===== CATALOG SUBPAGE OVERLAY ===== -->
 <div class="catalog-overlay" id="catalog-overlay">
@@ -643,7 +802,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
 <!-- SEDE -->
 <div class="section-cream2" id="s-sede">
-  <div class="sec-title">Sede</div>
+  <div class="sec-title">Locaciones</div>
   <div class="sec-div"></div>
   <div class="loc-wrap">
     <div class="loc-info">
@@ -665,7 +824,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
         <div class="loc-txt"><strong>Horario de atención</strong>Lunes a viernes: 8:00 a 17:00 hs</div>
       </div>
     </div>
-  <div class="map-box" style="padding:0; overflow:hidden; height:310px; position:relative; background:#f9f5f0; border-radius:12px; border:1px solid #e8ddd5;">
+  <div class="map-box" style="padding:0; overflow:hidden; height:100%; min-height:200px; position:relative; background:#f9f5f0; border-radius:12px; border:1px solid #e8ddd5;">
   <iframe 
     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4076.3018247739387!2d-60.63065326481018!3d-32.97151285041454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7ac9d58a15865%3A0x1f845069f71b9601!2sAmoplast!5e0!3m2!1ses!2sar!4v1776909510026!5m2!1ses!2sar" 
     width="100%" 
@@ -729,6 +888,38 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 </div>
 
 <script>
+/* ===== MOBILE NAV ===== */
+function toggleMobileMenu(){
+  var menu=document.getElementById('nav-mobile-menu');
+  var btn=document.getElementById('nav-hamburger');
+  var open=menu.classList.toggle('open');
+  btn.classList.toggle('open',open);
+}
+function closeMobileMenu(){
+  document.getElementById('nav-mobile-menu').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+}
+function toggleMobileSub(){
+  var sub=document.getElementById('nav-mobile-sub');
+  var arrow=document.getElementById('nav-mobile-arrow');
+  sub.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+// Show/hide mobile cart button based on screen size
+function checkMobileCartBtn(){
+  var isMobile=window.innerWidth<=768;
+  var wrap=document.getElementById('nav-mobile-wrap');
+  var mBtn=document.getElementById('cart-btn-mobile');
+  var hbtn=document.getElementById('nav-hamburger');
+  var links=document.querySelector('.nav-links');
+  if(wrap){wrap.style.display=isMobile?'flex':'none';}
+  if(mBtn){mBtn.style.display=isMobile?'flex':'none';}
+  if(hbtn){hbtn.style.display=isMobile?'flex':'none';}
+  if(links){links.style.display=isMobile?'none':'flex';}
+}
+checkMobileCartBtn();
+window.addEventListener('resize',checkMobileCartBtn);
+
 /* ===== CAROUSEL LOOP ===== */
 (function initCarousel(){
   var track = document.getElementById('carousel-track');
@@ -890,7 +1081,12 @@ function addCart(id,name,cap){
   if(b){b.textContent='✓ Agregado';b.className='prod-add added';}
   updCount();rendItems();
 }
-function updCount(){document.getElementById('cart-count').textContent=cart.reduce(function(s,i){return s+i.qty;},0);}
+function updCount(){
+  var n=cart.reduce(function(s,i){return s+i.qty;},0);
+  document.getElementById('cart-count').textContent=n;
+  var m=document.getElementById('cart-count-m');
+  if(m)m.textContent=n;
+}
 function rendItems(){
   var c=document.getElementById('cart-items'),e=document.getElementById('cart-empty'),f=document.getElementById('cart-ft');
   if(!cart.length){e.style.display='block';c.innerHTML='';f.style.display='none';return;}
@@ -921,3 +1117,5 @@ function submitQuote(){
 }
 function openMap(){window.open('https://maps.google.com/?q=Blvd.+27+de+Febrero+80+bis,+Rosario,+Santa+Fe,+Argentina','_blank');}
 </script>
+</body>
+</html>

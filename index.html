@@ -95,6 +95,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   display:none;
   position:fixed;
   top:var(--nav-h);left:0;right:0;bottom:0;
+  background:var(--cream);
   z-index:90;
   overflow-y:auto;
 }
@@ -320,6 +321,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .why-card h3{font-size:14px;font-weight:500;color:var(--red);margin-bottom:4px}
 .why-card p{font-size:12px;color:#999;line-height:1.55}
 
+.loc-rows-grid{display:contents} /* passthrough on desktop */
 .loc-wrap{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch}
 .loc-info h3{font-size:16px;font-weight:500;color:var(--red);margin-bottom:1rem}
 .loc-row{display:flex;gap:10px;margin-bottom:1rem;align-items:flex-start}
@@ -384,9 +386,10 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   .hero-seal{width:72px;height:72px;right:0.75rem}
   .arr-l{left:0.4rem}.arr-r{right:0.4rem}
 
-  /* STRIP — keep single row on mobile too */
-  .strip{padding:0.5rem 1rem}
-  .strip span{padding:0 12px;font-size:12px}
+  /* STRIP — 3 items on mobile, hide first */
+  .strip{padding:0.4rem 0.5rem}
+  .strip span{padding:0 9px;font-size:10px;letter-spacing:0}
+  .strip-hide-mobile{display:none!important}
 
   /* SECTIONS padding */
   .section,.section-cream,.section-cream2{padding:2rem 1rem}
@@ -423,8 +426,16 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   .why-card h3{font-size:13px}
   .why-card p{font-size:11px}
 
-  /* SEDE — stack vertically */
+  /* SEDE — stack vertically on mobile, 2x2 grid for info rows */
   .loc-wrap{grid-template-columns:1fr;gap:1.25rem}
+  .loc-info h3{text-align:center;margin-bottom:1rem}
+  .loc-info{display:flex;flex-direction:column}
+  .loc-rows-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+  .loc-row{margin-bottom:0;background:none;border-radius:0;padding:0.5rem 0.25rem;border:none;flex-direction:column;align-items:center;text-align:center;gap:6px}
+  .loc-ico{margin:0 auto}
+  .loc-txt{padding-top:0;text-align:center}
+  .loc-txt strong{font-size:11px;color:var(--red);text-align:center}
+  .loc-txt{font-size:12px}
   .map-box,.map-box iframe{height:220px!important}
 
   /* CONTACTO — always one row */
@@ -606,7 +617,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 </div>
 
 <div class="strip">
-  <span>Amplia variedad de productos</span>
+  <span class="strip-hide-mobile">Amplia variedad de productos</span>
   <span>Fabricación nacional</span>
   <span>Entregas a todo el país</span>
   <span>Asesoramiento personalizado</span>
@@ -786,8 +797,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <h3>Calidad garantizada</h3><p>Materiales certificados y procesos controlados.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg></div>
-      <h3>Entrega a todo el país</h3><p>Flota propia de transporte desde Rosario.</p>
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><rect x="2" y="14" width="9" height="7" rx="1"/><rect x="13" y="14" width="9" height="7" rx="1"/><rect x="5" y="7" width="14" height="7" rx="1"/><rect x="8" y="2" width="8" height="5" rx="1"/></svg></div>
+      <h3>Disponibilidad Total</h3><p>Disponibilidad constante en nuestros productos.</p>
     </div>
     <div class="why-card">
       <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
@@ -807,9 +818,14 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <div class="loc-wrap">
     <div class="loc-info">
       <h3>Planta y oficinas comerciales</h3>
+      <div class="loc-rows-grid">
       <div class="loc-row">
         <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div class="loc-txt"><strong>Dirección</strong>Blvd. 27 de Febrero 80 bis<br>S2000EZN, Rosario, Santa Fe</div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="loc-txt"><strong>Horario de atención</strong>Lunes a viernes: 8:00 a 17:00 hs</div>
       </div>
       <div class="loc-row">
         <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.06 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.92z"/></svg></div>
@@ -819,9 +835,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
         <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div class="loc-txt"><strong>Email</strong>amoplast@amoplast.com.ar</div>
       </div>
-      <div class="loc-row">
-        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="loc-txt"><strong>Horario de atención</strong>Lunes a viernes: 8:00 a 17:00 hs</div>
       </div>
     </div>
   <div class="map-box" style="padding:0; overflow:hidden; height:100%; min-height:200px; position:relative; background:#f9f5f0; border-radius:12px; border:1px solid #e8ddd5;">
@@ -972,11 +985,11 @@ timer=setInterval(function(){moveSlide(1);},5000);
 })();
 
 /* ===== CATALOG OVERLAY ===== */
-function openCatalog(){
+function openCatalog(mode){
   var ov=document.getElementById('catalog-overlay');
   ov.classList.add('open');
   ov.scrollTop=0;
-  renderProducts();
+  if(mode){setMode(mode);}else{renderProducts();}
 }
 function closeCatalog(){
   document.getElementById('catalog-overlay').classList.remove('open');

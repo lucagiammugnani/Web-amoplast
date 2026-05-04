@@ -1194,11 +1194,11 @@ function closeCatalog(){
 
 /* ===== CATALOG DATA ===== */
 var PRODUCTS=[
-  // LÍNEA A — Envases gotero PEBD
-  {id:'A-15/15', linea:'A',nombre:'A-15/15', categoria:'gotero', capacidad:15,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'70 mm', diaCuerpo:'34 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
-  {id:'A-30/15', linea:'A',nombre:'A-30/15', categoria:'gotero', capacidad:30,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'81 mm', diaCuerpo:'42 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
-  {id:'A-60/15', linea:'A',nombre:'A-60/15', categoria:'gotero', capacidad:60,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'92 mm', diaCuerpo:'50 mm',diaBoca:'10 mm',embalaje:'400',foto:''},
-  {id:'A-120/15',linea:'A',nombre:'A-120/15',categoria:'gotero', capacidad:120, material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'115 mm',diaCuerpo:'67 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
+  // LÍNEA A — Envases Gotero PEBD
+  {id:'A-15/15', linea:'A',nombre:'A-15/15', categoria:'Gotero', capacidad:15,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'70 mm', diaCuerpo:'34 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
+  {id:'A-30/15', linea:'A',nombre:'A-30/15', categoria:'Gotero', capacidad:30,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'81 mm', diaCuerpo:'42 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
+  {id:'A-60/15', linea:'A',nombre:'A-60/15', categoria:'Gotero', capacidad:60,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'92 mm', diaCuerpo:'50 mm',diaBoca:'10 mm',embalaje:'400',foto:''},
+  {id:'A-120/15',linea:'A',nombre:'A-120/15',categoria:'Gotero', capacidad:120, material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'115 mm',diaCuerpo:'67 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
   // LÍNEA B — (completar)
   {id:'B-50cc', linea:'B',nombre:'B-50cc', categoria:'frasco', capacidad:50,   material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
   {id:'B-100cc',linea:'B',nombre:'B-100cc',categoria:'frasco', capacidad:100,  material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
@@ -1264,6 +1264,7 @@ function catLabel(cat){
   if(cat==='bidon')return 'Bidón';
   if(cat==='botella')return 'Botella';
   if(cat==='frasco')return 'Frasco';
+  if(cat==='Gotero')return 'Gotero';
   return cat;
 }
 

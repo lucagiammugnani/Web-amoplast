@@ -365,6 +365,55 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cart-ft{padding:1rem 1.25rem;border-top:1px solid #f0e8e0}
 .cart-note{width:100%;border:1px solid #e0d8d0;border-radius:6px;padding:8px 10px;font-size:13px;resize:vertical;min-height:70px;font-family:'Montserrat',sans-serif;color:#3a3230;margin-bottom:0.75rem;background:var(--cream)}
 .cart-sub{width:100%;background:var(--red);color:#fff;border:none;border-radius:6px;padding:12px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Montserrat',sans-serif}
+/* ===== CERTIFICACIONES ===== */
+.cert-logos{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;margin-top:0.5rem}
+.cert-logo-btn{
+  background:#fff;border:1.5px solid #e5dbd4;border-radius:14px;
+  padding:1.25rem 2rem;cursor:pointer;
+  transition:border-color 0.18s,transform 0.18s,box-shadow 0.18s;
+  display:flex;align-items:center;justify-content:center;
+  min-width:180px;height:100px;
+}
+.cert-logo-btn:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 6px 20px rgba(185,28,28,0.12)}
+.cert-logo-btn img{max-width:140px;max-height:64px;object-fit:contain}
+
+/* ANMAT overlay */
+.cert-overlay{
+  display:none;position:fixed;
+  top:var(--nav-h);left:0;right:0;bottom:0;
+  background:var(--cream);z-index:90;overflow-y:auto;
+}
+.cert-overlay.open{display:block;animation:catIn 0.25s ease}
+.cert-inner{padding:2rem 2rem 4rem;max-width:960px;margin:0 auto}
+.cert-topbar{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;flex-wrap:wrap}
+
+.cert-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:2rem}
+.cert-item{
+  background:#fff;border:1.5px solid #e5dbd4;border-radius:12px;
+  padding:1.25rem 1rem;text-align:center;cursor:pointer;
+  transition:border-color 0.18s,box-shadow 0.18s;
+}
+.cert-item:hover{border-color:var(--red);box-shadow:0 4px 14px rgba(185,28,28,0.1)}
+.cert-item-num{font-size:22px;font-weight:700;color:var(--red);margin-bottom:4px}
+.cert-item-label{font-size:12px;color:#888;line-height:1.4}
+
+/* PDF viewer area */
+.cert-viewer{display:none;background:#fff;border:1px solid #e5dbd4;border-radius:12px;overflow:hidden}
+.cert-viewer.open{display:block}
+.cert-viewer-header{background:var(--red);color:#fff;padding:0.9rem 1.25rem;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:500}
+.cert-viewer-close{background:transparent;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1}
+.cert-viewer iframe{width:100%;height:70vh;border:none;display:block}
+.cert-viewer-fallback{padding:2rem;text-align:center}
+.cert-viewer-fallback a{color:var(--red);font-weight:600;font-size:14px}
+
+@media(max-width:768px){
+  .cert-logos{gap:1.25rem}
+  .cert-logo-btn{min-width:130px;height:80px;padding:1rem 1.25rem}
+  .cert-logo-btn img{max-width:100px;max-height:50px}
+  .cert-list{grid-template-columns:repeat(2,1fr)}
+  .cert-viewer iframe{height:55vh}
+}
+
 /* =============================================
    MOBILE RESPONSIVE — max-width: 768px
    ============================================= */
@@ -855,6 +904,90 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
+<!-- CERTIFICACIONES -->
+<div class="section" id="s-certificaciones">
+  <div class="sec-title">Nuestras certificaciones</div>
+  <div class="sec-div"></div>
+  <p style="text-align:center;font-size:13px;color:#999;margin-bottom:2rem;">Avalados por los principales organismos reguladores nacionales</p>
+
+  <div class="cert-logos">
+
+    <!-- ASSAL — toca y abre el PDF directamente -->
+    <!-- INSTRUCCIÓN: reemplazá "certificacion-assal.pdf" por el nombre real de tu archivo PDF -->
+    <a href="certificacion-assal.pdf" target="_blank" style="text-decoration:none">
+      <div class="cert-logo-btn">
+        <img src="logo-assal.png" alt="ASSAL — Agencia Santafesina de Seguridad Alimentaria">
+      </div>
+    </a>
+
+    <!-- ANMAT — toca y abre el selector de 6 certificaciones -->
+    <div class="cert-logo-btn" onclick="openAnmat()">
+      <img src="Logo-ANMAT.png" alt="ANMAT — Administración Nacional de Medicamentos, Alimentos y Tecnología Médica">
+    </div>
+
+  </div>
+</div>
+
+<!-- OVERLAY ANMAT — selector de 6 certificaciones -->
+<div class="cert-overlay" id="cert-overlay">
+  <div class="cert-inner">
+    <div class="cert-topbar">
+      <button class="cat-back" onclick="closeAnmat()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Volver
+      </button>
+      <div class="cat-page-title">Certificaciones ANMAT</div>
+    </div>
+
+    <p style="font-size:13px;color:#999;margin-bottom:1.5rem;">Seleccioná una certificación para verla:</p>
+
+    <!-- GRID DE 6 CERTIFICACIONES -->
+    <!-- INSTRUCCIÓN: en cada cert-item, reemplazá:
+         - el texto del label por el nombre real de la certificación
+         - en onclick: reemplazá "anmat-1.pdf" por el nombre real del archivo PDF -->
+    <div class="cert-list">
+      <div class="cert-item" onclick="showCert('anmat-1.pdf','Certificación ANMAT N°1')">
+        <div class="cert-item-num">01</div>
+        <div class="cert-item-label">Certificación ANMAT<br>N° 1<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      </div>
+      <div class="cert-item" onclick="showCert('anmat-2.pdf','Certificación ANMAT N°2')">
+        <div class="cert-item-num">02</div>
+        <div class="cert-item-label">Certificación ANMAT<br>N° 2<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      </div>
+      <div class="cert-item" onclick="showCert('anmat-3.pdf','Certificación ANMAT N°3')">
+        <div class="cert-item-num">03</div>
+        <div class="cert-item-label">Certificación ANMAT<br>N° 3<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      </div>
+      <div class="cert-item" onclick="showCert('anmat-4.pdf','Certificación ANMAT N°4')">
+        <div class="cert-item-num">04</div>
+        <div class="cert-item-label">Certificación ANMAT<br>N° 4<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      </div>
+      <div class="cert-item" onclick="showCert('anmat-5.pdf','Certificación ANMAT N°5')">
+        <div class="cert-item-num">05</div>
+        <div class="cert-item-label">Certificación ANMAT<br>N° 5<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      </div>
+      <div class="cert-item" onclick="showCert('anmat-6.pdf','Certificación ANMAT N°6')">
+        <div class="cert-item-num">06</div>
+        <div class="cert-item-label">Certificación ANMAT<br>N° 6<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      </div>
+    </div>
+
+    <!-- PDF VIEWER -->
+    <div class="cert-viewer" id="cert-viewer">
+      <div class="cert-viewer-header">
+        <span id="cert-viewer-title">Certificación</span>
+        <button class="cert-viewer-close" onclick="closeCert()">×</button>
+      </div>
+      <iframe id="cert-viewer-frame" src="" title="Certificación PDF"></iframe>
+      <div class="cert-viewer-fallback">
+        <p style="font-size:12px;color:#aaa;margin-bottom:0.5rem;">Si el PDF no carga en el visor,</p>
+        <a id="cert-viewer-link" href="#" target="_blank">hacé clic aquí para abrirlo</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- CONTACTO -->
 <div class="contact-section" id="s-contacto">
   <h2>Contactanos</h2>
@@ -901,6 +1034,32 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 </div>
 
 <script>
+/* ===== CERTIFICACIONES ===== */
+function openAnmat(){
+  document.getElementById('cert-overlay').classList.add('open');
+  document.getElementById('cert-overlay').scrollTop=0;
+  closeCert();
+}
+function closeAnmat(){
+  document.getElementById('cert-overlay').classList.remove('open');
+}
+function showCert(file, title){
+  var viewer=document.getElementById('cert-viewer');
+  var frame=document.getElementById('cert-viewer-frame');
+  var titleEl=document.getElementById('cert-viewer-title');
+  var link=document.getElementById('cert-viewer-link');
+  titleEl.textContent=title;
+  frame.src=file;
+  link.href=file;
+  viewer.classList.add('open');
+  viewer.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function closeCert(){
+  var viewer=document.getElementById('cert-viewer');
+  viewer.classList.remove('open');
+  document.getElementById('cert-viewer-frame').src='';
+}
+
 /* ===== MOBILE NAV ===== */
 function toggleMobileMenu(){
   var menu=document.getElementById('nav-mobile-menu');

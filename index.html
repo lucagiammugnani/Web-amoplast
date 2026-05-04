@@ -366,6 +366,31 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cart-note{width:100%;border:1px solid #e0d8d0;border-radius:6px;padding:8px 10px;font-size:13px;resize:vertical;min-height:70px;font-family:'Montserrat',sans-serif;color:#3a3230;margin-bottom:0.75rem;background:var(--cream)}
 .cart-sub{width:100%;background:var(--red);color:#fff;border:none;border-radius:6px;padding:12px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Montserrat',sans-serif}
 /* ===== CERTIFICACIONES ===== */
+/* ===== PRODUCT DETAIL OVERLAY ===== */
+.product-overlay{
+  display:none;position:fixed;
+  top:var(--nav-h);left:0;right:0;bottom:0;
+  background:#fff;z-index:95;overflow-y:auto;
+}
+.product-overlay.open{display:block;animation:catIn 0.25s ease}
+.product-inner{padding:2rem 2rem 4rem;max-width:860px;margin:0 auto}
+.pd-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:2.5rem;align-items:start;margin-top:1.5rem}
+.pd-img-col{text-align:center;background:var(--red-light);border-radius:14px;padding:2rem}
+.pd-nombre{font-size:22px;font-weight:700;color:var(--red);margin-bottom:1.5rem;line-height:1.2}
+.pd-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.6rem 0;border-bottom:1px solid #f0e8e0;gap:1rem}
+.pd-row:last-child{border-bottom:none}
+.pd-label{font-size:13px;font-weight:600;color:#555;flex-shrink:0}
+.pd-val{font-size:13px;color:#333;text-align:right}
+.pd-cart-section{margin-top:1.75rem;padding-top:1.25rem;border-top:2px solid #f0e8e0}
+.pd-qty-wrap{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem}
+.pd-qty-label{font-size:13px;font-weight:600;color:#555}
+.pd-qty-ctrl{display:flex;align-items:center;gap:0.5rem}
+.pd-qty-ctrl button{width:30px;height:30px;border:1.5px solid #e0d0c8;border-radius:6px;background:#fff;font-size:16px;cursor:pointer;color:#555;display:flex;align-items:center;justify-content:center;transition:border-color 0.15s}
+.pd-qty-ctrl button:hover{border-color:var(--red);color:var(--red)}
+.pd-qty-ctrl span{font-size:16px;font-weight:600;min-width:28px;text-align:center;color:#333}
+.pd-add-btn{width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif;transition:opacity 0.18s}
+.pd-add-btn:hover{opacity:0.88}
+
 .cert-logos{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;margin-top:0.5rem}
 .cert-logo-btn{
   background:#fff;border:1.5px solid #e5dbd4;border-radius:14px;
@@ -633,6 +658,19 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="products-grid" id="products-grid"></div>
     <div class="no-results" id="no-results">No se encontraron productos con ese filtro.</div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL OVERLAY -->
+<div class="product-overlay" id="product-overlay">
+  <div class="product-inner">
+    <div class="catalog-topbar">
+      <button class="cat-back" onclick="closeProductDetail()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Volver al catálogo
+      </button>
+    </div>
+    <div id="product-detail-body"></div>
   </div>
 </div>
 
@@ -1156,30 +1194,36 @@ function closeCatalog(){
 
 /* ===== CATALOG DATA ===== */
 var PRODUCTS=[
-  {id:'A-5L',   linea:'A',nombre:'Bidón 5L',    categoria:'bidon',   capacidad:5000,  material:'PEAD',desc:'Bidón industrial PEAD<br>apto contacto químico'},
-  {id:'A-10L',  linea:'A',nombre:'Bidón 10L',   categoria:'bidon',   capacidad:10000, material:'PEAD',desc:'Bidón industrial PEAD<br>apto contacto químico'},
-  {id:'A-20L',  linea:'A',nombre:'Bidón 20L',   categoria:'bidon',   capacidad:20000, material:'PEAD',desc:'Bidón industrial PEAD<br>apto contacto químico'},
-  {id:'A-30L',  linea:'A',nombre:'Bidón 30L',   categoria:'bidon',   capacidad:30000, material:'PEAD',desc:'Bidón industrial PEAD<br>apto contacto químico'},
-  {id:'B-50cc', linea:'B',nombre:'Frasco 50cc', categoria:'frasco',  capacidad:50,    material:'PET', desc:'Frasco cosmético PET<br>apto contacto alimenticio'},
-  {id:'B-100cc',linea:'B',nombre:'Frasco 100cc',categoria:'frasco',  capacidad:100,   material:'PET', desc:'Frasco cosmético PET<br>apto contacto alimenticio'},
-  {id:'B-200cc',linea:'B',nombre:'Frasco 200cc',categoria:'frasco',  capacidad:200,   material:'PET', desc:'Frasco cosmético PET<br>apto contacto alimenticio'},
-  {id:'B-500cc',linea:'B',nombre:'Frasco 500cc',categoria:'frasco',  capacidad:500,   material:'PET', desc:'Frasco cosmético PET<br>apto contacto alimenticio'},
-  {id:'C-250cc',linea:'C',nombre:'Botella 250cc',categoria:'botella',capacidad:250,   material:'PET', desc:'Botella alimenticia PET<br>apto líquidos'},
-  {id:'C-500cc',linea:'C',nombre:'Botella 500cc',categoria:'botella',capacidad:500,   material:'PET', desc:'Botella alimenticia PET<br>apto líquidos'},
-  {id:'C-1L',   linea:'C',nombre:'Botella 1L',  categoria:'botella', capacidad:1000,  material:'PET', desc:'Botella alimenticia PET<br>apto líquidos'},
-  {id:'C-2L',   linea:'C',nombre:'Botella 2L',  categoria:'botella', capacidad:2000,  material:'PET', desc:'Botella alimenticia PET<br>apto líquidos'},
-  {id:'D-1L',   linea:'D',nombre:'Recipiente 1L', categoria:'botella',capacidad:1000, material:'PEAD',desc:'Recipiente químico PEAD<br>resistencia química alta'},
-  {id:'D-5L',   linea:'D',nombre:'Recipiente 5L', categoria:'bidon',  capacidad:5000, material:'PEAD',desc:'Recipiente químico PEAD<br>resistencia química alta'},
-  {id:'D-10L',  linea:'D',nombre:'Recipiente 10L',categoria:'bidon',  capacidad:10000,material:'PEAD',desc:'Recipiente químico PEAD<br>resistencia química alta'},
-  {id:'D-20L',  linea:'D',nombre:'Recipiente 20L',categoria:'bidon',  capacidad:20000,material:'PEAD',desc:'Recipiente químico PEAD<br>resistencia química alta'},
-  {id:'E-30cc', linea:'E',nombre:'Frasco 30cc', categoria:'frasco',  capacidad:30,    material:'PVC', desc:'Frasco PVC multiuso<br>alta transparencia'},
-  {id:'E-60cc', linea:'E',nombre:'Frasco 60cc', categoria:'frasco',  capacidad:60,    material:'PVC', desc:'Frasco PVC multiuso<br>alta transparencia'},
-  {id:'E-120cc',linea:'E',nombre:'Frasco 120cc',categoria:'frasco',  capacidad:120,   material:'PVC', desc:'Frasco PVC multiuso<br>alta transparencia'},
-  {id:'E-250cc',linea:'E',nombre:'Frasco 250cc',categoria:'frasco',  capacidad:250,   material:'PVC', desc:'Frasco PVC multiuso<br>alta transparencia'},
-  {id:'F-1L',   linea:'F',nombre:'Envase 1L',   categoria:'botella', capacidad:1000,  material:'PEBD',desc:'Envase agrícola PEBD<br>resistente a agroquímicos'},
-  {id:'F-5L',   linea:'F',nombre:'Envase 5L',   categoria:'bidon',   capacidad:5000,  material:'PEBD',desc:'Envase agrícola PEBD<br>resistente a agroquímicos'},
-  {id:'F-10L',  linea:'F',nombre:'Envase 10L',  categoria:'bidon',   capacidad:10000, material:'PEBD',desc:'Envase agrícola PEBD<br>resistente a agroquímicos'},
-  {id:'F-20L',  linea:'F',nombre:'Envase 20L',  categoria:'bidon',   capacidad:20000, material:'PEBD',desc:'Envase agrícola PEBD<br>resistente a agroquímicos'},
+  // LÍNEA A — Envases gotero PEBD
+  {id:'A-15/15', linea:'A',nombre:'A-15/15', categoria:'gotero', capacidad:15,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'70 mm', diaCuerpo:'34 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
+  {id:'A-30/15', linea:'A',nombre:'A-30/15', categoria:'gotero', capacidad:30,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'81 mm', diaCuerpo:'42 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
+  {id:'A-60/15', linea:'A',nombre:'A-60/15', categoria:'gotero', capacidad:60,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'92 mm', diaCuerpo:'50 mm',diaBoca:'10 mm',embalaje:'400',foto:''},
+  {id:'A-120/15',linea:'A',nombre:'A-120/15',categoria:'gotero', capacidad:120, material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'115 mm',diaCuerpo:'67 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
+  // LÍNEA B — (completar)
+  {id:'B-50cc', linea:'B',nombre:'B-50cc', categoria:'frasco', capacidad:50,   material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'B-100cc',linea:'B',nombre:'B-100cc',categoria:'frasco', capacidad:100,  material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'B-200cc',linea:'B',nombre:'B-200cc',categoria:'frasco', capacidad:200,  material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'B-500cc',linea:'B',nombre:'B-500cc',categoria:'frasco', capacidad:500,  material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  // LÍNEA C — (completar)
+  {id:'C-250cc',linea:'C',nombre:'C-250cc',categoria:'botella',capacidad:250,  material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'C-500cc',linea:'C',nombre:'C-500cc',categoria:'botella',capacidad:500,  material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'C-1L',   linea:'C',nombre:'C-1L',  categoria:'botella', capacidad:1000, material:'PET', color:'Cristal',cierre:'A rosca con precinto de seguridad',colorTapa:'Blanca',inserto:'',altTotal:'242 mm',diaCuerpo:'86 mm',diaBoca:'38 mm',embalaje:'72',foto:''},
+  {id:'C-2L',   linea:'C',nombre:'C-2L',  categoria:'botella', capacidad:2000, material:'PET', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  // LÍNEA D — (completar)
+  {id:'D-1L',   linea:'D',nombre:'D-1L',  categoria:'botella', capacidad:1000, material:'PEAD',color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'D-5L',   linea:'D',nombre:'D-5L',  categoria:'bidon',   capacidad:5000, material:'PEAD',color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'D-10L',  linea:'D',nombre:'D-10L', categoria:'bidon',   capacidad:10000,material:'PEAD',color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'D-20L',  linea:'D',nombre:'D-20L', categoria:'bidon',   capacidad:20000,material:'PEAD',color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  // LÍNEA E — (completar)
+  {id:'E-30cc', linea:'E',nombre:'E-30cc', categoria:'frasco', capacidad:30,   material:'PVC', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'E-60cc', linea:'E',nombre:'E-60cc', categoria:'frasco', capacidad:60,   material:'PVC', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'E-120cc',linea:'E',nombre:'E-120cc',categoria:'frasco', capacidad:120,  material:'PVC', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'E-250cc',linea:'E',nombre:'E-250cc',categoria:'frasco', capacidad:250,  material:'PVC', color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  // LÍNEA F — (completar)
+  {id:'F-1L',   linea:'F',nombre:'F-1L',  categoria:'botella', capacidad:1000, material:'PEBD',color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'F-5L',   linea:'F',nombre:'F-5L',  categoria:'bidon',   capacidad:5000, material:'PEBD',color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'F-10L',  linea:'F',nombre:'F-10L', categoria:'bidon',   capacidad:10000,material:'PEBD',color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
+  {id:'F-20L',  linea:'F',nombre:'F-20L', categoria:'bidon',   capacidad:20000,material:'PEBD',color:'',cierre:'',colorTapa:'',inserto:'',altTotal:'',diaCuerpo:'',diaBoca:'',embalaje:'',foto:''},
 ];
 
 var currentMode='categoria',currentFilter='todas';
@@ -1215,6 +1259,14 @@ function setFilter(mode,val){
   });
   renderProducts();
 }
+
+function catLabel(cat){
+  if(cat==='bidon')return 'Bidón';
+  if(cat==='botella')return 'Botella';
+  if(cat==='frasco')return 'Frasco';
+  return cat;
+}
+
 function renderProducts(){
   var grid=document.getElementById('products-grid');
   var noRes=document.getElementById('no-results');
@@ -1227,21 +1279,110 @@ function renderProducts(){
   sorted.forEach(function(p){
     if(!productMatches(p))return;
     shown++;
-    var inC=cart.find(function(i){return i.id===p.id;});
     var card=document.createElement('div');
     card.className='product-card visible';
+    card.style.cursor='pointer';
+    card.onclick=function(){openProductDetail(p.id);};
+    var imgHtml = p.foto
+      ? '<img src="'+p.foto+'" alt="'+p.nombre+'" style="width:100%;height:100%;object-fit:contain;">'
+      : '<svg width="28" height="36" viewBox="0 0 24 32" fill="none" stroke="#e0c8c0" stroke-width="1.2"><rect x="4" y="6" width="16" height="22" rx="3"/><rect x="8" y="2" width="8" height="5" rx="1.5"/></svg>';
     card.innerHTML=
-      '<div class="prod-img"><svg width="24" height="32" viewBox="0 0 24 32" fill="none" stroke="#e0c8c0" stroke-width="1.2"><rect x="4" y="6" width="16" height="22" rx="3"/><rect x="8" y="2" width="8" height="5" rx="1.5"/></svg></div>'+
-      '<div class="prod-code">'+p.id+'</div>'+
+      '<div class="prod-img">'+imgHtml+'</div>'+
       '<div class="prod-cap">'+p.nombre+'</div>'+
-      '<div class="prod-desc">'+p.desc+'</div>'+
-      '<div style="font-size:10px;color:#c0736a;margin-top:4px;font-weight:600;">'+p.material+' · Línea '+p.linea+'</div>'+
-      '<button class="prod-add'+(inC?' added':'')+'" id="btn-'+p.id+'" onclick="addCart(\''+p.id+'\',\''+p.nombre+'\',\''+p.id+'\')">'+
-        (inC?'✓ Agregado':'+ Agregar al cotizador')+
-      '</button>';
+      '<div style="font-size:11px;color:#888;margin-top:4px;">'+catLabel(p.categoria)+'</div>'+
+      '<div style="font-size:11px;color:#888;margin-top:2px;">'+p.capacidad+' cc</div>';
     grid.appendChild(card);
   });
   noRes.style.display=shown?'none':'block';
+}
+
+/* ===== PRODUCT DETAIL ===== */
+function openProductDetail(id){
+  var p=PRODUCTS.find(function(x){return x.id===id;});
+  if(!p)return;
+  var ov=document.getElementById('product-overlay');
+  ov.classList.add('open');
+  ov.scrollTop=0;
+
+  var imgHtml = p.foto
+    ? '<img src="'+p.foto+'" alt="'+p.nombre+'" style="max-width:100%;max-height:280px;object-fit:contain;border-radius:10px;">'
+    : '<div style="width:140px;height:180px;background:var(--red-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto;"><svg width="48" height="64" viewBox="0 0 24 32" fill="none" stroke="#e0c8c0" stroke-width="0.9"><rect x="4" y="6" width="16" height="22" rx="3"/><rect x="8" y="2" width="8" height="5" rx="1.5"/></svg></div>';
+
+  function row(label, val){
+    return '<div class="pd-row"><span class="pd-label">'+label+'</span><span class="pd-val">'+(val||'—')+'</span></div>';
+  }
+
+  var unidadesPorBulto = parseInt(p.embalaje) || 0;
+  var bultoLabel = unidadesPorBulto > 0
+    ? 'Bultos ('+unidadesPorBulto+' unid. c/u)'
+    : 'Bultos';
+
+  document.getElementById('product-detail-body').innerHTML=
+    '<div class="pd-layout">'+
+      '<div class="pd-img-col">'+imgHtml+'</div>'+
+      '<div class="pd-info-col">'+
+        '<div class="pd-nombre">'+p.nombre+'</div>'+
+        row('Material', p.material)+
+        row('Capacidad', p.capacidad ? p.capacidad+' cc' : '')+
+        row('Color', p.color)+
+        row('Cierre', p.cierre)+
+        row('Color de la tapa', p.colorTapa)+
+        row('Altura total', p.altTotal)+
+        row('Diámetro del cuerpo', p.diaCuerpo)+
+        row('Diámetro de boca', p.diaBoca)+
+        row('Embalaje', p.embalaje ? p.embalaje+' unidades por bulto' : '')+
+        '<div class="pd-cart-section">'+
+          '<div class="pd-qty-wrap">'+
+            '<span class="pd-qty-label">'+bultoLabel+':</span>'+
+            '<div class="pd-qty-ctrl">'+
+              '<button onclick="pdQty(-1)">−</button>'+
+              '<span id="pd-qty-val">1</span>'+
+              '<button onclick="pdQty(1)">+</button>'+
+            '</div>'+
+          '</div>'+
+          (unidadesPorBulto > 0
+            ? '<div id="pd-unidades-info" style="font-size:12px;color:#999;margin-bottom:0.75rem;">= <span id="pd-total-unidades">'+unidadesPorBulto+'</span> unidades</div>'
+            : '')+
+          '<button class="pd-add-btn" id="pd-add-btn" onclick="addFromDetail(\''+p.id+'\',\''+p.nombre+'\',\''+p.capacidad+'\','+unidadesPorBulto+')">'+
+            '+ Agregar al cotizador'+
+          '</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+
+  // reset qty
+  window._pdQty = 1;
+  window._pdUnidPorBulto = unidadesPorBulto;
+}
+
+function pdQty(delta){
+  window._pdQty = Math.max(1, (window._pdQty||1) + delta);
+  document.getElementById('pd-qty-val').textContent = window._pdQty;
+  var totalEl = document.getElementById('pd-total-unidades');
+  if(totalEl) totalEl.textContent = window._pdQty * (window._pdUnidPorBulto||1);
+}
+
+function addFromDetail(id, nombre, capacidad, unidPorBulto){
+  var bultos = window._pdQty || 1;
+  var totalUnid = unidPorBulto > 0 ? bultos * unidPorBulto : bultos;
+  var ex = cart.find(function(i){return i.id===id;});
+  if(!ex){
+    cart.push({id:id, name:nombre, cap:capacidad+' cc', qty:bultos, unidades:totalUnid, unidPorBulto:unidPorBulto});
+  } else {
+    ex.qty += bultos;
+    ex.unidades = (ex.unidades||0) + totalUnid;
+  }
+  var btn = document.getElementById('pd-add-btn');
+  if(btn){btn.textContent='✓ Agregado';btn.style.background='#5a9e5a';}
+  setTimeout(function(){
+    if(btn){btn.textContent='+ Agregar al cotizador';btn.style.background='';}
+  }, 1800);
+  updCount();
+  rendItems();
+}
+
+function closeProductDetail(){
+  document.getElementById('product-overlay').classList.remove('open');
 }
 renderProducts();
 
@@ -1265,13 +1406,23 @@ function rendItems(){
   e.style.display='none';f.style.display='block';c.innerHTML='';
   cart.forEach(function(it){
     var d=document.createElement('div');d.className='cart-item';
-    d.innerHTML='<div class="ci-info"><div class="ci-name">'+it.name+'</div><div class="ci-sub">'+it.cap+'</div></div>'+
+    var subInfo = it.unidPorBulto > 0
+      ? it.qty+' bulto'+(it.qty>1?'s':'')+' · '+it.unidades+' unid.'
+      : it.cap;
+    d.innerHTML='<div class="ci-info"><div class="ci-name">'+it.name+'</div><div class="ci-sub">'+subInfo+'</div></div>'+
       '<div class="ci-qty"><button class="q-btn" onclick="chQ(\''+it.id+'\',-1)">−</button><span class="q-val">'+it.qty+'</span><button class="q-btn" onclick="chQ(\''+it.id+'\',1)">+</button></div>'+
       '<button class="ci-rm" onclick="rmIt(\''+it.id+'\')">×</button>';
     c.appendChild(d);
   });
 }
-function chQ(id,d){var it=cart.find(function(i){return i.id===id;});if(it)it.qty=Math.max(1,it.qty+d);updCount();rendItems();}
+function chQ(id,d){
+  var it=cart.find(function(i){return i.id===id;});
+  if(it){
+    it.qty=Math.max(1,it.qty+d);
+    if(it.unidPorBulto>0) it.unidades=it.qty*it.unidPorBulto;
+  }
+  updCount();rendItems();
+}
 function rmIt(id){
   cart=cart.filter(function(i){return i.id!==id;});
   var b=document.getElementById('btn-'+id);if(b){b.textContent='+ Agregar al cotizador';b.className='prod-add';}

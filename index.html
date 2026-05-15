@@ -254,23 +254,23 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 }
 .logo-item{
   flex-shrink:0;
-  width:160px;
-  height:90px;
+  width:110px;
+  height:64px;
   display:flex;
   align-items:center;
   justify-content:center;
   border:1px solid #ede8e3;
-  border-radius:12px;
-  padding:1rem 1.5rem;
+  border-radius:10px;
+  padding:0.6rem 1rem;
   background:#fff;
   transition:border-color 0.2s,box-shadow 0.2s;
 }
 .logo-item:hover{border-color:#d4a8a8;box-shadow:0 4px 14px rgba(185,28,28,0.08)}
 .logo-item img{
-  max-width:100%;max-height:52px;
+  max-width:100%;max-height:36px;
   object-fit:contain;
   filter:grayscale(100%);
-  opacity:0.65;
+  opacity:0.6;
   transition:filter 0.25s,opacity 0.25s;
 }
 .logo-item:hover img{filter:grayscale(0%);opacity:1}
@@ -310,11 +310,11 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
   gap:1rem;
 }
-.clients-grid-full .logo-item{width:100%;height:100px}
+.clients-grid-full .logo-item{width:100%;height:80px}
 
 @media(max-width:768px){
-  .logo-item{width:130px;height:76px;padding:0.75rem 1rem}
-  .clients-grid-full{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  .logo-item{width:90px;height:54px;padding:0.4rem 0.6rem}
+  .clients-grid-full{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
 }
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:880px;margin:0 auto}
 .why-card{text-align:center;padding:1.5rem;background:#fff;border-radius:12px;border:1px solid #e5dbd4}
@@ -492,7 +492,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   .cat-card-home:hover{transform:none;box-shadow:0 6px 24px rgba(0,0,0,0.18)}
 
   /* CLIENTES CAROUSEL — narrower logos */
-  .logo-item{width:120px;height:72px;padding:0.6rem 0.8rem}
+  .logo-item{width:88px;height:52px;padding:0.4rem 0.6rem}
   .clients-section{padding:2rem 0}
 
   /* POR QUÉ ELEGIRNOS — 2×2 grid */
@@ -529,6 +529,13 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   /* CLIENTS OVERLAY */
   .clients-overlay{top:var(--nav-h)}
   .clients-grid-full{grid-template-columns:repeat(2,1fr)}
+
+  /* PRODUCT DETAIL OVERLAY */
+  .product-overlay{top:var(--nav-h)}
+  .product-inner{padding:1rem 1rem 4rem}
+  .pd-layout{grid-template-columns:1fr;gap:1.25rem}
+  .pd-img-col{padding:1.25rem}
+  .pd-nombre{font-size:18px;margin-bottom:1rem}
 
   /* CART */
   .cart-panel{width:100%}
@@ -1503,41 +1510,3 @@ function openMap(){window.open('https://maps.google.com/?q=Blvd.+27+de+Febrero+8
 </script>
 </body>
 </html>
-
-/* --- AJUSTE DE LOGOS CLIENTES --- */
-.clientes-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem; /* Espacio entre logos reducido */
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.cliente-logo {
-  /* Forzamos un tamaño mucho más chico */
-  width: 110px;           /* Ancho fijo para consistencia */
-  height: 60px;           /* Alto fijo */
-  object-fit: contain;    /* Esto evita que se deformen al achicarlos */
-  
-  filter: grayscale(100%) opacity(60%);
-  transition: all 0.3s ease;
-  padding: 5px;
-}
-
-.cliente-logo:hover {
-  filter: grayscale(0%) opacity(100%);
-  transform: scale(1.1);
-}
-
-/* Para celulares, los ponemos más chiquitos todavía */
-@media (max-width: 768px) {
-  .cliente-logo {
-    width: 80px;
-    height: 50px;
-  }
-  .clientes-grid {
-    gap: 1.5rem;
-  }
-}

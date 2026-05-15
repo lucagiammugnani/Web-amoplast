@@ -1503,3 +1503,41 @@ function openMap(){window.open('https://maps.google.com/?q=Blvd.+27+de+Febrero+8
 </script>
 </body>
 </html>
+
+/* --- AJUSTE DE LOGOS CLIENTES --- */
+.clientes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* Espacio entre logos reducido */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cliente-logo {
+  /* Forzamos un tamaño mucho más chico */
+  width: 110px;           /* Ancho fijo para consistencia */
+  height: 60px;           /* Alto fijo */
+  object-fit: contain;    /* Esto evita que se deformen al achicarlos */
+  
+  filter: grayscale(100%) opacity(60%);
+  transition: all 0.3s ease;
+  padding: 5px;
+}
+
+.cliente-logo:hover {
+  filter: grayscale(0%) opacity(100%);
+  transform: scale(1.1);
+}
+
+/* Para celulares, los ponemos más chiquitos todavía */
+@media (max-width: 768px) {
+  .cliente-logo {
+    width: 80px;
+    height: 50px;
+  }
+  .clientes-grid {
+    gap: 1.5rem;
+  }
+}

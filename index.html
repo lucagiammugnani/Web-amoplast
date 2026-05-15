@@ -654,14 +654,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
     </div>
     <div class="filter-panel" id="fp-linea">
       <div class="filter-title">Seleccioná una línea</div>
-      <div class="filter-options">
+      <div class="filter-options" id="linea-chips">
         <div class="filter-chip active" onclick="setFilter('linea','todas')">Todas</div>
-        <div class="filter-chip" onclick="setFilter('linea','A')">Línea A</div>
-        <div class="filter-chip" onclick="setFilter('linea','B')">Línea B</div>
-        <div class="filter-chip" onclick="setFilter('linea','C')">Línea C</div>
-        <div class="filter-chip" onclick="setFilter('linea','D')">Línea D</div>
-        <div class="filter-chip" onclick="setFilter('linea','E')">Línea E</div>
-        <div class="filter-chip" onclick="setFilter('linea','F')">Línea F</div>
       </div>
     </div>
 
@@ -1390,14 +1384,37 @@ function capRange(cc){
   if(cc<=5000)return '1000-5000';
   return '5000+';
 }
+/* Extrae solo la parte de letras de una línea: 'D/40' → 'D', 'U/85' → 'U', 'AP' → 'AP' */
+function lineaLetra(linea){
+  return linea.replace(/\/.*$/,'').trim();
+}
 function productMatches(p){
   if(currentFilter==='todas')return true;
   if(currentMode==='categoria')return p.categoria===currentFilter;
   if(currentMode==='capacidad')return capRange(p.capacidad)===currentFilter;
   if(currentMode==='material')return p.material===currentFilter;
-  if(currentMode==='linea')return p.linea===currentFilter;
+  if(currentMode==='linea')return lineaLetra(p.linea)===currentFilter;
   return true;
 }
+/* Genera dinámicamente los chips de línea a partir de los productos */
+function buildLineaChips(){
+  var seen={};
+  var letras=[];
+  PRODUCTS.forEach(function(p){
+    var l=lineaLetra(p.linea);
+    if(!seen[l]){seen[l]=true;letras.push(l);}
+  });
+  letras.sort(function(a,b){return a.localeCompare(b,'es');});
+  var container=document.getElementById('linea-chips');
+  letras.forEach(function(l){
+    var chip=document.createElement('div');
+    chip.className='filter-chip';
+    chip.textContent='Línea '+l;
+    chip.setAttribute('onclick',"setFilter('linea','"+l+"')");
+    container.appendChild(chip);
+  });
+}
+buildLineaChips();
 function setMode(mode){
   currentMode=mode;currentFilter='todas';
   document.querySelectorAll('.mode-btn').forEach(function(b){b.classList.remove('active');});

@@ -824,14 +824,11 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
            ===================================================== -->
 
       <!-- GRUPO ORIGINAL (editá estos) -->
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 1</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 2</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 3</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 4</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 5</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 6</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 7</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 8</div></div>
+     <img src="logo_agd.png" alt="Logo AGD" class="cliente-logo">
+      <img src="logo_prodeman.png" alt="Logo Prodeman" class="cliente-logo">
+      <img src="logo_entrenuts.png" alt="Logo Entrenuts" class="cliente-logo">
+      <img src="logo_ligier.png" alt="Logo Ligier" class="cliente-logo">
+      <img src="lavirginialogo.png" alt="Logo La Virginia" class="cliente-logo">
 
       <!-- DUPLICADO para loop infinito (el JS lo clona automáticamente) -->
     </div>
@@ -859,18 +856,11 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
            TODOS LOS LOGOS — Misma lógica que el carrusel.
            Agregá tantos .logo-item como clientes tengas.
            ===================================================== -->
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 1</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 2</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 3</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 4</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 5</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 6</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 7</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 8</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 9</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 10</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 11</div></div>
-      <div class="logo-item"><div class="logo-placeholder">CLIENTE 12</div></div>
+      <img src="logo_agd.png" alt="Logo AGD" class="cliente-logo">
+      <img src="logo_prodeman.png" alt="Logo Prodeman" class="cliente-logo">
+      <img src="logo_entrenuts.png" alt="Logo Entrenuts" class="cliente-logo">
+      <img src="logo_ligier.png" alt="Logo Ligier" class="cliente-logo">
+      <img src="lavirginialogo.png" alt="Logo La Virginia" class="cliente-logo">
     </div>
   </div>
 </div>
@@ -1513,3 +1503,51 @@ function openMap(){window.open('https://maps.google.com/?q=Blvd.+27+de+Febrero+8
 </script>
 </body>
 </html>
+
+/* --- ESTILOS SECCIÓN CLIENTES --- */
+.clientes-section {
+  padding: 4rem 1rem;
+  background-color: #ffffff; /* Fondo blanco limpio */
+  text-align: center;
+}
+
+.clientes-titulo {
+  font-size: 1.8rem;
+  color: #333333;
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+}
+
+.clientes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem; /* Espacio entre logos */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cliente-logo {
+  max-width: 150px; /* Tamaño máximo para que queden parejos */
+  max-height: 80px;
+  object-fit: contain; /* Evita que se deformen */
+  filter: grayscale(100%) opacity(70%); /* Logos en gris y un poco transparentes */
+  transition: all 0.3s ease; /* Animación suave */
+}
+
+/* Efecto al pasar el mouse por encima */
+.cliente-logo:hover {
+  filter: grayscale(0%) opacity(100%);
+  transform: scale(1.05); /* Se agranda un poquito */
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+  .clientes-grid {
+    gap: 2rem;
+  }
+  .cliente-logo {
+    max-width: 110px; /* Más chicos en móvil */
+  }
+}

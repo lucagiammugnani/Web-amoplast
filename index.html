@@ -1494,7 +1494,15 @@ function capRange(cc){
   if(cc<=5000)return '1000-5000';
   return '5000+';
 }
-/* Extrae solo la parte de letras de una línea: 'D/40' → 'D', 'U/85' → 'U', 'AP' → 'AP' */
+function lineaSort(a, b){
+  var partsA = a.split('/'), partsB = b.split('/');
+  var letA = partsA[0].trim(), letB = partsB[0].trim();
+  var cmp = letA.localeCompare(letB, 'es');
+  if(cmp !== 0) return cmp;
+  var numA = partsA[1] ? parseInt(partsA[1]) : 0;
+  var numB = partsB[1] ? parseInt(partsB[1]) : 0;
+  return numA - numB;
+}
 function lineaLetra(linea){
   return linea.replace(/\/.*$/,'').trim();
 }
@@ -1555,7 +1563,7 @@ function renderProducts(){
   grid.innerHTML='';
   var sorted=PRODUCTS.slice();
   if(currentMode==='linea'){
-    sorted.sort(function(a,b){return a.linea.localeCompare(b.linea)||a.capacidad-b.capacidad;});
+    sorted.sort(function(a,b){return lineaSort(a.linea, b.linea)||a.capacidad-b.capacidad;});
   }
   var shown=0;
   sorted.forEach(function(p){
@@ -1599,11 +1607,34 @@ function openProductDetail(id){
     ? 'Bultos ('+unidadesPorBulto+' unid. c/u)'
     : 'Bultos';
 
+  // Parsear el campo inserto en sus partes
+  var inserto='', observaciones='', opcion='', peso='';
+  if(p.inserto){
+    var raw=p.inserto;
+    // extraer Peso
+    var pesoM=raw.match(/Peso[:\s]+([^.]+)/i);
+    if(pesoM){peso=pesoM[1].trim();raw=raw.replace(pesoM[0],'');}
+    // extraer Observaciones
+    var obsM=raw.match(/Observaciones?[:\s]+([^.]+(?:\.[^O][^b]?[^s]?[^e]?[^r]?[^v]?)?)/i);
+    if(obsM){observaciones=obsM[1].trim().replace(/\.$/,'');raw=raw.replace(obsM[0],'');}
+    // extraer Opción/Opcionales
+    var optM=raw.match(/Opci[oó]n(?:ales?)?[:\s]+([^.]+)/i);
+    if(optM){opcion=optM[1].trim().replace(/\.$/,'');raw=raw.replace(optM[0],'');}
+    // lo que queda es el inserto propiamente dicho
+    inserto=raw.replace(/\.\s*$/,'').replace(/^\.\s*/,'').trim();
+  }
+
+  // Mapear categoria a texto legible
+  var catLabels={'botella':'Botella','frasco':'Frasco','bidon':'Bidón'};
+  var catDisplay=catLabels[p.categoria]||p.categoria||'';
+
   document.getElementById('product-detail-body').innerHTML=
     '<div class="pd-layout">'+
       '<div class="pd-img-col">'+imgHtml+'</div>'+
       '<div class="pd-info-col">'+
         '<div class="pd-nombre">'+p.nombre+'</div>'+
+        row('Categoría', catDisplay)+
+        row('Línea', p.linea)+
         row('Material', p.material)+
         row('Capacidad', p.capacidad ? p.capacidad+' cc' : '')+
         row('Color', p.color)+
@@ -1612,6 +1643,10 @@ function openProductDetail(id){
         row('Altura total', p.altTotal)+
         row('Diámetro del cuerpo', p.diaCuerpo)+
         row('Diámetro de boca', p.diaBoca)+
+        (peso ? row('Peso', peso) : '')+
+        (inserto ? row('Inserto', inserto) : '')+
+        (opcion ? row('Opción', opcion) : '')+
+        (observaciones ? row('Observaciones', observaciones) : '')+
         row('Embalaje', p.embalaje ? p.embalaje+' unidades por bulto' : '')+
         '<div class="pd-cart-section">'+
           '<div class="pd-qty-wrap">'+

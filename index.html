@@ -9,7 +9,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--red:#B91C1C;--red-light:#fdf2f2;--cream:#f9f5f0;--cream2:#f3ede5;--white:#fff;--nav-h:80px}
+:root{--red:#CE2028;--red-light:#fdf2f2;--cream:#f9f5f0;--cream2:#f3ede5;--white:#fff;--nav-h:80px}
 body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
   
@@ -113,10 +113,10 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cat-modes{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;max-width:700px;margin:0 auto 2rem}
 @media(min-width:600px){.cat-modes{grid-template-columns:repeat(4,1fr)}}
 .mode-btn{background:#fff;border:1.5px solid #e5dbd4;border-radius:12px;padding:1rem 0.75rem;text-align:center;cursor:pointer;transition:border-color 0.18s,transform 0.15s,box-shadow 0.15s;font-family:'Montserrat',sans-serif}
-.mode-btn:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 4px 14px rgba(185,28,28,0.1)}
-.mode-btn.active{border-color:var(--red);background:var(--red-light);box-shadow:0 4px 14px rgba(185,28,28,0.1)}
+.mode-btn:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 4px 14px rgba(206,32,40,0.1)}
+.mode-btn.active{border-color:var(--red);background:var(--red-light);box-shadow:0 4px 14px rgba(206,32,40,0.1)}
 .mode-icon{width:44px;height:44px;background:var(--red-light);border-radius:50%;margin:0 auto 0.5rem;display:flex;align-items:center;justify-content:center}
-.mode-btn.active .mode-icon{background:rgba(185,28,28,0.12)}
+.mode-btn.active .mode-icon{background:rgba(206,32,40,0.12)}
 .mode-label{font-size:12px;font-weight:600;color:var(--red);letter-spacing:0.02em}
 .mode-sub{font-size:10px;color:#aaa;margin-top:2px}
 
@@ -265,7 +265,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   background:#fff;
   transition:border-color 0.2s,box-shadow 0.2s;
 }
-.logo-item:hover{border-color:#d4a8a8;box-shadow:0 4px 14px rgba(185,28,28,0.08)}
+.logo-item:hover{border-color:#d4a8a8;box-shadow:0 4px 14px rgba(206,32,40,0.08)}
 .logo-item img{
   max-width:100%;max-height:34px;
   width:auto;height:auto;
@@ -290,9 +290,9 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   font-size:14px;font-weight:600;
   cursor:pointer;font-family:'Montserrat',sans-serif;
   transition:background 0.18s,transform 0.15s,box-shadow 0.15s;
-  box-shadow:0 4px 16px rgba(185,28,28,0.25);
+  box-shadow:0 4px 16px rgba(206,32,40,0.25);
 }
-.clients-more-btn:hover{background:#991b1b;transform:translateY(-1px);box-shadow:0 6px 20px rgba(185,28,28,0.32)}
+.clients-more-btn:hover{background:#A31820;transform:translateY(-1px);box-shadow:0 6px 20px rgba(206,32,40,0.32)}
 
 /* ===== CLIENTES SUBPÁGINA ===== */
 .clients-overlay{
@@ -344,8 +344,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .c-info{display:flex;gap:2rem;justify-content:center;margin-top:1.25rem;flex-wrap:wrap}
 .c-info span{font-size:12px;opacity:0.75}
 
-.footer{background:#1e1410;padding:1rem 2rem;text-align:center}
-.footer p{font-size:12px;color:#6b5e58}
+.footer{background:#1B4F8A;padding:0.45rem 2rem;text-align:center}
+.footer p{font-size:12px;color:rgba(255,255,255,0.6)}
 
 /* CART */
 .cart-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.38);z-index:200}
@@ -401,7 +401,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   display:flex;align-items:center;justify-content:center;
   min-width:180px;height:100px;
 }
-.cert-logo-btn:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 6px 20px rgba(185,28,28,0.12)}
+.cert-logo-btn:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 6px 20px rgba(206,32,40,0.12)}
 .cert-logo-btn img{max-width:140px;max-height:64px;object-fit:contain}
 
 /* ANMAT overlay */
@@ -420,7 +420,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   padding:1.25rem 1rem;text-align:center;cursor:pointer;
   transition:border-color 0.18s,box-shadow 0.18s;
 }
-.cert-item:hover{border-color:var(--red);box-shadow:0 4px 14px rgba(185,28,28,0.1)}
+.cert-item:hover{border-color:var(--red);box-shadow:0 4px 14px rgba(206,32,40,0.1)}
 .cert-item-num{font-size:22px;font-weight:700;color:var(--red);margin-bottom:4px}
 .cert-item-label{font-size:12px;color:#888;line-height:1.4}
 
@@ -605,19 +605,19 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-modes">
       <div class="mode-btn active" id="mode-categoria" onclick="setMode('categoria')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 6h16M4 12h8M4 18h12"/></svg></div>
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
         <div class="mode-label">Categoría</div><div class="mode-sub">Bidones · Botellas · Frascos</div>
       </div>
       <div class="mode-btn" id="mode-capacidad" onclick="setMode('capacidad')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg></div>
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg></div>
         <div class="mode-label">Capacidad</div><div class="mode-sub">0 cc — +5000 cc</div>
       </div>
       <div class="mode-btn" id="mode-material" onclick="setMode('material')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 20 20"><text x="10" y="16" font-size="16" text-anchor="middle" fill="#CE2028" font-family="sans-serif">♻</text></svg></div>
         <div class="mode-label">Material</div><div class="mode-sub">PET · PEAD · PVC · PEBD</div>
       </div>
       <div class="mode-btn" id="mode-linea" onclick="setMode('linea')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M3 5h18M3 9h12M3 13h15M3 17h9"/></svg></div>
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="14" y1="5" x2="14" y2="19"/><polyline points="10 15 14 19 18 15"/><text x="2" y="9" font-size="6" font-weight="700" fill="#CE2028" stroke="none" font-family="sans-serif">A</text><text x="2" y="19" font-size="6" font-weight="700" fill="#CE2028" stroke="none" font-family="sans-serif">Z</text></svg></div>
         <div class="mode-label">Línea</div><div class="mode-sub">A · B · C · D · …</div>
       </div>
     </div>
@@ -745,7 +745,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 6h16M4 12h8M4 18h12"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
         </div>
         <div class="cat-card-home-label">Categoría</div>
         <div class="cat-card-home-sub">Bidones · Botellas · Frascos</div>
@@ -779,7 +779,9 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+          <svg width="26" height="26" viewBox="0 0 26 26">
+  <text x="13" y="21" font-size="22" text-anchor="middle" fill="#fff" font-family="sans-serif">♻</text>
+</svg>
         </div>
         <div class="cat-card-home-label">Material</div>
         <div class="cat-card-home-sub">PET · PEAD<br>PVC · PEBD</div>
@@ -799,7 +801,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M3 5h18M3 9h12M3 13h15M3 17h9"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="14" y1="5" x2="14" y2="19"/><polyline points="10 15 14 19 18 15"/><text x="2" y="9" font-size="6" font-weight="700" fill="#fff" stroke="none" font-family="sans-serif">A</text><text x="2" y="19" font-size="6" font-weight="700" fill="#fff" stroke="none" font-family="sans-serif">Z</text></svg>
         </div>
         <div class="cat-card-home-label">Línea</div>
         <div class="cat-card-home-sub">A · B · C · D · E · F</div>
@@ -873,19 +875,19 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <div class="sec-div"></div>
   <div class="why-grid">
     <div class="why-card">
-      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
       <h3>Calidad garantizada</h3><p>Materiales certificados y procesos controlados.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><rect x="2" y="14" width="9" height="7" rx="1"/><rect x="13" y="14" width="9" height="7" rx="1"/><rect x="5" y="7" width="14" height="7" rx="1"/><rect x="8" y="2" width="8" height="5" rx="1"/></svg></div>
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><rect x="2" y="14" width="9" height="7" rx="1"/><rect x="13" y="14" width="9" height="7" rx="1"/><rect x="5" y="7" width="14" height="7" rx="1"/><rect x="8" y="2" width="8" height="5" rx="1"/></svg></div>
       <h3>Disponibilidad Total</h3><p>Disponibilidad constante en nuestros productos.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
       <h3>Amplia variedad</h3><p>Múltiples opciones de productos con todas las capacidades para cada industria.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-8 0v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-8 0v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
       <h3>Asesoramiento</h3><p>Más de 60 años de experiencia para ayudarte a encontrar el envase ideal.</p>
     </div>
   </div>
@@ -900,19 +902,19 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <h3>Planta y oficinas comerciales</h3>
       <div class="loc-rows-grid">
       <div class="loc-row">
-        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div class="loc-txt"><strong>Dirección</strong>Blvd. 27 de Febrero 80 bis<br>S2000EZN, Rosario, Santa Fe</div>
       </div>
       <div class="loc-row">
-        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <div class="loc-txt"><strong>Horario de atención</strong>Lunes a viernes: 8:00 a 17:00 hs</div>
       </div>
       <div class="loc-row">
-        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.06 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.92z"/></svg></div>
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.06 3h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 17.92z"/></svg></div>
         <div class="loc-txt"><strong>Teléfono</strong>+54 341 334-3863</div>
       </div>
       <div class="loc-row">
-        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="loc-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div class="loc-txt"><strong>Email</strong>amoplast@amoplast.com.ar</div>
       </div>
       </div>
@@ -939,21 +941,40 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 <div class="section" id="s-certificaciones">
   <div class="sec-title">Nuestras certificaciones</div>
   <div class="sec-div"></div>
-  <p style="text-align:center;font-size:13px;color:#999;margin-bottom:2rem;">Avalados por los principales organismos reguladores nacionales</p>
+  <p style="text-align:center;font-size:13px;color:#999;margin-bottom:2rem;">Certificados por ASSAL — Agencia Santafesina de Seguridad Alimentaria</p>
 
   <div class="cert-logos">
 
-    <!-- ASSAL — toca y abre el PDF directamente -->
-    <!-- INSTRUCCIÓN: reemplazá "certificacion-assal.pdf" por el nombre real de tu archivo PDF -->
+    <!-- Botón 1: Certificado de establecimiento ASSAL -->
     <a href="certificacion-assal.pdf" target="_blank" style="text-decoration:none">
-      <div class="cert-logo-btn">
-        <img src="logo-assal.png" alt="ASSAL — Agencia Santafesina de Seguridad Alimentaria">
+      <div class="cert-logo-btn" style="flex-direction:column;gap:0.5rem;min-width:210px;height:auto;padding:1.5rem 1.75rem;">
+        <div style="width:40px;height:40px;background:var(--red-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:3px;">Certificado de Establecimiento</div>
+          <div style="font-size:11px;color:#aaa;line-height:1.4;">Habilitación ASSAL<br>Amoplast SA</div>
+        </div>
+        <div style="font-size:10px;color:#CE2028;font-weight:600;display:flex;align-items:center;gap:4px;margin-top:2px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver certificado
+        </div>
       </div>
     </a>
 
-    <!-- ANMAT — toca y abre el selector de 6 certificaciones -->
-    <div class="cert-logo-btn" onclick="openAnmat()">
-      <img src="Logo-ANMAT.png" alt="ANMAT — Administración Nacional de Medicamentos, Alimentos y Tecnología Médica">
+    <!-- Botón 2: 6 certificados envases aptos para alimentos ASSAL -->
+    <div class="cert-logo-btn" onclick="openAnmat()" style="flex-direction:column;gap:0.5rem;min-width:210px;height:auto;padding:1.5rem 1.75rem;">
+      <div style="width:40px;height:40px;background:var(--red-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 9.5-8 11C7.5 21.5 4 17 4 12V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:3px;">Envases Aptos para Alimentos</div>
+        <div style="font-size:11px;color:#aaa;line-height:1.4;">6 certificados ASSAL<br>por línea de producto</div>
+      </div>
+      <div style="font-size:10px;color:#CE2028;font-weight:600;display:flex;align-items:center;gap:4px;margin-top:2px;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        Ver los 6 certificados
+      </div>
     </div>
 
   </div>
@@ -967,39 +988,39 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         Volver
       </button>
-      <div class="cat-page-title">Certificaciones ANMAT</div>
+      <div class="cat-page-title">Certificados ASSAL — Envases aptos para alimentos</div>
     </div>
 
-    <p style="font-size:13px;color:#999;margin-bottom:1.5rem;">Seleccioná una certificación para verla:</p>
+    <p style="font-size:13px;color:#999;margin-bottom:1.5rem;">Seleccioná un certificado para verlo:</p>
 
-    <!-- GRID DE 6 CERTIFICACIONES -->
+    <!-- GRID DE 6 CERTIFICACIONES ASSAL -->
     <!-- INSTRUCCIÓN: en cada cert-item, reemplazá:
          - el texto del label por el nombre real de la certificación
-         - en onclick: reemplazá "anmat-1.pdf" por el nombre real del archivo PDF -->
+         - en onclick: reemplazá "assal-envases-1.pdf" por el nombre real del archivo PDF -->
     <div class="cert-list">
-      <div class="cert-item" onclick="showCert('anmat-1.pdf','Certificación ANMAT N°1')">
+      <div class="cert-item" onclick="showCert('assal-envases-1.pdf','Certificado ASSAL N°1')">
         <div class="cert-item-num">01</div>
-        <div class="cert-item-label">Certificación ANMAT<br>N° 1<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 1<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
       </div>
-      <div class="cert-item" onclick="showCert('anmat-2.pdf','Certificación ANMAT N°2')">
+      <div class="cert-item" onclick="showCert('assal-envases-2.pdf','Certificado ASSAL N°2')">
         <div class="cert-item-num">02</div>
-        <div class="cert-item-label">Certificación ANMAT<br>N° 2<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 2<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
       </div>
-      <div class="cert-item" onclick="showCert('anmat-3.pdf','Certificación ANMAT N°3')">
+      <div class="cert-item" onclick="showCert('assal-envases-3.pdf','Certificado ASSAL N°3')">
         <div class="cert-item-num">03</div>
-        <div class="cert-item-label">Certificación ANMAT<br>N° 3<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 3<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
       </div>
-      <div class="cert-item" onclick="showCert('anmat-4.pdf','Certificación ANMAT N°4')">
+      <div class="cert-item" onclick="showCert('assal-envases-4.pdf','Certificado ASSAL N°4')">
         <div class="cert-item-num">04</div>
-        <div class="cert-item-label">Certificación ANMAT<br>N° 4<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 4<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
       </div>
-      <div class="cert-item" onclick="showCert('anmat-5.pdf','Certificación ANMAT N°5')">
+      <div class="cert-item" onclick="showCert('assal-envases-5.pdf','Certificado ASSAL N°5')">
         <div class="cert-item-num">05</div>
-        <div class="cert-item-label">Certificación ANMAT<br>N° 5<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 5<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
       </div>
-      <div class="cert-item" onclick="showCert('anmat-6.pdf','Certificación ANMAT N°6')">
+      <div class="cert-item" onclick="showCert('assal-envases-6.pdf','Certificado ASSAL N°6')">
         <div class="cert-item-num">06</div>
-        <div class="cert-item-label">Certificación ANMAT<br>N° 6<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 6<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
       </div>
     </div>
 

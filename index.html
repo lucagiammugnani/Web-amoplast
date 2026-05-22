@@ -367,6 +367,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cart-ft{padding:1rem 1.25rem;border-top:1px solid #f0e8e0}
 .cart-note{width:100%;border:1px solid #e0d8d0;border-radius:6px;padding:8px 10px;font-size:13px;resize:vertical;min-height:70px;font-family:'Montserrat',sans-serif;color:#3a3230;margin-bottom:0.75rem;background:var(--cream)}
 .cart-sub{width:100%;background:var(--red);color:#fff;border:none;border-radius:6px;padding:12px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Montserrat',sans-serif}
+
 /* ===== CERTIFICACIONES ===== */
 /* ===== PRODUCT DETAIL OVERLAY ===== */
 .product-overlay{
@@ -390,8 +391,45 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .pd-qty-ctrl button{width:30px;height:30px;border:1.5px solid #e0d0c8;border-radius:6px;background:#fff;font-size:16px;cursor:pointer;color:#555;display:flex;align-items:center;justify-content:center;transition:border-color 0.15s}
 .pd-qty-ctrl button:hover{border-color:var(--red);color:var(--red)}
 .pd-qty-ctrl span{font-size:16px;font-weight:600;min-width:28px;text-align:center;color:#333}
-.pd-add-btn{width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif;transition:opacity 0.18s}
-.pd-add-btn:hover{opacity:0.88}
+.pd-add-btn{width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:13px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif;transition:opacity 0.18s,background 0.18s}
+.pd-add-btn:hover:not(.inactivo){opacity:0.88}
+.pd-add-btn.inactivo{background:#ccc;opacity:1;cursor:not-allowed}
+
+/* ===== COLOR SWATCHES ===== */
+.pd-swatches-section{margin-top:1.25rem;padding-top:1rem;border-top:1px solid #f0e8e0}
+.pd-swatches-label{font-size:13px;font-weight:600;color:#555;margin-bottom:0.6rem}
+.pd-swatches-label span{color:var(--red);font-weight:700;margin-left:6px}
+.pd-swatches-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem}
+.pd-swatch{
+  width:24px;height:24px;
+  border-radius:50%;
+  cursor:pointer;
+  border:1.5px solid rgba(0,0,0,0.12);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.4);
+  transition:transform 0.15s,box-shadow 0.15s;
+  position:relative;
+  flex-shrink:0;
+}
+.pd-swatch:hover{transform:scale(1.15)}
+.pd-swatch.selected{
+  box-shadow:0 0 0 2px #fff, 0 0 0 4px #333;
+  transform:scale(1.1);
+}
+.pd-swatch-tooltip{
+  position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:#333;color:#fff;
+  font-size:10px;font-weight:500;font-family:'Montserrat',sans-serif;
+  padding:3px 7px;border-radius:4px;white-space:nowrap;
+  pointer-events:none;opacity:0;transition:opacity 0.15s;
+  z-index:10;
+}
+.pd-swatch:hover .pd-swatch-tooltip{opacity:1}
+.pd-color-warning{
+  font-size:11px;color:var(--red);
+  margin-bottom:0.75rem;
+  min-height:16px;
+  display:none;
+}
 
 .cert-logos{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;margin-top:0.5rem}
 .cert-logo-btn{
@@ -554,11 +592,9 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 }
 </style>
 
-<!-- NAV -->
 <nav class="nav">
   <img src="logo-amoplastenvases.png" alt="AMOPLAST SA" style="height:80px;width:auto;padding:5px 0;">
 
-  <!-- Desktop links -->
   <div class="nav-links">
     <a onclick="document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
     <a onclick="openCatalog()">Catálogo</a>
@@ -570,7 +606,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
     </button>
   </div>
 
-  <!-- Mobile: Cotizador + Hamburger (hidden on desktop) -->
   <div id="nav-mobile-wrap" style="display:none;align-items:center;gap:10px">
     <button class="cart-btn" id="cart-btn-mobile" onclick="openCart()" style="display:none;padding:8px 12px;font-size:12px;">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.61L23 6H6"/></svg>
@@ -582,7 +617,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </nav>
 
-<!-- Mobile dropdown menu -->
 <div class="nav-mobile-menu" id="nav-mobile-menu">
   <a onclick="closeMobileMenu();document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
   <a onclick="closeMobileMenu();openCatalog()">Catálogo</a>
@@ -590,7 +624,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <a onclick="closeMobileMenu();document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
 </div>
 
-<!-- ===== CATALOG SUBPAGE OVERLAY ===== -->
 <div class="catalog-overlay" id="catalog-overlay">
   <div class="catalog-inner">
     <div class="catalog-topbar">
@@ -664,7 +697,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
-<!-- PRODUCT DETAIL OVERLAY -->
 <div class="product-overlay" id="product-overlay">
   <div class="product-inner">
     <div class="catalog-topbar">
@@ -677,7 +709,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <div class="slide active" id="slide-0">
     <div class="slide-bg" id="bg-0"></div><div class="slide-overlay"></div>
@@ -701,8 +732,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
     </div>
   </div>
   <div class="hero-seal"><img src="" alt="Sello Amoplast" onerror="this.parentElement.style.display='none'"></div>
-  <button class="c-arrow arr-l" onclick="moveSlide(-1)">&#8249;</button>
-  <button class="c-arrow arr-r" onclick="moveSlide(1)">&#8250;</button>
+  <button class="c-arrow arr-l" onclick="moveSlide(-1)">‹</button>
+  <button class="c-arrow arr-r" onclick="moveSlide(1)">›</button>
   <div class="carousel-dots" id="dots"></div>
 </div>
 
@@ -713,21 +744,19 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <span>Asesoramiento personalizado</span>
 </div>
 
-<!-- NOSOTROS -->
 <div class="section" id="s-nosotros">
   <div class="sec-title">Quiénes somos</div>
   <div class="sec-div"></div>
   <div class="about-wrap">
     <div class="about-box"><strong>Amoplast SA</strong> nace en la ciudad de Rosario en <strong>1963</strong>, siendo la <strong>primera fábrica de envases plásticos del interior del país</strong>. A lo largo de más de seis décadas, crecimos para convertirnos en un referente del packaging industrial en Argentina, atendiendo a los sectores alimenticio, químico, cosmético y agropecuario con la misma calidad y compromiso de siempre.</div>
     <div class="about-stats">
-      <div class="stat"><div class="stat-num">&infin;</div><div class="stat-label">Stock permanente</div></div>
+      <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Stock permanente</div></div>
       <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Años de experiencia</div></div>
       <div class="stat"><div class="stat-num">350+</div><div class="stat-label">Modelos de envases</div></div>
     </div>
   </div>
 </div>
 
-<!-- CATÁLOGO (teaser en home) -->
 <section class="section-cream" id="s-catalogo" style="padding:4rem 0;">
   <div class="sec-title">Catálogo de productos</div>
   <div class="sec-div"></div>
@@ -735,7 +764,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
   <div class="cat-cards-home">
 
-    <!-- CATEGORÍA -->
     <div class="cat-card-home" onclick="openCatalog('categoria')">
       <div class="cat-card-home-bg">
         <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -752,7 +780,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       </div>
     </div>
 
-    <!-- CAPACIDAD -->
     <div class="cat-card-home" onclick="openCatalog('capacidad')">
       <div class="cat-card-home-bg">
         <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -769,7 +796,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       </div>
     </div>
 
-    <!-- MATERIAL -->
     <div class="cat-card-home" onclick="openCatalog('material')">
       <div class="cat-card-home-bg">
         <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -788,7 +814,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       </div>
     </div>
 
-    <!-- LÍNEA -->
     <div class="cat-card-home" onclick="openCatalog('linea')">
       <div class="cat-card-home-bg">
         <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -811,31 +836,19 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </section>
 
-<!-- ===== CONFÍAN EN NOSOTROS ===== -->
 <div class="clients-section" id="s-clientes">
   <div class="sec-title" style="text-align:center">Confían en nosotros</div>
   <div class="sec-div"></div>
 
   <div class="carousel-track-wrap">
     <div class="carousel-track" id="carousel-track">
-      <!-- =====================================================
-           LOGOS DE CLIENTES — INSTRUCCIONES PARA AGREGAR:
-           Reemplazá cada <div class="logo-placeholder"> con:
-           <img src="ruta/logo-cliente.png" alt="Nombre Cliente">
-           dentro del <div class="logo-item"> correspondiente.
-           Podés agregar o quitar .logo-item según cuántos clientes tengas.
-           Los logos se duplican automáticamente para el loop infinito.
-           ===================================================== -->
-
-      <!-- GRUPO ORIGINAL -->
       <div class="logo-item"><img src="logo_agd.png" alt="AGD"></div>
       <div class="logo-item"><img src="logo_prodeman (1).png" alt="Prodeman"></div>
       <div class="logo-item"><img src="logo_entrenuts.png" alt="Entrenuts"></div>
       <div class="logo-item"><img src="logo_ligier (1).png" alt="Ligier"></div>
       <div class="logo-item"><img src="logo_lavirginia.png" alt="La Virginia"></div>
 
-      <!-- DUPLICADO para loop infinito (el JS lo clona automáticamente) -->
-    </div>
+      </div>
   </div>
 
   <div class="clients-cta">
@@ -843,7 +856,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
-<!-- ===== SUBPÁGINA: TODOS LOS CLIENTES ===== -->
 <div class="clients-overlay" id="clients-overlay">
   <div class="clients-overlay-inner">
     <div class="clients-topbar">
@@ -856,10 +868,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
     <p style="font-size:13px;color:#aaa;margin-bottom:2rem;">Empresas de distintos rubros que eligen Amoplast para sus envases.</p>
 
     <div class="clients-grid-full" id="clients-grid-full">
-      <!-- =====================================================
-           TODOS LOS LOGOS — Misma lógica que el carrusel.
-           Agregá tantos .logo-item como clientes tengas.
-           ===================================================== -->
       <div class="logo-item"><img src="logo_agd.png" alt="AGD"></div>
       <div class="logo-item"><img src="logo_prodeman (1).png" alt="Prodeman"></div>
       <div class="logo-item"><img src="logo_entrenuts.png" alt="Entrenuts"></div>
@@ -869,7 +877,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
-<!-- POR QUÉ ELEGIRNOS -->
 <div class="section">
   <div class="sec-title">¿Por qué elegirnos?</div>
   <div class="sec-div"></div>
@@ -893,7 +900,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
-<!-- SEDE -->
 <div class="section-cream2" id="s-sede">
   <div class="sec-title">Locaciones</div>
   <div class="sec-div"></div>
@@ -937,7 +943,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
-<!-- CERTIFICACIONES -->
 <div class="section" id="s-certificaciones">
   <div class="sec-title">Nuestras certificaciones</div>
   <div class="sec-div"></div>
@@ -945,7 +950,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
   <div class="cert-logos">
 
-    <!-- Botón 1: Certificado de establecimiento ASSAL -->
     <a href="certificacion-assal.pdf" target="_blank" style="text-decoration:none">
       <div class="cert-logo-btn" style="flex-direction:column;gap:0.5rem;min-width:210px;height:auto;padding:1.5rem 1.75rem;">
         <div style="width:40px;height:40px;background:var(--red-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -962,7 +966,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       </div>
     </a>
 
-    <!-- Botón 2: 6 certificados envases aptos para alimentos ASSAL -->
     <div class="cert-logo-btn" onclick="openAnmat()" style="flex-direction:column;gap:0.5rem;min-width:210px;height:auto;padding:1.5rem 1.75rem;">
       <div style="width:40px;height:40px;background:var(--red-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 9.5-8 11C7.5 21.5 4 17 4 12V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg>
@@ -980,7 +983,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
-<!-- OVERLAY ANMAT — selector de 6 certificaciones -->
 <div class="cert-overlay" id="cert-overlay">
   <div class="cert-inner">
     <div class="cert-topbar">
@@ -993,10 +995,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <p style="font-size:13px;color:#999;margin-bottom:1.5rem;">Seleccioná un certificado para verlo:</p>
 
-    <!-- GRID DE 6 CERTIFICACIONES ASSAL -->
-    <!-- INSTRUCCIÓN: en cada cert-item, reemplazá:
-         - el texto del label por el nombre real de la certificación
-         - en onclick: reemplazá "assal-envases-1.pdf" por el nombre real del archivo PDF -->
     <div class="cert-list">
       <div class="cert-item" onclick="showCert('assal-envases-1.pdf','Certificado ASSAL N°1')">
         <div class="cert-item-num">01</div>
@@ -1024,7 +1022,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       </div>
     </div>
 
-    <!-- PDF VIEWER -->
     <div class="cert-viewer" id="cert-viewer">
       <div class="cert-viewer-header">
         <span id="cert-viewer-title">Certificación</span>
@@ -1040,7 +1037,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
-<!-- CONTACTO -->
 <div class="contact-section" id="s-contacto">
   <h2>Contactanos</h2>
   <p>Consultá por disponibilidad de stock o solicitá tu cotización</p>
@@ -1060,7 +1056,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <p>© 2026 Amoplast SA — Todos los derechos reservados · Fábrica de envases plásticos industriales desde 1963 · Rosario, Santa Fe</p>
 </div>
 
-<!-- CART PANEL -->
 <div class="cart-overlay" id="cart-overlay" onclick="closeOut(event)">
   <div class="cart-panel">
     <div class="cart-hd"><h3>Cotizador de productos</h3><button class="cart-x" onclick="closeCart()">×</button></div>
@@ -1077,10 +1072,14 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
         <p style="font-weight:500;margin-bottom:4px">¡Cotización enviada!</p>
         <p style="font-size:12px;color:#999">Nos pondremos en contacto a la brevedad.</p>
       </div>
-      <div id="cart-form">
-        <textarea class="cart-note" id="cart-note" placeholder="Empresa, cantidad deseada, teléfono de contacto, aclaraciones..."></textarea>
-        <button class="cart-sub" onclick="submitQuote()">Enviar cotización por mail</button>
-      </div>
+      <form id="cart-form" onsubmit="submitQuote(event)">
+        <input type="text" id="c-nombre" placeholder="Nombre y Apellido *" required style="width:100%;margin-bottom:8px;padding:10px;border-radius:6px;border:1px solid #e0d8d0;font-family:'Montserrat',sans-serif;font-size:13px;background:var(--cream);">
+        <input type="text" id="c-empresa" placeholder="Empresa / Razón Social *" required style="width:100%;margin-bottom:8px;padding:10px;border-radius:6px;border:1px solid #e0d8d0;font-family:'Montserrat',sans-serif;font-size:13px;background:var(--cream);">
+        <input type="text" id="c-localidad" placeholder="Localidad y Provincia *" required style="width:100%;margin-bottom:8px;padding:10px;border-radius:6px;border:1px solid #e0d8d0;font-family:'Montserrat',sans-serif;font-size:13px;background:var(--cream);">
+        <input type="tel" id="c-tel" placeholder="Teléfono *" required style="width:100%;margin-bottom:8px;padding:10px;border-radius:6px;border:1px solid #e0d8d0;font-family:'Montserrat',sans-serif;font-size:13px;background:var(--cream);">
+        <textarea class="cart-note" id="cart-note" placeholder="Aclaraciones o notas del pedido..."></textarea>
+        <button type="submit" class="cart-sub">Enviar cotización por mail</button>
+      </form>
     </div>
   </div>
 </div>
@@ -1204,6 +1203,40 @@ function openCatalog(mode){
 }
 function closeCatalog(){
   document.getElementById('catalog-overlay').classList.remove('open');
+}
+
+/* ===== COLOR SWATCH MAP ===== */
+// Maps normalized color names → CSS value + display label
+var COLOR_MAP = {
+  'blanco':   { css: '#FFFFFF', label: 'Blanco' },
+  'natural':  { css: '#E8DCC8', label: 'Natural' },
+  'cristal':  { css: '#C8E8F4', label: 'Cristal' },
+  'ambar':    { css: '#C87820', label: 'Ámbar' },
+  'caramelo': { css: '#C87820', label: 'Caramelo' },
+  'azul':     { css: '#2060B0', label: 'Azul' },
+  'negro':    { css: '#1A1A1A', label: 'Negro' },
+  'verde':    { css: '#3A8040', label: 'Verde' },
+  'rojo':     { css: '#CE2028', label: 'Rojo' },
+  'amarillo': { css: '#E8C020', label: 'Amarillo' },
+};
+
+// Parse the "color" field string (e.g. "Cristal, Caramelo o Blanco") → array of swatch objects
+function parseProductColors(colorStr) {
+  if (!colorStr) return [];
+  // Split on " o ", " y ", ", " and "/"
+  var parts = colorStr.split(/\s+[oOyY]\s+|[,\/]+/).map(function(s){ return s.trim(); });
+  var result = [];
+  var seen = {};
+  parts.forEach(function(part) {
+    var key = part.toLowerCase().replace(/[áéíóúü]/g, function(c){
+      return {á:'a',é:'e',í:'i',ó:'o',ú:'u',ü:'u'}[c]||c;
+    });
+    if (COLOR_MAP[key] && !seen[key]) {
+      seen[key] = true;
+      result.push({ key: key, css: COLOR_MAP[key].css, label: COLOR_MAP[key].label });
+    }
+  });
+  return result;
 }
 
 /* ===== CATALOG DATA ===== */
@@ -1587,6 +1620,9 @@ function renderProducts(){
 }
 
 /* ===== PRODUCT DETAIL ===== */
+// Tracks selected color for the currently open product
+window._pdSelectedColor = null;
+
 function openProductDetail(id){
   var p=PRODUCTS.find(function(x){return x.id===id;});
   if(!p)return;
@@ -1611,22 +1647,39 @@ function openProductDetail(id){
   var inserto='', observaciones='', opcion='', peso='';
   if(p.inserto){
     var raw=p.inserto;
-    // extraer Peso
     var pesoM=raw.match(/Peso[:\s]+([^.]+)/i);
     if(pesoM){peso=pesoM[1].trim();raw=raw.replace(pesoM[0],'');}
-    // extraer Observaciones
     var obsM=raw.match(/Observaciones?[:\s]+([^.]+(?:\.[^O][^b]?[^s]?[^e]?[^r]?[^v]?)?)/i);
     if(obsM){observaciones=obsM[1].trim().replace(/\.$/,'');raw=raw.replace(obsM[0],'');}
-    // extraer Opción/Opcionales
     var optM=raw.match(/Opci[oó]n(?:ales?)?[:\s]+([^.]+)/i);
     if(optM){opcion=optM[1].trim().replace(/\.$/,'');raw=raw.replace(optM[0],'');}
-    // lo que queda es el inserto propiamente dicho
     inserto=raw.replace(/\.\s*$/,'').replace(/^\.\s*/,'').trim();
   }
 
-  // Mapear categoria a texto legible
   var catLabels={'botella':'Botella','frasco':'Frasco','bidon':'Bidón'};
   var catDisplay=catLabels[p.categoria]||p.categoria||'';
+
+  // Build color swatches
+  var swatches = parseProductColors(p.color);
+  var swatchesHtml = '';
+  if (swatches.length > 0) {
+    var circlesHtml = swatches.map(function(sw) {
+      var borderStyle = sw.key === 'blanco' || sw.key === 'natural' || sw.key === 'cristal'
+        ? 'border:1.5px solid #bbb;'
+        : 'border:1.5px solid rgba(0,0,0,0.12);';
+      return '<div class="pd-swatch" data-color-key="'+sw.key+'" data-color-label="'+sw.label+'" '+
+             'style="background:'+sw.css+';'+borderStyle+'" '+
+             'onclick="selectSwatch(this,\''+sw.key+'\',\''+sw.label+'\')" '+
+             'title="'+sw.label+'">'+
+             '<span class="pd-swatch-tooltip">'+sw.label+'</span>'+
+             '</div>';
+    }).join('');
+    swatchesHtml =
+      '<div class="pd-swatches-section">'+
+        '<div class="pd-swatches-label">Color del envase<span id="pd-selected-color-name"></span></div>'+
+        '<div class="pd-swatches-row" id="pd-swatches-row">'+circlesHtml+'</div>'+
+      '</div>';
+  }
 
   document.getElementById('product-detail-body').innerHTML=
     '<div class="pd-layout">'+
@@ -1648,6 +1701,7 @@ function openProductDetail(id){
         (opcion ? row('Opción', opcion) : '')+
         (observaciones ? row('Observaciones', observaciones) : '')+
         row('Embalaje', p.embalaje ? p.embalaje+' unidades por bulto' : '')+
+        swatchesHtml+
         '<div class="pd-cart-section">'+
           '<div class="pd-qty-wrap">'+
             '<span class="pd-qty-label">'+bultoLabel+':</span>'+
@@ -1660,19 +1714,43 @@ function openProductDetail(id){
           (unidadesPorBulto > 0
             ? '<div id="pd-unidades-info" style="font-size:12px;color:#999;margin-bottom:0.75rem;">= <span id="pd-total-unidades">'+unidadesPorBulto+'</span> unidades</div>'
             : '')+
-          '<button class="pd-add-btn" id="pd-add-btn" onclick="addFromDetail(\''+p.id+'\',\''+p.nombre+'\',\''+p.capacidad+'\','+unidadesPorBulto+')">'+
+          '<div class="pd-color-warning" id="pd-color-warning">⚠ Por favor, seleccioná un color de envase antes de continuar.</div>'+
+          '<button class="pd-add-btn '+(swatches.length > 0 ? 'inactivo' : '')+'" id="pd-add-btn" '+
+            ' onclick="addFromDetail(\''+p.id+'\',\''+p.nombre+'\',\''+p.capacidad+'\','+unidadesPorBulto+')">'+
             '+ Agregar al cotizador'+
           '</button>'+
         '</div>'+
       '</div>'+
     '</div>';
 
-  // reset qty
+  // reset state
   window._pdQty = 1;
   window._pdUnidPorBulto = unidadesPorBulto;
+  window._pdSelectedColor = null;
+  window._pdHasColors = swatches.length > 0;
 }
 
-function pdQty(delta){
+function selectSwatch(el, colorKey, colorLabel) {
+  // Deselect all
+  var row = document.getElementById('pd-swatches-row');
+  if (row) {
+    row.querySelectorAll('.pd-swatch').forEach(function(s){ s.classList.remove('selected'); });
+  }
+  // Select clicked
+  el.classList.add('selected');
+  window._pdSelectedColor = { key: colorKey, label: colorLabel };
+  // Update label
+  var nameEl = document.getElementById('pd-selected-color-name');
+  if (nameEl) nameEl.textContent = ': ' + colorLabel;
+  // Enable button
+  var btn = document.getElementById('pd-add-btn');
+  if (btn) btn.classList.remove('inactivo');
+  // Hide warning
+  var warn = document.getElementById('pd-color-warning');
+  if (warn) warn.style.display = 'none';
+}
+
+function pdQty(delta) {
   window._pdQty = Math.max(1, (window._pdQty||1) + delta);
   document.getElementById('pd-qty-val').textContent = window._pdQty;
   var totalEl = document.getElementById('pd-total-unidades');
@@ -1680,15 +1758,41 @@ function pdQty(delta){
 }
 
 function addFromDetail(id, nombre, capacidad, unidPorBulto){
+  // Validate color selection
+  if (window._pdHasColors && !window._pdSelectedColor) {
+    var warn = document.getElementById('pd-color-warning');
+    if (warn) warn.style.display = 'block';
+    var btn = document.getElementById('pd-add-btn');
+    if (btn) { btn.style.transform='scale(0.98)'; setTimeout(function(){if(btn)btn.style.transform='';},200); }
+    return;
+  }
+
   var bultos = window._pdQty || 1;
   var totalUnid = unidPorBulto > 0 ? bultos * unidPorBulto : bultos;
-  var ex = cart.find(function(i){return i.id===id;});
+  var colorLabel = window._pdSelectedColor ? window._pdSelectedColor.label : null;
+
+  // Build a unique key per product+color combination
+  var cartKey = id + (colorLabel ? '__' + colorLabel : '');
+  var ex = cart.find(function(i){ return i.cartKey === cartKey; });
   if(!ex){
-    cart.push({id:id, name:nombre, cap:capacidad+' cc', qty:bultos, unidades:totalUnid, unidPorBulto:unidPorBulto});
+    cart.push({
+      cartKey: cartKey,
+      id: id,
+      name: nombre,
+      cap: capacidad+' cc',
+      qty: bultos,
+      unidades: totalUnid,
+      unidPorBulto: unidPorBulto,
+      color: colorLabel
+    });
   } else {
     ex.qty += bultos;
     ex.unidades = (ex.unidades||0) + totalUnid;
   }
+
+  // Save to localStorage
+  try { localStorage.setItem('amoplast_cart', JSON.stringify(cart)); } catch(e){}
+
   var btn = document.getElementById('pd-add-btn');
   if(btn){btn.textContent='✓ Agregado';btn.style.background='#5a9e5a';}
   setTimeout(function(){
@@ -1726,35 +1830,81 @@ function rendItems(){
     var subInfo = it.unidPorBulto > 0
       ? it.qty+' bulto'+(it.qty>1?'s':'')+' · '+it.unidades+' unid.'
       : it.cap;
+    if (it.color) subInfo += ' · ' + it.color;
+    var rmKey = it.cartKey || it.id;
     d.innerHTML='<div class="ci-info"><div class="ci-name">'+it.name+'</div><div class="ci-sub">'+subInfo+'</div></div>'+
-      '<div class="ci-qty"><button class="q-btn" onclick="chQ(\''+it.id+'\',-1)">−</button><span class="q-val">'+it.qty+'</span><button class="q-btn" onclick="chQ(\''+it.id+'\',1)">+</button></div>'+
-      '<button class="ci-rm" onclick="rmIt(\''+it.id+'\')">×</button>';
+      '<div class="ci-qty"><button class="q-btn" onclick="chQ(\''+rmKey+'\',-1)">−</button><span class="q-val">'+it.qty+'</span><button class="q-btn" onclick="chQ(\''+rmKey+'\',1)">+</button></div>'+
+      '<button class="ci-rm" onclick="rmIt(\''+rmKey+'\')">×</button>';
     c.appendChild(d);
   });
 }
-function chQ(id,d){
-  var it=cart.find(function(i){return i.id===id;});
+function chQ(key,d){
+  var it=cart.find(function(i){return (i.cartKey||i.id)===key;});
   if(it){
     it.qty=Math.max(1,it.qty+d);
     if(it.unidPorBulto>0) it.unidades=it.qty*it.unidPorBulto;
   }
+  try { localStorage.setItem('amoplast_cart', JSON.stringify(cart)); } catch(e){}
   updCount();rendItems();
 }
-function rmIt(id){
-  cart=cart.filter(function(i){return i.id!==id;});
-  var b=document.getElementById('btn-'+id);if(b){b.textContent='+ Agregar al cotizador';b.className='prod-add';}
+function rmIt(key){
+  cart=cart.filter(function(i){return (i.cartKey||i.id)!==key;});
+  try { localStorage.setItem('amoplast_cart', JSON.stringify(cart)); } catch(e){}
   updCount();rendItems();
 }
 function openCart(){document.getElementById('cart-overlay').style.display='block';rendItems();}
 function closeCart(){document.getElementById('cart-overlay').style.display='none';}
 function closeOut(e){if(e.target===document.getElementById('cart-overlay'))closeCart();}
-function submitQuote(){
-  document.getElementById('cart-form').style.display='none';document.getElementById('cart-ok').style.display='block';
+
+function submitQuote(event){
+  event.preventDefault(); // Evita que la página salte o se recargue
+
+  // Capturar datos del cliente
+  var nombre = document.getElementById('c-nombre').value;
+  var empresa = document.getElementById('c-empresa').value;
+  var loc = document.getElementById('c-localidad').value;
+  var tel = document.getElementById('c-tel').value;
+  var notas = document.getElementById('cart-note').value;
+
+  // Armar el cuerpo del correo
+  var body = "DATOS DEL CLIENTE:\n";
+  body += "- Empresa: " + empresa + "\n";
+  body += "- Contacto: " + nombre + "\n";
+  body += "- Ubicación: " + loc + "\n";
+  body += "- Teléfono: " + tel + "\n\n";
+
+  body += "DETALLE DEL PEDIDO:\n";
+  cart.forEach(function(it) {
+    var subInfo = it.unidPorBulto > 0 ? it.qty + " bultos (" + it.unidades + " unid.)" : it.qty + " unidades";
+    var colorInfo = it.color ? " - Color: " + it.color : "";
+    body += "• " + it.name + " | " + subInfo + colorInfo + "\n";
+  });
+
+  if(notas) {
+    body += "\nACLARACIONES:\n" + notas + "\n";
+  }
+
+  // Crear y abrir el enlace mailto usando encodeURIComponent para no romper caracteres especiales
+  var asunto = "Pedido de Cotización Web - " + empresa;
+  var mailtoLink = "mailto:amoplast@amoplast.com.ar?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(body);
+  
+  window.location.href = mailtoLink;
+
+  // Mostrar mensaje de éxito y vaciar carrito visualmente
+  document.getElementById('cart-form').style.display = 'none';
+  document.getElementById('cart-ok').style.display = 'block';
+  
   setTimeout(function(){
-    document.getElementById('cart-form').style.display='block';document.getElementById('cart-ok').style.display='none';
-    cart=[];document.getElementById('cart-note').value='';updCount();rendItems();
-  },3000);
+    document.getElementById('cart-form').style.display = 'block';
+    document.getElementById('cart-ok').style.display = 'none';
+    cart = [];
+    try { localStorage.setItem('amoplast_cart', JSON.stringify(cart)); } catch(e){}
+    document.getElementById('cart-form').reset(); // Limpia los inputs
+    updCount();
+    rendItems();
+  }, 4000);
 }
+
 function openMap(){window.open('https://maps.google.com/?q=Blvd.+27+de+Febrero+80+bis,+Rosario,+Santa+Fe,+Argentina','_blank');}
 </script>
 </body>

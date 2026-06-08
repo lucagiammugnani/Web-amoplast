@@ -597,6 +597,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <div class="nav-links">
     <a onclick="document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
     <a onclick="openCatalog()">Catálogo</a>
+    <a onclick="document.getElementById('s-certificaciones').scrollIntoView({behavior:'smooth'})">Certificaciones</a>
     <a onclick="document.getElementById('s-sede').scrollIntoView({behavior:'smooth'})">Locaciones</a>
     <a onclick="document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
     <button class="cart-btn" onclick="openCart()">
@@ -619,6 +620,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 <div class="nav-mobile-menu" id="nav-mobile-menu">
   <a onclick="closeMobileMenu();document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
   <a onclick="closeMobileMenu();openCatalog()">Catálogo</a>
+  <a onclick="closeMobileMenu();document.getElementById('s-certificaciones').scrollIntoView({behavior:'smooth'})">Certificaciones</a>
   <a onclick="closeMobileMenu();document.getElementById('s-sede').scrollIntoView({behavior:'smooth'})">Locaciones</a>
   <a onclick="closeMobileMenu();document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
 </div>
@@ -712,22 +714,22 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <div class="slide active" id="slide-0">
     <div class="slide-bg" id="bg-0"></div><div class="slide-overlay"></div>
     <div class="slide-content">
-      <h2>Tecnología de precisión en cada envase</h2>
-      <p>Nuestra planta cuenta con maquinaria de última generación que garantiza la máxima calidad en cada pieza que fabricamos.</p>
+      <h2>Más de 60 años siendo referentes del packaging industrial</h2>
+      <p>Desde 1963, la primera fábrica de envases plásticos del interior del país. Una trayectoria construida con trabajo, calidad y confianza.</p>
     </div>
   </div>
   <div class="slide" id="slide-1">
     <div class="slide-bg" id="bg-1"></div><div class="slide-overlay"></div>
     <div class="slide-content">
-      <h2>Llegamos a donde vos necesitás</h2>
-      <p>Contamos con flota propia de transporte para entregar tus pedidos en tiempo y forma a cualquier punto del país.</p>
+      <h2>Tecnología de precisión en cada envase</h2>
+      <p>Nuestra planta cuenta con maquinaria de última generación que garantiza la máxima calidad en cada pieza que fabricamos.</p>
     </div>
   </div>
   <div class="slide" id="slide-2">
     <div class="slide-bg" id="bg-2"></div><div class="slide-overlay"></div>
     <div class="slide-content">
-      <h2>Más de 60 años siendo referentes del packaging industrial</h2>
-      <p>Desde 1963, la primera fábrica de envases plásticos del interior del país. Una trayectoria construida con trabajo, calidad y confianza.</p>
+      <h2>Llegamos a donde vos necesitás</h2>
+      <p>Contamos con flota propia de transporte para entregar tus pedidos en tiempo y forma a cualquier punto del país.</p>
     </div>
   </div>
   <div class="hero-seal"><img src="" alt="Sello Amoplast" onerror="this.parentElement.style.display='none'"></div>
@@ -755,6 +757,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
     </div>
   </div>
 </div>
+
 
 <section class="section-cream" id="s-catalogo" style="padding:4rem 0;">
   <div class="sec-title">Catálogo de productos</div>
@@ -971,6 +974,9 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   </div>
 </div>
 
+
+
+<!-- ===== CERTIFICACIONES ===== -->
 <div class="section" id="s-certificaciones">
   <div class="sec-title">Nuestras certificaciones</div>
   <div class="sec-div"></div>
@@ -978,90 +984,81 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
   <div class="cert-logos">
 
-    <a href="certificacion-assal.pdf" target="_blank" style="text-decoration:none">
-      <div class="cert-logo-btn" style="flex-direction:column;gap:0.5rem;min-width:210px;height:auto;padding:1.5rem 1.75rem;">
-        <div style="width:40px;height:40px;background:var(--red-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <div style="text-align:center;">
-          <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:3px;">Certificado de Establecimiento</div>
-          <div style="font-size:11px;color:#aaa;line-height:1.4;">Habilitación ASSAL<br>Amoplast SA</div>
-        </div>
-        <div style="font-size:10px;color:#CE2028;font-weight:600;display:flex;align-items:center;gap:4px;margin-top:2px;">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Ver certificado
-        </div>
+    <div class="cert-logo-btn" onclick="openCert('CERTIFICADO-AMOPLAST.jpg')" style="flex-direction:column;gap:0.5rem;min-width:210px;height:auto;padding:1.5rem 1.75rem;">
+      <div style="width:40px;height:40px;background:var(--red-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
       </div>
-    </a>
+      <div style="text-align:center;">
+        <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:3px;">Certificado de Establecimiento</div>
+        <div style="font-size:11px;color:#aaa;line-height:1.4;">Habilitación ASSAL<br>Amoplast SA</div>
+      </div>
+      <div style="font-size:10px;color:#CE2028;font-weight:600;display:flex;align-items:center;gap:4px;margin-top:2px;">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Ver certificado
+      </div>
+    </div>
 
-    <div class="cert-logo-btn" onclick="openAnmat()" style="flex-direction:column;gap:0.5rem;min-width:210px;height:auto;padding:1.5rem 1.75rem;">
+    <div class="cert-logo-btn" onclick="openEnvasesCerts()" style="flex-direction:column;gap:0.5rem;min-width:210px;height:auto;padding:1.5rem 1.75rem;">
       <div style="width:40px;height:40px;background:var(--red-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 9.5-8 11C7.5 21.5 4 17 4 12V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg>
       </div>
       <div style="text-align:center;">
         <div style="font-size:13px;font-weight:700;color:var(--red);margin-bottom:3px;">Envases Aptos para Alimentos</div>
-        <div style="font-size:11px;color:#aaa;line-height:1.4;">Certificados ASSAL<br>por material del envase</div>
+        <div style="font-size:11px;color:#aaa;line-height:1.4;">6 certificados ASSAL<br>por material del envase</div>
       </div>
       <div style="font-size:10px;color:#CE2028;font-weight:600;display:flex;align-items:center;gap:4px;margin-top:2px;">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        Ver los certificados
+        Ver los 6 certificados
       </div>
     </div>
 
   </div>
 </div>
 
-<div class="cert-overlay" id="cert-overlay">
+<!-- Overlay con todos los certificados de envases aptos (imágenes directas) -->
+<div class="cert-overlay" id="envases-cert-overlay">
   <div class="cert-inner">
     <div class="cert-topbar">
-      <button class="cat-back" onclick="closeAnmat()">
+      <button class="cat-back" onclick="closeEnvasesCerts()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         Volver
       </button>
       <div class="cat-page-title">Certificados ASSAL — Envases aptos para alimentos</div>
     </div>
-
-    <p style="font-size:13px;color:#999;margin-bottom:1.5rem;">Seleccioná un certificado para verlo:</p>
-
-    <div class="cert-list">
-      <div class="cert-item" onclick="showCert('assal-envases-1.pdf','Certificado ASSAL N°1')">
-        <div class="cert-item-num">01</div>
-        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 1<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+    <div style="display:flex;flex-direction:column;gap:2rem;padding-bottom:2rem;">
+      <div style="text-align:center;">
+        <div style="font-size:12px;color:#CE2028;font-weight:700;margin-bottom:6px;">RNPE 21-000141 · Envases PEAD Blanco</div>
+        <img src="Certificado-PEAD-Blanco.jpg" alt="Certificado PEAD Blanco" style="max-width:100%;width:580px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.1);border:1px solid #e8ddd5;">
       </div>
-      <div class="cert-item" onclick="showCert('assal-envases-2.pdf','Certificado ASSAL N°2')">
-        <div class="cert-item-num">02</div>
-        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 2<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;color:#CE2028;font-weight:700;margin-bottom:6px;">RNPE 21-000139 · Envases PEAD Natural</div>
+        <img src="Certificado-PEAD-Natural.jpg" alt="Certificado PEAD Natural" style="max-width:100%;width:580px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.1);border:1px solid #e8ddd5;">
       </div>
-      <div class="cert-item" onclick="showCert('assal-envases-3.pdf','Certificado ASSAL N°3')">
-        <div class="cert-item-num">03</div>
-        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 3<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;color:#CE2028;font-weight:700;margin-bottom:6px;">RNPE 21-000153 · Tapas PEBD Color Blanco</div>
+        <img src="Certificado-PEBD-TapasBlancas.jpg" alt="Certificado PEBD Tapas Blancas" style="max-width:100%;width:580px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.1);border:1px solid #e8ddd5;">
       </div>
-      <div class="cert-item" onclick="showCert('assal-envases-4.pdf','Certificado ASSAL N°4')">
-        <div class="cert-item-num">04</div>
-        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 4<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;color:#CE2028;font-weight:700;margin-bottom:6px;">RNPE 21-000196 · Envases PET Cristal</div>
+        <img src="Certificado-PET-Cristal.jpg" alt="Certificado PET Cristal" style="max-width:100%;width:580px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.1);border:1px solid #e8ddd5;">
       </div>
-      <div class="cert-item" onclick="showCert('assal-envases-5.pdf','Certificado ASSAL N°5')">
-        <div class="cert-item-num">05</div>
-        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 5<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;color:#CE2028;font-weight:700;margin-bottom:6px;">RNPE 21-000152 · Envases PVC Cristal</div>
+        <img src="Certificado-PVC-Cristal.jpg" alt="Certificado PVC Cristal" style="max-width:100%;width:580px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.1);border:1px solid #e8ddd5;">
       </div>
-      <div class="cert-item" onclick="showCert('assal-envases-6.pdf','Certificado ASSAL N°6')">
-        <div class="cert-item-num">06</div>
-        <div class="cert-item-label">Certificado ASSAL<br>Envases N° 6<br><span style="font-size:10px;color:#bbb;">(reemplazar nombre)</span></div>
+      <div style="text-align:center;">
+        <div style="font-size:12px;color:#CE2028;font-weight:700;margin-bottom:6px;">RNPE 21-000153 · Tapas PEAD</div>
+        <img src="assal_certificado_tapas_PE_AD.jpg" alt="Certificado Tapas PE AD" style="max-width:100%;width:580px;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,0.1);border:1px solid #e8ddd5;">
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="cert-viewer" id="cert-viewer">
-      <div class="cert-viewer-header">
-        <span id="cert-viewer-title">Certificación</span>
-        <button class="cert-viewer-close" onclick="closeCert()">×</button>
-      </div>
-      <iframe id="cert-viewer-frame" src="" title="Certificación PDF"></iframe>
-      <div class="cert-viewer-fallback">
-        <p style="font-size:12px;color:#aaa;margin-bottom:0.5rem;">Si el PDF no carga en el visor,</p>
-        <a id="cert-viewer-link" href="#" target="_blank">hacé clic aquí para abrirlo</a>
-      </div>
-    </div>
-
+<!-- Modal imagen única (certificado de establecimiento) -->
+<div id="cert-modal" onclick="closeCert()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:400;align-items:center;justify-content:center;padding:1.5rem;">
+  <div style="position:relative;max-width:680px;width:100%;max-height:92vh;overflow-y:auto;">
+    <button onclick="closeCert()" style="position:absolute;top:-14px;right:-14px;background:#CE2028;color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;z-index:1;display:flex;align-items:center;justify-content:center;line-height:1;">×</button>
+    <img id="cert-modal-img" src="" alt="Certificado" style="width:100%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.4);">
   </div>
 </div>
 
@@ -1117,30 +1114,6 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
 <script>
 /* ===== CERTIFICACIONES ===== */
-function openAnmat(){
-  document.getElementById('cert-overlay').classList.add('open');
-  document.getElementById('cert-overlay').scrollTop=0;
-  closeCert();
-}
-function closeAnmat(){
-  document.getElementById('cert-overlay').classList.remove('open');
-}
-function showCert(file, title){
-  var viewer=document.getElementById('cert-viewer');
-  var frame=document.getElementById('cert-viewer-frame');
-  var titleEl=document.getElementById('cert-viewer-title');
-  var link=document.getElementById('cert-viewer-link');
-  titleEl.textContent=title;
-  frame.src=file;
-  link.href=file;
-  viewer.classList.add('open');
-  viewer.scrollIntoView({behavior:'smooth',block:'start'});
-}
-function closeCert(){
-  var viewer=document.getElementById('cert-viewer');
-  viewer.classList.remove('open');
-  document.getElementById('cert-viewer-frame').src='';
-}
 
 /* ===== MOBILE NAV ===== */
 function toggleMobileMenu(){
@@ -1216,18 +1189,18 @@ function moveSlide(d){goSlide(cur+d);}
 buildDots();
 timer=setInterval(function(){moveSlide(1);},5000);
 (function setBgs(){
-  var colors=['#1e2a1a','#0f1a28','#1a1410'];
+  var colors=['#1a1410','#1e2a1a','#0f1a28'];
   for(var i=0;i<3;i++){
     var bg=document.getElementById('bg-'+i);
     bg.style.backgroundColor=colors[i];
     bg.style.backgroundImage='repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0,rgba(255,255,255,0.02) 1px,transparent 0,transparent 50%)';
     bg.style.backgroundSize='22px 22px';
   }
-  // Foto de la planta para el slide "Más de 60 años"
-  var bg2=document.getElementById('bg-2');
-  bg2.style.backgroundImage='url("Foto-planta-Amoplast.png")';
-  bg2.style.backgroundSize='cover';
-  bg2.style.backgroundPosition='center';
+  // Foto de la planta para el slide "Más de 60 años" (ahora es slide-0)
+  var bg0=document.getElementById('bg-0');
+  bg0.style.backgroundImage='url("Foto-planta-Amoplast.png")';
+  bg0.style.backgroundSize='cover';
+  bg0.style.backgroundPosition='center';
 })();
 
 /* ===== CATALOG OVERLAY ===== */
@@ -1942,6 +1915,28 @@ function submitQuote(event){
 }
 
 function openMap(){window.open('https://maps.google.com/?q=Blvd.+27+de+Febrero+80+bis,+Rosario,+Santa+Fe,+Argentina','_blank');}
+
+function openCert(filename){
+  var modal=document.getElementById('cert-modal');
+  document.getElementById('cert-modal-img').src=filename;
+  modal.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeCert(){
+  document.getElementById('cert-modal').style.display='none';
+  document.getElementById('cert-modal-img').src='';
+  document.body.style.overflow='';
+}
+function openEnvasesCerts(){
+  var ov=document.getElementById('envases-cert-overlay');
+  ov.classList.add('open');
+  ov.scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+function closeEnvasesCerts(){
+  document.getElementById('envases-cert-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
 </script>
 </body>
 </html>

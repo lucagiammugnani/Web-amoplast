@@ -220,7 +220,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0.75rem;max-width:960px;margin:0 auto}
 .product-card{background:#fff;border:1px solid #e5dbd4;border-radius:10px;padding:1rem;text-align:center;display:none}
 .product-card.visible{display:block}
-.prod-img{width:56px;height:68px;background:var(--red-light);border-radius:6px;margin:0 auto 0.6rem;display:flex;align-items:center;justify-content:center}
+.prod-img{width:100%;height:120px;background:var(--red-light);border-radius:6px;margin:0 auto 0.6rem;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.prod-img img{width:100%;height:100%;object-fit:contain;object-position:center;padding:8px;display:block}
 .prod-code{font-size:11px;color:#bbb}
 .prod-cap{font-size:15px;font-weight:500;color:var(--red)}
 .prod-desc{font-size:11px;color:#aaa;margin-top:3px;line-height:1.4}
@@ -1249,20 +1250,20 @@ function parseProductColors(colorStr) {
 /* ===== CATALOG DATA ===== */
 var PRODUCTS=[
   // LÍNEA A 
-  {id:'A-15/15', linea:'A',nombre:'A-15/15', categoria:'botella', capacidad:15,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'70 mm', diaCuerpo:'34 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
-  {id:'A-30/15', linea:'A',nombre:'A-30/15', categoria:'botella', capacidad:30,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'81 mm', diaCuerpo:'42 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
-  {id:'A-60/15', linea:'A',nombre:'A-60/15', categoria:'botella', capacidad:60,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'92 mm', diaCuerpo:'50 mm',diaBoca:'10 mm',embalaje:'400',foto:''},
-  {id:'A-120/15',linea:'A',nombre:'A-120/15',categoria:'botella', capacidad:120, material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'115 mm',diaCuerpo:'67 mm',diaBoca:'10 mm',embalaje:'500',foto:''},
+  {id:'A-15/15', linea:'A',nombre:'A-15/15', categoria:'botella', capacidad:15,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'70 mm', diaCuerpo:'34 mm',diaBoca:'10 mm',embalaje:'500',foto:'A15-15.png'},
+  {id:'A-30/15', linea:'A',nombre:'A-30/15', categoria:'botella', capacidad:30,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'81 mm', diaCuerpo:'42 mm',diaBoca:'10 mm',embalaje:'500',foto:'A30-15.png'},
+  {id:'A-60/15', linea:'A',nombre:'A-60/15', categoria:'botella', capacidad:60,  material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'92 mm', diaCuerpo:'50 mm',diaBoca:'10 mm',embalaje:'400',foto:'A60-15.png'},
+  {id:'A-120/15',linea:'A',nombre:'A-120/15',categoria:'botella', capacidad:120, material:'PEBD',color:'Natural',cierre:'A rosca',colorTapa:'Blanca',inserto:'Ciego o Perforado',altTotal:'115 mm',diaCuerpo:'67 mm',diaBoca:'10 mm',embalaje:'500',foto:'A120-15.png'},
   // LÍNEA AG — Envases PEAD
-  {id:'AG-500/46', linea:'AG',nombre:'AG-500/46', categoria:'botella',capacidad:500, material:'PEAD',color:'Blanco',cierre:'A rosca con precinto de seguridad',colorTapa:'Blanca',inserto:'',altTotal:'150 mm',diaCuerpo:'86 mm',diaBoca:'38 mm',embalaje:'90',foto:''},
-  {id:'AG-1000/46',linea:'AG',nombre:'AG-1000/46',categoria:'botella',capacidad:1000,material:'PEAD',color:'Blanco o Natural',cierre:'A rosca con precinto de seguridad',colorTapa:'Blanca',inserto:'',altTotal:'242 mm',diaCuerpo:'86 mm',diaBoca:'38 mm',embalaje:'78',foto:''},
+  {id:'AG-500/46', linea:'AG',nombre:'AG-500/46', categoria:'botella',capacidad:500, material:'PEAD',color:'Blanco',cierre:'A rosca con precinto de seguridad',colorTapa:'Blanca',inserto:'',altTotal:'150 mm',diaCuerpo:'86 mm',diaBoca:'38 mm',embalaje:'90',foto:'AG500-46.png'},
+  {id:'AG-1000/46',linea:'AG',nombre:'AG-1000/46',categoria:'botella',capacidad:1000,material:'PEAD',color:'Blanco o Natural',cierre:'A rosca con precinto de seguridad',colorTapa:'Blanca',inserto:'',altTotal:'242 mm',diaCuerpo:'86 mm',diaBoca:'38 mm',embalaje:'78',foto:'AG1000-46.png'},
   // LÍNEA AP — Envases PET
-  {id:'AP-1000/45',linea:'AP',nombre:'AP-1000/45',categoria:'botella',capacidad:1000,material:'PET', color:'Cristal, Blanco o Caramelo',cierre:'A rosca con precinto de seguridad',colorTapa:'Blanca',inserto:'',altTotal:'242 mm',diaCuerpo:'86 mm',diaBoca:'38 mm',embalaje:'72',foto:''},
+  {id:'AP-1000/45',linea:'AP',nombre:'AP-1000/45',categoria:'botella',capacidad:1000,material:'PET', color:'Cristal, Blanco o Caramelo',cierre:'A rosca con precinto de seguridad',colorTapa:'Blanca',inserto:'',altTotal:'242 mm',diaCuerpo:'86 mm',diaBoca:'38 mm',embalaje:'72',foto:'AP1000-45-COLORES.png'},
   // LÍNEA B
-  {id:'B-30/15', linea:'B', nombre:'B-30/15', categoria:'botella', capacidad:30,  material:'PEAD', color:'Blanco', cierre:'A rosca', colorTapa:'Blanca', inserto:'Ciego o Perforado', altTotal:'91 mm', diaCuerpo:'31 mm', diaBoca:'10 mm', embalaje:'500 unidades', foto:''},
-  {id:'B-60/20', linea:'B', nombre:'B-60/20', categoria:'botella', capacidad:60,  material:'PEAD', color:'Blanco', cierre:'A rosca', colorTapa:'Blanca', inserto:'', altTotal:'93 mm', diaCuerpo:'40 mm', diaBoca:'10 mm', embalaje:'400 unidades', foto:''},
-  {id:'B-30/E',  linea:'B', nombre:'B-30/E',  categoria:'botella', capacidad:30,  material:'PEAD', color:'Blanco', cierre:'A rosca y espátula', colorTapa:'Blanca', inserto:'', altTotal:'82 mm', diaCuerpo:'31 mm', diaBoca:'15 mm', embalaje:'500 unidades', foto:''},
-  {id:'B-60/E',  linea:'B', nombre:'B-60/E',  categoria:'botella', capacidad:60,  material:'PEAD', color:'Blanco', cierre:'A rosca y espátula', colorTapa:'Blanca', inserto:'', altTotal:'83 mm', diaCuerpo:'40 mm', diaBoca:'15 mm', embalaje:'400 unidades', foto:''},
+  {id:'B-30/15', linea:'B', nombre:'B-30/15', categoria:'botella', capacidad:30,  material:'PEAD', color:'Blanco', cierre:'A rosca', colorTapa:'Blanca', inserto:'Ciego o Perforado', altTotal:'91 mm', diaCuerpo:'31 mm', diaBoca:'10 mm', embalaje:'500 unidades', foto:'B30-15.png'},
+  {id:'B-60/20', linea:'B', nombre:'B-60/20', categoria:'botella', capacidad:60,  material:'PEAD', color:'Blanco', cierre:'A rosca', colorTapa:'Blanca', inserto:'', altTotal:'93 mm', diaCuerpo:'40 mm', diaBoca:'10 mm', embalaje:'400 unidades', foto:'B60-20.png'},
+  {id:'B-30/E',  linea:'B', nombre:'B-30/E',  categoria:'botella', capacidad:30,  material:'PEAD', color:'Blanco', cierre:'A rosca y espátula', colorTapa:'Blanca', inserto:'', altTotal:'82 mm', diaCuerpo:'31 mm', diaBoca:'15 mm', embalaje:'500 unidades', foto:'B30-E.png'},
+  {id:'B-60/E',  linea:'B', nombre:'B-60/E',  categoria:'botella', capacidad:60,  material:'PEAD', color:'Blanco', cierre:'A rosca y espátula', colorTapa:'Blanca', inserto:'', altTotal:'83 mm', diaCuerpo:'40 mm', diaBoca:'15 mm', embalaje:'400 unidades', foto:'B60-E.png'},
   // LÍNEA C
   {id:'C-60/20',   linea:'C', nombre:'C-60/20',   categoria:'botella', capacidad:60,   material:'PEAD', color:'Natural', cierre:'A rosca con precinto de seguridad', colorTapa:'Blanca', inserto:'', altTotal:'84 mm', diaCuerpo:'40 mm', diaBoca:'15 mm', embalaje:'350 unidades', foto:''},
   {id:'C-100/20',  linea:'C', nombre:'C-100/20',  categoria:'botella', capacidad:100,  material:'PEAD', color:'Natural', cierre:'A rosca con precinto de seguridad', colorTapa:'Blanca', inserto:'', altTotal:'96 mm', diaCuerpo:'47 mm', diaBoca:'15 mm', embalaje:'500 unidades', foto:''},
@@ -1614,7 +1615,7 @@ function renderProducts(){
     card.style.cursor='pointer';
     card.onclick=function(){openProductDetail(p.id);};
     var imgHtml = p.foto
-      ? '<img src="'+p.foto+'" alt="'+p.nombre+'" style="width:100%;height:100%;object-fit:contain;">'
+      ? '<img src="'+p.foto+'" alt="'+p.nombre+'">'
       : '<svg width="28" height="36" viewBox="0 0 24 32" fill="none" stroke="#e0c8c0" stroke-width="1.2"><rect x="4" y="6" width="16" height="22" rx="3"/><rect x="8" y="2" width="8" height="5" rx="1.5"/></svg>';
     card.innerHTML=
       '<div class="prod-img">'+imgHtml+'</div>'+

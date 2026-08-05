@@ -637,7 +637,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
   <div class="nav-links">
     <a onclick="document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
-    <a onclick="openCatalog()">Catálogo</a>
+    <a onclick="scrollToCatalogo()">Catálogo</a>
     <a onclick="document.getElementById('s-sede').scrollIntoView({behavior:'smooth'})">Locaciones</a>
     <a onclick="document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
     <button class="cart-btn" onclick="openCart()">
@@ -659,7 +659,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
 <div class="nav-mobile-menu" id="nav-mobile-menu">
   <a onclick="closeMobileMenu();document.getElementById('s-nosotros').scrollIntoView({behavior:'smooth'})">Nosotros</a>
-  <a onclick="closeMobileMenu();openCatalog()">Catálogo</a>
+  <a onclick="closeMobileMenu();scrollToCatalogo()">Catálogo</a>
   <a onclick="closeMobileMenu();document.getElementById('s-sede').scrollIntoView({behavior:'smooth'})">Locaciones</a>
   <a onclick="closeMobileMenu();document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
 </div>
@@ -715,7 +715,14 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
         <div class="mode-label">Capacidad</div><div class="mode-sub">0 cc — +5000 cc</div>
       </div>
       <div class="mode-btn" id="mode-material" onclick="setMode('material')">
-        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 20 20"><text x="10" y="16" font-size="16" text-anchor="middle" fill="#CE2028" font-family="sans-serif">♻</text></svg></div>
+        <div class="mode-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CE2028" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/>
+          <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/>
+          <path d="m14 16-3 3 3 3"/>
+          <path d="M8.293 13.596 7.196 9.5l-4.096 1.097"/>
+          <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 12 3a1.83 1.83 0 0 1 1.563.918l4.096 7.09"/>
+          <path d="m13.378 9.633 4.096 1.098 1.097-4.096"/>
+        </svg></div>
         <div class="mode-label">Material</div><div class="mode-sub">PET · PEAD · PVC · PEBD</div>
       </div>
       <div class="mode-btn" id="mode-linea" onclick="setMode('linea')">
@@ -878,9 +885,14 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 26 26">
-  <text x="13" y="21" font-size="22" text-anchor="middle" fill="#fff" font-family="sans-serif">♻</text>
-</svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/>
+            <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/>
+            <path d="m14 16-3 3 3 3"/>
+            <path d="M8.293 13.596 7.196 9.5l-4.096 1.097"/>
+            <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 12 3a1.83 1.83 0 0 1 1.563.918l4.096 7.09"/>
+            <path d="m13.378 9.633 4.096 1.098 1.097-4.096"/>
+          </svg>
         </div>
         <div class="cat-card-home-label">Material</div>
         <div class="cat-card-home-sub">PET · PEAD<br>PVC · PEBD</div>
@@ -1272,12 +1284,21 @@ timer=setInterval(function(){moveSlide(1);},5000);
   bg0.style.backgroundImage='url("Foto-planta-Amoplast.png")';
   bg0.style.backgroundSize='cover';
   bg0.style.backgroundPosition='center';
-  // Foto del camión para el slide "Llegamos a donde vos necesitás" 
+  // Foto del camión de reparto para el slide "Llegamos a donde vos necesitás" (slide-2)
   var bg2=document.getElementById('bg-2');
   bg2.style.backgroundImage='url("foto_camion.jpg.jpeg")';
   bg2.style.backgroundSize='cover';
   bg2.style.backgroundPosition='center';
 })();
+
+/* ===== NAV: IR A SECCIÓN CATÁLOGO (home) ===== */
+function scrollToCatalogo(){
+  closeHistoria();
+  closeCatalog();
+  closeClients();
+  var target=document.getElementById('s-catalogo');
+  if(target){target.scrollIntoView({behavior:'smooth',block:'start'});}
+}
 
 /* ===== HISTORIA OVERLAY ===== */
 function openHistoria(){

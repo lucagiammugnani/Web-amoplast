@@ -91,6 +91,46 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .stat-label{font-size:14px;color:#444;font-weight:600;margin-top:auto}
 .stat:first-child .stat-num{font-size:72px;font-weight:900}
 
+/* ========= ABOUT "VER MÁS" BUTTON ========= */
+.about-more-btn{
+  background:var(--red);color:#fff;border:none;
+  border-radius:50px;padding:13px 34px;
+  font-size:14px;font-weight:600;
+  cursor:pointer;font-family:'Montserrat',sans-serif;
+  transition:background 0.18s,transform 0.15s,box-shadow 0.15s;
+  box-shadow:0 4px 16px rgba(206,32,40,0.25);
+}
+.about-more-btn:hover{background:#A31820;transform:translateY(-1px);box-shadow:0 6px 20px rgba(206,32,40,0.32)}
+
+/* ========= HISTORIA SUBPAGE OVERLAY ========= */
+.historia-overlay{
+  display:none;
+  position:fixed;
+  top:var(--nav-h);left:0;right:0;bottom:0;
+  background:var(--cream);
+  z-index:90;
+  overflow-y:auto;
+}
+.historia-overlay.open{display:block;animation:catIn 0.25s ease;}
+.historia-inner{padding:2rem 2rem 4rem;max-width:1100px;margin:0 auto;}
+.historia-topbar{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
+.historia-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.historia-block{display:flex;flex-direction:column;}
+.historia-block p{font-size:16px;line-height:1.7;color:#4a403c;margin-bottom:1.5rem;}
+.historia-photo{width:100%;border-radius:4px;display:block;}
+.historia-photo-bw{filter:grayscale(100%) contrast(1.05);border:6px solid #1a1410;box-shadow:0 6px 20px rgba(0,0,0,0.25);}
+.historia-photo-vintage{filter:sepia(0.45) saturate(0.75) contrast(0.92) brightness(0.92);opacity:0.9;box-shadow:0 6px 20px rgba(0,0,0,0.2);position:relative;}
+.historia-photo-wrap{position:relative;overflow:hidden;border-radius:4px;margin-top:0.5rem;min-height:220px;}
+.historia-photo-wrap::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(20,14,10,0.35) 100%);pointer-events:none;}
+.historia-photo-placeholder{display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#f0e6dc,#f0e6dc 10px,#e8ddd0 10px,#e8ddd0 20px);border:2px dashed #d8c9b8;min-height:240px;}
+.historia-photo-placeholder::before{content:'Espacio para foto';position:absolute;z-index:1;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#a89684;letter-spacing:0.3px;}
+.historia-photo-placeholder::after{display:none;}
+.historia-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:28px;color:var(--red);margin-bottom:1.5rem;}
+@media(max-width:800px){
+  .historia-grid{grid-template-columns:1fr;gap:1rem;}
+  .historia-title{font-size:22px;}
+}
+
 /* ========= CATALOG SUBPAGE OVERLAY ========= */
 .catalog-overlay{
   display:none;
@@ -624,6 +664,35 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   <a onclick="closeMobileMenu();document.getElementById('s-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
 </div>
 
+<div class="historia-overlay" id="historia-overlay">
+  <div class="historia-inner">
+    <div class="historia-topbar">
+      <button class="cat-back" onclick="closeHistoria()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Volver al inicio
+      </button>
+      <div class="cat-page-title">Acerca de nosotros</div>
+    </div>
+
+    <div class="historia-title">Nuestra historia</div>
+
+    <div class="historia-grid">
+      <div class="historia-block">
+        <p>Corría la década del 60 cuando Alberto Giammugnani, visionario y emprendedor, fundó Amoplast en la ciudad de Rosario con una convicción que aún nos representa. Lo que comenzó como un emprendimiento familiar se convirtió en la primera fábrica de envases plásticos del interior del país, marcando el inicio de una historia de innovación y dedicación a la industria argentina.</p>
+        <div class="historia-photo-wrap" id="historia-photo-1">
+          <img class="historia-photo historia-photo-bw" src="Alberto-Giammugnani.jpg" alt="Alberto Giammugnani, fundador de Amoplast" onerror="this.style.display='none';this.parentElement.classList.add('historia-photo-placeholder')">
+        </div>
+      </div>
+      <div class="historia-block">
+        <p>Más de seis décadas después, seguimos guiándonos por los mismos valores, sirviendo a las empresas desarrollando soluciones de packaging, respaldadas por un profundo compromiso con la calidad del producto y la dedicación a los clientes, que han definido a Amoplast desde sus comienzos.</p>
+        <div class="historia-photo-wrap" id="historia-photo-2">
+          <img class="historia-photo historia-photo-vintage" src="Fabrica-Amoplast-antigua.jpg" alt="Fábrica Amoplast en sus comienzos" onerror="this.style.display='none';this.parentElement.classList.add('historia-photo-placeholder')">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="catalog-overlay" id="catalog-overlay">
   <div class="catalog-inner">
     <div class="catalog-topbar">
@@ -753,6 +822,9 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Stock permanente</div></div>
       <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Años de experiencia</div></div>
       <div class="stat"><div class="stat-num">350+</div><div class="stat-label">Modelos de envases</div></div>
+    </div>
+    <div style="text-align:center;margin-top:1.75rem;">
+      <button class="about-more-btn" onclick="openHistoria()">Acerca de nosotros</button>
     </div>
   </div>
 </div>
@@ -1200,7 +1272,22 @@ timer=setInterval(function(){moveSlide(1);},5000);
   bg0.style.backgroundImage='url("Foto-planta-Amoplast.png")';
   bg0.style.backgroundSize='cover';
   bg0.style.backgroundPosition='center';
+  // Foto del camión para el slide "Llegamos a donde vos necesitás" 
+  var bg2=document.getElementById('bg-2');
+  bg2.style.backgroundImage='url("foto_camion.jpg.jpeg")';
+  bg2.style.backgroundSize='cover';
+  bg2.style.backgroundPosition='center';
 })();
+
+/* ===== HISTORIA OVERLAY ===== */
+function openHistoria(){
+  var ov=document.getElementById('historia-overlay');
+  ov.classList.add('open');
+  ov.scrollTop=0;
+}
+function closeHistoria(){
+  document.getElementById('historia-overlay').classList.remove('open');
+}
 
 /* ===== CATALOG OVERLAY ===== */
 function openCatalog(mode){

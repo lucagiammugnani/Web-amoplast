@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Amoplast SA — Envases Plásticos Industriales</title>
+<!-- Preload de imágenes del carrusel para carga más rápida -->
+<link rel="preload" as="image" href="Foto-planta-Amoplast.png">
+<link rel="preload" as="image" href="foto_camion.jpg.jpeg">
 </head>
 <body>
 <style>
@@ -1281,11 +1284,13 @@ timer=setInterval(function(){moveSlide(1);},5000);
   }
   // Foto de la planta para el slide "Más de 60 años" (ahora es slide-0)
   var bg0=document.getElementById('bg-0');
+  bg0.style.backgroundColor='#1a1410';
   bg0.style.backgroundImage='url("Foto-planta-Amoplast.png")';
   bg0.style.backgroundSize='cover';
   bg0.style.backgroundPosition='center';
   // Foto del camión de reparto para el slide "Llegamos a donde vos necesitás" (slide-2)
   var bg2=document.getElementById('bg-2');
+  bg2.style.backgroundColor='#1a1410';
   bg2.style.backgroundImage='url("foto_camion.jpg.jpeg")';
   bg2.style.backgroundSize='cover';
   bg2.style.backgroundPosition='center';

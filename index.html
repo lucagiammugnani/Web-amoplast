@@ -163,7 +163,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .mode-label{font-size:12px;font-weight:600;color:var(--red);letter-spacing:0.02em}
 .mode-sub{font-size:10px;color:#aaa;margin-top:2px}
 
-/* ---- HOME CATALOG — TALL CARDS (like "Explorá nuestro trabajo") ---- */
+/* ---- HOME CATALOG — TALL CARDS (like "Explorá nuestro catá") ---- */
 .cat-cards-home{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -178,7 +178,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   overflow:hidden;
   cursor:pointer;
   height:420px;
-  background:#1a1a2e;
+  background:#fff;
   box-shadow:0 6px 24px rgba(0,0,0,0.18);
   transition:transform 0.32s cubic-bezier(.22,.68,0,1.15), box-shadow 0.3s ease;
   will-change:transform;
@@ -197,50 +197,56 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cat-card-home:hover .cat-card-home-bg{transform:scale(1.06)}
 .cat-card-home-bg .tech-draw{
   position:absolute;
-  right:-8%;
-  bottom:-6%;
-  height:120%;
+  right:15%;
+  bottom:10%;
+  height:55%;
   width:auto;
   max-width:none;
-  filter:invert(1) brightness(1.7);
-  opacity:0.16;
-  mix-blend-mode:screen;
+  filter:invert(1) brightness(1.5);
+  opacity:0.12;
+  mix-blend-mode:multiply;
   pointer-events:none;
 }
 .cat-card-home-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.35) 55%,rgba(0,0,0,0.12) 100%);
+  background:linear-gradient(to top,rgba(255,255,255,1) 0%,rgba(255,255,255,0.95) 100%);
   transition:background 0.3s;
 }
 .cat-card-home:hover .cat-card-home-overlay{
-  background:linear-gradient(to top,rgba(160,20,20,0.82) 0%,rgba(0,0,0,0.38) 60%,rgba(0,0,0,0.1) 100%);
+  background:linear-gradient(to top,rgba(206,32,40,0.9) 0%,rgba(206,32,40,0.7) 60%,rgba(206,32,40,0.5) 100%);
 }
 .cat-card-home-body{
   position:absolute;inset:0;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   padding:2rem 1.5rem;
-  color:#fff;text-align:center;
+  color:#3a3230;text-align:center;
+  transition:color 0.3s;
+}
+.cat-card-home:hover .cat-card-home-body{
+  color:#fff;
 }
 .cat-card-home-icon{
   width:56px;height:56px;
   border-radius:50%;
-  background:rgba(255,255,255,0.15);
+  background:rgba(206,32,40,0.08);
   display:flex;align-items:center;justify-content:center;
   margin-bottom:1rem;
-  transition:background 0.25s,transform 0.25s;
-  border:1.5px solid rgba(255,255,255,0.25);
+  transition:background 0.25s,transform 0.25s,color 0.25s;
+  border:1.5px solid rgba(206,32,40,0.2);
+  color:#CE2028;
 }
 .cat-card-home:hover .cat-card-home-icon{
   background:rgba(255,255,255,0.25);
   transform:scale(1.1);
+  color:#fff;
 }
 .cat-card-home-label{
   font-size:17px;font-weight:800;
   letter-spacing:0.14em;
   text-transform:uppercase;
   margin-bottom:0.5rem;
-  text-shadow:0 2px 8px rgba(0,0,0,0.5);
+  text-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 .cat-card-home-sub{
   font-size:12px;
@@ -250,10 +256,10 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 }
 
 /* background gradients per card */
-.cat-card-home:nth-child(1){background:linear-gradient(145deg,#1a2235,#2d3a5c)}
-.cat-card-home:nth-child(2){background:linear-gradient(145deg,#1e2a1a,#2e4420)}
-.cat-card-home:nth-child(3){background:linear-gradient(145deg,#2a1515,#4a1f1f)}
-.cat-card-home:nth-child(4){background:linear-gradient(145deg,#1a2228,#1f3040)}
+.cat-card-home:nth-child(1){background:#fff}
+.cat-card-home:nth-child(2){background:#fff}
+.cat-card-home:nth-child(3){background:#fff}
+.cat-card-home:nth-child(4){background:#fff}
 
 @media(max-width:768px){
   .cat-cards-home{grid-template-columns:repeat(2,1fr);padding:0 1rem;gap:0.8rem}
@@ -696,7 +702,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="historia-block">
         <p>Corría la década del 60 cuando Alberto Giammugnani, visionario y emprendedor, fundó Amoplast en la ciudad de Rosario con una convicción que aún nos representa. Lo que comenzó como un emprendimiento familiar se convirtió en la primera fábrica de envases plásticos del interior del país, marcando el inicio de una historia de innovación y dedicación a la industria argentina.</p>
         <div class="historia-photo-wrap" id="historia-photo-1">
-          <img class="historia-photo historia-photo-bw" src="foto_alberto.png" alt="Alberto Giammugnani, fundador de Amoplast" onerror="this.onerror=null;var t=this,i=0,tries=['foto_alberto.PNG','Foto_Alberto.png','foto_Alberto.png','FOTO_ALBERTO.png','foto_alberto.jpg','foto_alberto.jpeg'];function next(){if(i>=tries.length){t.style.display='none';t.parentElement.classList.add('historia-photo-placeholder');return;}t.src=tries[i++];}t.onerror=next;next();">
+          <img class="historia-photo historia-photo-bw" src="Foto_alberto.png" alt="Alberto Giammugnani, fundador de Amoplast">
         </div>
       </div>
       <div class="historia-block">
@@ -890,7 +896,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('material')">
       <div class="cat-card-home-bg">
-        <img class="tech-draw" src= alt="Dibujo_tecnico_JP.png" onerror="this.style.display='none'">
+        <img class="tech-draw" src= alt="Dibujo_JP.png" onerror="this.style.display='none'">
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
@@ -911,7 +917,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('linea')">
       <div class="cat-card-home-bg">
-        <img class="tech-draw" src="Dibujo_tecnico_RP.png" alt="" onerror="this.style.display='none'">
+        <img class="tech-draw" src="Dibujo_RP.png" alt="" onerror="this.style.display='none'">
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">

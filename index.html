@@ -192,8 +192,21 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   position:absolute;inset:0;
   background-size:cover;background-position:center;
   transition:transform 0.4s ease;
+  overflow:hidden;
 }
 .cat-card-home:hover .cat-card-home-bg{transform:scale(1.06)}
+.cat-card-home-bg .tech-draw{
+  position:absolute;
+  right:-8%;
+  bottom:-6%;
+  height:120%;
+  width:auto;
+  max-width:none;
+  filter:invert(1) brightness(1.7);
+  opacity:0.16;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
 .cat-card-home-overlay{
   position:absolute;inset:0;
   background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.35) 55%,rgba(0,0,0,0.12) 100%);
@@ -683,7 +696,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="historia-block">
         <p>Corría la década del 60 cuando Alberto Giammugnani, visionario y emprendedor, fundó Amoplast en la ciudad de Rosario con una convicción que aún nos representa. Lo que comenzó como un emprendimiento familiar se convirtió en la primera fábrica de envases plásticos del interior del país, marcando el inicio de una historia de innovación y dedicación a la industria argentina.</p>
         <div class="historia-photo-wrap" id="historia-photo-1">
-          <img class="historia-photo historia-photo-bw" src="foto_alberto.png" alt="Alberto Giammugnani, fundador de Amoplast" onerror="this.style.display='none';this.parentElement.classList.add('historia-photo-placeholder')">
+          <img class="historia-photo historia-photo-bw" src="foto_alberto.png" alt="Alberto Giammugnani, fundador de Amoplast" onerror="this.onerror=null;var t=this,i=0,tries=['foto_alberto.PNG','Foto_Alberto.png','foto_Alberto.png','FOTO_ALBERTO.png','foto_alberto.jpg','foto_alberto.jpeg'];function next(){if(i>=tries.length){t.style.display='none';t.parentElement.classList.add('historia-photo-placeholder');return;}t.src=tries[i++];}t.onerror=next;next();">
         </div>
       </div>
       <div class="historia-block">
@@ -849,9 +862,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('categoria')">
       <div class="cat-card-home-bg">
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="240" cy="80" r="140" fill="#fff"/><circle cx="40" cy="360" r="90" fill="#fff"/>
-        </svg>
+        <img class="tech-draw" src="envase_AP-1000_45_solo_dibujo_tecnico.png" alt="" onerror="this.style.display='none'">
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
@@ -865,9 +876,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('capacidad')">
       <div class="cat-card-home-bg">
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect x="160" y="20" width="180" height="180" rx="30" fill="#fff"/><rect x="-30" y="240" width="140" height="140" rx="20" fill="#fff"/>
-        </svg>
+        <img class="tech-draw" src="envase_U2000_110_dibujo_tecnico.png" alt="" onerror="this.style.display='none'">
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
@@ -881,9 +890,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('material')">
       <div class="cat-card-home-bg">
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="150,20 290,230 10,230" fill="#fff"/><polygon points="150,210 280,400 20,400" fill="#fff"/>
-        </svg>
+        <img class="tech-draw" src= alt="Dibujo_tecnico_JP.png" onerror="this.style.display='none'">
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
@@ -904,12 +911,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('linea')">
       <div class="cat-card-home-bg">
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="80"  x2="300" y2="80"  stroke="#fff" stroke-width="40"/>
-          <line x1="0" y1="180" x2="300" y2="180" stroke="#fff" stroke-width="28"/>
-          <line x1="0" y1="270" x2="300" y2="270" stroke="#fff" stroke-width="34"/>
-          <line x1="0" y1="355" x2="300" y2="355" stroke="#fff" stroke-width="20"/>
-        </svg>
+        <img class="tech-draw" src="Dibujo_tecnico_RP.png" alt="" onerror="this.style.display='none'">
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">

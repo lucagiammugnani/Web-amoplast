@@ -197,14 +197,15 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cat-card-home:hover .cat-card-home-bg{transform:scale(1.06)}
 .cat-card-home-bg .tech-draw{
   position:absolute;
-  right:10%;
-  bottom:8%;
-  height:60%;
+  right:8%;
+  bottom:6%;
+  height:76%;
   width:auto;
   max-width:none;
-  filter:invert(1) brightness(0.9) contrast(1.2) hue-rotate(180deg);
-  opacity:0.22;
-  mix-blend-mode:screen;
+  object-fit:contain;
+  filter:grayscale(100%) contrast(0.95);
+  opacity:0.09;
+  mix-blend-mode:normal;
   pointer-events:none;
 }
 .cat-card-home-overlay{
@@ -218,8 +219,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .cat-card-home-body{
   position:absolute;inset:0;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:2rem 1.5rem;
+  align-items:center;justify-content:flex-start;
+  padding:2.5rem 1.5rem;
   color:#3a3230;text-align:center;
   transition:color 0.3s;
 }
@@ -922,7 +923,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="14" y1="5" x2="14" y2="19"/><polyline points="10 15 14 19 18 15"/><text x="2" y="9" font-size="6" font-weight="700" fill="#fff" stroke="none" font-family="sans-serif">A</text><text x="2" y="19" font-size="6" font-weight="700" fill="#fff" stroke="none" font-family="sans-serif">Z</text></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="14" y1="5" x2="14" y2="19"/><polyline points="10 15 14 19 18 15"/><text x="2" y="9" font-size="6" font-weight="700" fill="currentColor" stroke="none" font-family="sans-serif">A</text><text x="2" y="19" font-size="6" font-weight="700" fill="currentColor" stroke="none" font-family="sans-serif">Z</text></svg>
         </div>
         <div class="cat-card-home-label">Línea</div>
         <div class="cat-card-home-sub">A · B · C · D · E · F</div>

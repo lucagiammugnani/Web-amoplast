@@ -163,7 +163,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .mode-label{font-size:12px;font-weight:600;color:var(--red);letter-spacing:0.02em}
 .mode-sub{font-size:10px;color:#aaa;margin-top:2px}
 
-/* ---- HOME CATALOG — TALL CARDS (like "Explorá nuestro catá") ---- */
+/* ---- HOME CATALOG — TALL CARDS (like "Explorá nuestro trabajo") ---- */
 .cat-cards-home{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -178,7 +178,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   overflow:hidden;
   cursor:pointer;
   height:420px;
-  background:#fff;
+  background:#1a1a2e;
   box-shadow:0 6px 24px rgba(0,0,0,0.18);
   transition:transform 0.32s cubic-bezier(.22,.68,0,1.15), box-shadow 0.3s ease;
   will-change:transform;
@@ -192,62 +192,42 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   position:absolute;inset:0;
   background-size:cover;background-position:center;
   transition:transform 0.4s ease;
-  overflow:hidden;
 }
 .cat-card-home:hover .cat-card-home-bg{transform:scale(1.06)}
-.cat-card-home-bg .tech-draw{
-  position:absolute;
-  right:8%;
-  bottom:6%;
-  height:76%;
-  width:auto;
-  max-width:none;
-  object-fit:contain;
-  filter:grayscale(100%) contrast(0.95);
-  opacity:0.09;
-  mix-blend-mode:normal;
-  pointer-events:none;
-}
 .cat-card-home-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(255,255,255,1) 0%,rgba(255,255,255,0.95) 100%);
+  background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.35) 55%,rgba(0,0,0,0.12) 100%);
   transition:background 0.3s;
 }
 .cat-card-home:hover .cat-card-home-overlay{
-  background:linear-gradient(to top,rgba(206,32,40,0.9) 0%,rgba(206,32,40,0.7) 60%,rgba(206,32,40,0.5) 100%);
+  background:linear-gradient(to top,rgba(160,20,20,0.82) 0%,rgba(0,0,0,0.38) 60%,rgba(0,0,0,0.1) 100%);
 }
 .cat-card-home-body{
   position:absolute;inset:0;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-start;
-  padding:2.5rem 1.5rem;
-  color:#3a3230;text-align:center;
-  transition:color 0.3s;
-}
-.cat-card-home:hover .cat-card-home-body{
-  color:#fff;
+  align-items:center;justify-content:center;
+  padding:2rem 1.5rem;
+  color:#fff;text-align:center;
 }
 .cat-card-home-icon{
   width:56px;height:56px;
   border-radius:50%;
-  background:rgba(206,32,40,0.08);
+  background:rgba(255,255,255,0.15);
   display:flex;align-items:center;justify-content:center;
   margin-bottom:1rem;
-  transition:background 0.25s,transform 0.25s,color 0.25s;
-  border:1.5px solid rgba(206,32,40,0.2);
-  color:#CE2028;
+  transition:background 0.25s,transform 0.25s;
+  border:1.5px solid rgba(255,255,255,0.25);
 }
 .cat-card-home:hover .cat-card-home-icon{
   background:rgba(255,255,255,0.25);
   transform:scale(1.1);
-  color:#fff;
 }
 .cat-card-home-label{
   font-size:17px;font-weight:800;
   letter-spacing:0.14em;
   text-transform:uppercase;
   margin-bottom:0.5rem;
-  text-shadow:0 2px 8px rgba(0,0,0,0.1);
+  text-shadow:0 2px 8px rgba(0,0,0,0.5);
 }
 .cat-card-home-sub{
   font-size:12px;
@@ -257,10 +237,10 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 }
 
 /* background gradients per card */
-.cat-card-home:nth-child(1){background:#fff}
-.cat-card-home:nth-child(2){background:#fff}
-.cat-card-home:nth-child(3){background:#fff}
-.cat-card-home:nth-child(4){background:#fff}
+.cat-card-home:nth-child(1){background:linear-gradient(145deg,#1a2235,#2d3a5c)}
+.cat-card-home:nth-child(2){background:linear-gradient(145deg,#1e2a1a,#2e4420)}
+.cat-card-home:nth-child(3){background:linear-gradient(145deg,#2a1515,#4a1f1f)}
+.cat-card-home:nth-child(4){background:linear-gradient(145deg,#1a2228,#1f3040)}
 
 @media(max-width:768px){
   .cat-cards-home{grid-template-columns:repeat(2,1fr);padding:0 1rem;gap:0.8rem}
@@ -703,7 +683,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="historia-block">
         <p>Corría la década del 60 cuando Alberto Giammugnani, visionario y emprendedor, fundó Amoplast en la ciudad de Rosario con una convicción que aún nos representa. Lo que comenzó como un emprendimiento familiar se convirtió en la primera fábrica de envases plásticos del interior del país, marcando el inicio de una historia de innovación y dedicación a la industria argentina.</p>
         <div class="historia-photo-wrap" id="historia-photo-1">
-          <img class="historia-photo historia-photo-bw" src="Foto_alberto.png" alt="Alberto Giammugnani, fundador de Amoplast">
+          <img class="historia-photo historia-photo-bw" src="Foto_alberto.png" alt="Alberto Giammugnani, fundador de Amoplast" onerror="this.style.display='none';this.parentElement.classList.add('historia-photo-placeholder')">
         </div>
       </div>
       <div class="historia-block">
@@ -869,12 +849,14 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('categoria')">
       <div class="cat-card-home-bg">
-        <img class="tech-draw" src="envase_AP-1000_45_solo_dibujo_tecnico.png" alt="" onerror="this.style.display='none'">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="240" cy="80" r="140" fill="#fff"/><circle cx="40" cy="360" r="90" fill="#fff"/>
+        </svg>
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
         </div>
         <div class="cat-card-home-label">Categoría</div>
         <div class="cat-card-home-sub">Bidones · Botellas · Frascos</div>
@@ -883,12 +865,14 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('capacidad')">
       <div class="cat-card-home-bg">
-        <img class="tech-draw" src="envase_U2000_110_dibujo_tecnico.png" alt="" onerror="this.style.display='none'">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect x="160" y="20" width="180" height="180" rx="30" fill="#fff"/><rect x="-30" y="240" width="140" height="140" rx="20" fill="#fff"/>
+        </svg>
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M9 3h6v7l4 11H5L9 10V3z"/></svg>
         </div>
         <div class="cat-card-home-label">Capacidad</div>
         <div class="cat-card-home-sub">Desde 0 cc<br>hasta +5000 cc</div>
@@ -897,12 +881,14 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('material')">
       <div class="cat-card-home-bg">
-        <img class="tech-draw" src="Dibujo tecnico JP.png" alt="Dibujo técnico" onerror="this.style.display='none'">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="150,20 290,230 10,230" fill="#fff"/><polygon points="150,210 280,400 20,400" fill="#fff"/>
+        </svg>
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/>
             <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/>
             <path d="m14 16-3 3 3 3"/>
@@ -918,12 +904,17 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 
     <div class="cat-card-home" onclick="openCatalog('linea')">
       <div class="cat-card-home-bg">
-        <img class="tech-draw" src="Dibujo_RP.png" alt="" onerror="this.style.display='none'">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07" viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="80"  x2="300" y2="80"  stroke="#fff" stroke-width="40"/>
+          <line x1="0" y1="180" x2="300" y2="180" stroke="#fff" stroke-width="28"/>
+          <line x1="0" y1="270" x2="300" y2="270" stroke="#fff" stroke-width="34"/>
+          <line x1="0" y1="355" x2="300" y2="355" stroke="#fff" stroke-width="20"/>
+        </svg>
       </div>
       <div class="cat-card-home-overlay"></div>
       <div class="cat-card-home-body">
         <div class="cat-card-home-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="14" y1="5" x2="14" y2="19"/><polyline points="10 15 14 19 18 15"/><text x="2" y="9" font-size="6" font-weight="700" fill="currentColor" stroke="none" font-family="sans-serif">A</text><text x="2" y="19" font-size="6" font-weight="700" fill="currentColor" stroke="none" font-family="sans-serif">Z</text></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="14" y1="5" x2="14" y2="19"/><polyline points="10 15 14 19 18 15"/><text x="2" y="9" font-size="6" font-weight="700" fill="#fff" stroke="none" font-family="sans-serif">A</text><text x="2" y="19" font-size="6" font-weight="700" fill="#fff" stroke="none" font-family="sans-serif">Z</text></svg>
         </div>
         <div class="cat-card-home-label">Línea</div>
         <div class="cat-card-home-sub">A · B · C · D · E · F</div>

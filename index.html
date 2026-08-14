@@ -119,12 +119,12 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 .historia-inner{padding:2rem 2rem 4rem;max-width:1100px;margin:0 auto;}
 .historia-topbar{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
 .historia-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
-.historia-block{display:flex;flex-direction:column;}
-.historia-block p{font-size:16px;line-height:1.7;color:#4a403c;margin-bottom:1.5rem;}
-.historia-photo{width:100%;border-radius:4px;display:block;}
+.historia-block{display:flex;flex-direction:column;justify-content:space-between;}
+.historia-block p{font-size:16px;line-height:1.7;color:#4a403c;margin-bottom:1.5rem;flex:1;}
+.historia-photo{width:100%;height:100%;border-radius:4px;display:block;object-fit:cover;object-position:center bottom;box-sizing:border-box;}
 .historia-photo-bw{filter:grayscale(100%) contrast(1.05);border:6px solid #1a1410;box-shadow:0 6px 20px rgba(0,0,0,0.25);}
 .historia-photo-vintage{filter:sepia(0.45) saturate(0.75) contrast(0.92) brightness(0.92);opacity:0.9;box-shadow:0 6px 20px rgba(0,0,0,0.2);position:relative;}
-.historia-photo-wrap{position:relative;overflow:hidden;border-radius:4px;margin-top:0.5rem;min-height:220px;}
+.historia-photo-wrap{position:relative;overflow:hidden;border-radius:4px;margin-top:0.5rem;min-height:240px;height:240px;}
 .historia-photo-wrap::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(20,14,10,0.35) 100%);pointer-events:none;}
 .historia-photo-placeholder{display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#f0e6dc,#f0e6dc 10px,#e8ddd0 10px,#e8ddd0 20px);border:2px dashed #d8c9b8;min-height:240px;}
 .historia-photo-placeholder::before{content:'Espacio para foto';position:absolute;z-index:1;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#a89684;letter-spacing:0.3px;}
@@ -133,6 +133,8 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 @media(max-width:800px){
   .historia-grid{grid-template-columns:1fr;gap:1rem;}
   .historia-title{font-size:22px;}
+  .historia-photo-wrap{height:auto;min-height:0;}
+  .historia-photo{height:auto;object-fit:unset;border-radius:4px;}
 }
 
 /* ========= CATALOG SUBPAGE OVERLAY ========= */
@@ -205,8 +207,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
 }
 .cat-card-home-body{
   position:absolute;inset:0;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;
   padding:2rem 1.5rem;
   color:#fff;text-align:center;
 }
@@ -215,7 +216,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
   border-radius:50%;
   background:rgba(255,255,255,0.15);
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:1rem;
+  margin-bottom:0.6rem;
   transition:background 0.25s,transform 0.25s;
   border:1.5px solid rgba(255,255,255,0.25);
 }
@@ -706,7 +707,7 @@ body{font-family:'Montserrat',sans-serif;color:#3a3230;background:#fff}
       <div class="historia-block">
         <p>Más de seis décadas después, seguimos guiándonos por los mismos valores, sirviendo a las empresas desarrollando soluciones de packaging, respaldadas por un profundo compromiso con la calidad del producto y la dedicación a los clientes, que han definido a Amoplast desde sus comienzos.</p>
         <div class="historia-photo-wrap" id="historia-photo-2">
-          <img class="historia-photo historia-photo-vintage" src="Fabrica-Amoplast-antigua.jpg" alt="Fábrica Amoplast en sus comienzos" onerror="this.style.display='none';this.parentElement.classList.add('historia-photo-placeholder')">
+          <img class="historia-photo historia-photo-bw" src="Foto_historia.jpg" alt="Fábrica Amoplast en sus comienzos" onerror="this.style.display='none';this.parentElement.classList.add('historia-photo-placeholder')">
         </div>
       </div>
     </div>
